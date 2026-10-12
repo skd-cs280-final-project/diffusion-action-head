@@ -205,3 +205,20 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Local AeroVLA datasets, pretrained weights, and experiment outputs.
+# Keep the small trajectory split manifest in data/ under version control.
+/data/aerovla_train_dataset.json
+/dataset_raw
+/openvla-7b/
+/checkpoints/
+/envs/
+/eval_results/
+/logs/
+
+# Plotting caches generated while building reports.
+.matplotlib/
+
+# Local credentials and per-machine environment overrides.
+.env.*
+!.env.example

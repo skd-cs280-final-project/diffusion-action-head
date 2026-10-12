@@ -5,6 +5,7 @@ from PIL import Image
 from transformers import AutoModelForVision2Seq, AutoTokenizer, AutoImageProcessor
 from scipy.spatial.transform import Rotation as R
 import re
+from pathlib import Path
 from peft import PeftModel
 import tkinter as tk
 from PIL import ImageTk
@@ -19,7 +20,22 @@ class AerialVLAWrapper(BaseModelWrapper):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         adapter_path = model_args.model_path 
-        base_model_path = "./openvla-7b"
+        base_model_path = getattr(model_args, "model_base", None) or "./openvla-7b"
+        self.diffusion_mode = (Path(adapter_path) / "diffusion_config.json").is_file()
+        if self.diffusion_mode:
+            from src.model_wrapper.aerovla_diffusion import AeroVLADiffusionModel
+
+            # Training saves the exact tokenizer and image processor beside the head.
+            self.tokenizer = AutoTokenizer.from_pretrained(adapter_path, trust_remote_code=True)
+            self.image_processor = AutoImageProcessor.from_pretrained(adapter_path, trust_remote_code=True)
+            self.model = AeroVLADiffusionModel.from_pretrained(
+                adapter_path, base_model_path=getattr(model_args, "model_base", None),
+                torch_dtype=torch.bfloat16 if self.device.type == "cuda" else torch.float32,
+                device=self.device, tokenizer_length=len(self.tokenizer),
+            )
+            self.model.eval()
+            print(f"[AerialVLA] Loaded diffusion action head from: {adapter_path}")
+            return
         print(f"[AerialVLA] Loading BASE from: {base_model_path}")
         print(f"[AerialVLA] Loading ADAPTER/TOKENIZER from: {adapter_path}")
         self.NUM_BINS = 99
@@ -163,6 +179,15 @@ class AerialVLAWrapper(BaseModelWrapper):
 
 
     def run(self, inputs, episodes, rot_to_targets):
+
+        if self.diffusion_mode:
+            from src.diffusion_dataset import denormalize_actions
+
+            with torch.inference_mode():
+                normalized = self.model.predict_action(**inputs)[:, 0]
+                actions = denormalize_actions(normalized).cpu().tolist()
+            return ([{"fwd": action[0], "down": action[1], "yaw": action[2]}
+                     for action in actions], (normalized[:, 3] >= 0).cpu().tolist())
 
         with torch.inference_mode():
             generated_ids = self.model.generate(

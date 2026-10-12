@@ -1,0 +1,43 @@
+{
+  "checked_utc": "2026-10-11T09:46:23.081417+00:00",
+  "scope": "CPU head tensor integrity only; no backbone reload or additional inference",
+  "cutoff_step": 59019,
+  "checkpoint_checks": [
+    {
+      "directory": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/best",
+      "global_step": 46160,
+      "weights_sha256": "73ead9e90f44ef537cf49b6ba661af9c4b07fe3f1e1082ff77a959e3e6e12965",
+      "num_tensors": 81,
+      "num_elements": 5265668,
+      "size_bytes": 21088629,
+      "all_finite": true,
+      "loaded_device": "cpu",
+      "unchanged_during_check": true
+    },
+    {
+      "directory": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/checkpoint-59000",
+      "global_step": 59000,
+      "weights_sha256": "e9dd35e2533b385c7d69510869c961b3e0d3a8ffe285b8bc4cf1d2c7083efc11",
+      "num_tensors": 81,
+      "num_elements": 5265668,
+      "size_bytes": 21088629,
+      "all_finite": true,
+      "loaded_device": "cpu",
+      "unchanged_during_check": true
+    }
+  ],
+  "source_hashes_match_launch": {
+    "src/train_diffusion_head.py": true,
+    "src/eval_diffusion_head.py": true,
+    "src/diffusion_dataset.py": true,
+    "src/diffusion_split.py": true,
+    "src/model_wrapper/aerovla_diffusion.py": true,
+    "src/model_wrapper/diffusion_action_head.py": true,
+    "scripts/train_diffusion_head.sh": true,
+    "src/monitor_diffusion_training.py": true,
+    "scripts/audit_diffusion_supervision.py": true,
+    "logs/aero_vla_diffusion_full_20261010_200045/monitor.sh": true
+  },
+  "final_weights_exists": false,
+  "completion_check_exists": false
+}

@@ -95,7 +95,7 @@ class AirVLNENV:
         self.exist_save_path = save_path
         load_data = self.load_my_datasets()
         self.ori_raw_data = load_data
-        logger.info('Loaded dataset {}.'.format(len(self.eval_json_path)))
+        logger.info('Loaded dataset {}.'.format(len(load_data)))
         self.index_data = 0
         self.data = self.ori_raw_data
         
@@ -143,7 +143,7 @@ class AirVLNENV:
                 asset_name = closest_area_info[16]
             traj_info = {}
             frames = []
-            traj_dir = '/'.join(path_parts[:-1])
+            traj_dir = str(Path(merged_json).parent)
             traj_info['map_name'] = map_name
             traj_info['seq_name'] = seq_name
             traj_info['merged_json'] = merged_json

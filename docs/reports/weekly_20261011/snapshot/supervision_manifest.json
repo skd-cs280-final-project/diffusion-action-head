@@ -1,0 +1,12 @@
+{
+  "recorded_utc": "2026-10-10T12:11:38.938901+00:00",
+  "run_name": "aero_vla_diffusion_full_20261010_200045",
+  "monitor_tmux_session": "aerovla_monitor_gpu1_20261010_200045",
+  "monitor_device": "CPU",
+  "interval_seconds": 60,
+  "source_sha256": {
+    "src/monitor_diffusion_training.py": "dede779564815aa20bf867b91a1e03f5843e14b2bb68598627c591c32be7c2ee",
+    "scripts/audit_diffusion_supervision.py": "b28ef51e960fe975a2d5c25ebbfae2be2e2d9feff655a9b10b81005085a1f456",
+    "logs/aero_vla_diffusion_full_20261010_200045/monitor.sh": "4d44e296677ab72015efdc17d403195289021d7ac475a34889f713ebc359e69e"
+  }
+}

@@ -17,3 +17,4 @@ Pillow==10.2.0
 tqdm==4.67.1
 yacs==0.1.8
 psutil==6.1.1
+diffusers==0.30.3

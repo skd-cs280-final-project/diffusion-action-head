@@ -1,0 +1,903 @@
+{
+  "status": "passed",
+  "created_at_utc": "2026-10-10T12:09:40.101833+00:00",
+  "scope": "full_manifest_static_targets; fixed_examples_not_training_batch_order; no_predictions",
+  "sources": {
+    "data_json": "/data/xiyang/project_orig/AeroVLA/data/aerovla_train_dataset.json",
+    "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67",
+    "split_json": "/data/xiyang/project_orig/AeroVLA/data/continuous_split_seed42.json",
+    "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+    "run_config": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/run_config.json",
+    "run_config_sha256": "80270920c014f6ef562b180ab1871ac14cb3f2ad4afc336c8aaf19798229d541",
+    "audit_script": "/data/xiyang/project_orig/AeroVLA/scripts/audit_diffusion_supervision.py",
+    "audit_script_sha256": "b28ef51e960fe975a2d5c25ebbfae2be2e2d9feff655a9b10b81005085a1f456",
+    "normalizer_sha256": "e7456e449c801ada8145db9f0a3fe4444b1ec527e9027eab59dea28186aa2ba8",
+    "split_validator_sha256": "11ba4461fac817f7ac9bcffb2a96bbf1e36261b071190fe1bce25bd086827080",
+    "action_stats_sha256": "55f2804162f4992eb481cda68b971edca833841a3fe5170560a8878ddb6916f7",
+    "data_root": "/data/xiyang/dataset/OpenUAV/TravelUAV",
+    "run_config_match": {
+      "status": "matched",
+      "checked_fields_per_split": [
+        "data_sha256",
+        "split_sha256",
+        "trajectory_sha256",
+        "selected_indices_sha256",
+        "num_samples",
+        "num_trajectories",
+        "train_trajectory_sha256",
+        "val_trajectory_sha256"
+      ]
+    },
+    "validated_splits": {
+      "train": {
+        "split": "train",
+        "split_json": "/data/xiyang/project_orig/AeroVLA/data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 369274,
+        "num_trajectories": 6850,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "c78df9cc50c80074212939a5a4be3c999bc6bafb200bfd5b83329bc3de19342c",
+        "data_json": "/data/xiyang/project_orig/AeroVLA/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "val": {
+        "split": "val",
+        "split_json": "/data/xiyang/project_orig/AeroVLA/data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": "/data/xiyang/project_orig/AeroVLA/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      }
+    }
+  },
+  "num_invalid_samples": 0,
+  "target_contract": {
+    "action_order": [
+      "fwd",
+      "down",
+      "yaw",
+      "land"
+    ],
+    "action_horizon": 1,
+    "minimum": [
+      0.0,
+      -5.0,
+      -1.1,
+      0.0
+    ],
+    "maximum": [
+      5.0,
+      5.0,
+      1.1,
+      1.0
+    ],
+    "land_rule": "land = int(is_last_step or is_penultimate); normalized_land = 2 * land - 1",
+    "normalization": "training float32 normalize_actions on CPU",
+    "std_definition": "population ddof=0",
+    "clipping_count_definition": "raw float64 source value outside declared bounds"
+  },
+  "splits": {
+    "train": {
+      "num_samples": 369274,
+      "raw_4d": {
+        "fwd": {
+          "count": 369274,
+          "min": -25.90817875950326,
+          "max": 28.985900339995496,
+          "mean": 4.239879128818443,
+          "std_population": 1.431569245597701
+        },
+        "down": {
+          "count": 369274,
+          "min": -17.91120799537524,
+          "max": 20.773749596970088,
+          "mean": -0.016590014931053696,
+          "std_population": 1.4655034274136132
+        },
+        "yaw": {
+          "count": 369274,
+          "min": -3.1412476755241405,
+          "max": 3.141529538996231,
+          "mean": -0.0001665163965906943,
+          "std_population": 0.34816702477912453
+        },
+        "land": {
+          "count": 369274,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.022213857460855625,
+          "std_population": 0.14737843124950273
+        }
+      },
+      "clipped_4d_float32": {
+        "fwd": {
+          "count": 369274,
+          "min": 0.0,
+          "max": 5.0,
+          "mean": 4.258974672762472,
+          "std_population": 1.3298000901770246
+        },
+        "down": {
+          "count": 369274,
+          "min": -5.0,
+          "max": 5.0,
+          "mean": -0.01661297810600045,
+          "std_population": 1.4636506027974148
+        },
+        "yaw": {
+          "count": 369274,
+          "min": -1.100000023841858,
+          "max": 1.100000023841858,
+          "mean": -0.00012576648174392692,
+          "std_population": 0.22085768413606757
+        },
+        "land": {
+          "count": 369274,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.022213857460855625,
+          "std_population": 0.14737843124950273
+        }
+      },
+      "normalized_4d_float32": {
+        "fwd": {
+          "count": 369274,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": 0.7035898690273744,
+          "std_population": 0.5319200360352665
+        },
+        "down": {
+          "count": 369274,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": -0.0033225955973310074,
+          "std_population": 0.29273012049279123
+        },
+        "yaw": {
+          "count": 369274,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": -0.00011433301402136983,
+          "std_population": 0.20077970859106073
+        },
+        "land": {
+          "count": 369274,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": -0.9555722850782887,
+          "std_population": 0.29475686249900546
+        }
+      },
+      "clipping": {
+        "fwd": {
+          "below_min": 4401,
+          "above_max": 268,
+          "count": 4669,
+          "ratio": 0.012643727963517605
+        },
+        "down": {
+          "below_min": 12,
+          "above_max": 795,
+          "count": 807,
+          "ratio": 0.0021853691296977312
+        },
+        "yaw": {
+          "below_min": 4167,
+          "above_max": 4141,
+          "count": 8308,
+          "ratio": 0.022498199169180607
+        },
+        "land": {
+          "below_min": 0,
+          "above_max": 0,
+          "count": 0,
+          "ratio": 0.0
+        }
+      },
+      "any_axis_clipped": 9605,
+      "land": {
+        "positive": 8203,
+        "negative": 361071,
+        "positive_ratio": 0.022213857460855625,
+        "last": 6850,
+        "penultimate": 1353,
+        "both_flags": 0,
+        "last_only": 6850,
+        "penultimate_only": 1353,
+        "neither": 361071
+      },
+      "num_trajectories": 6850
+    },
+    "val": {
+      "num_samples": 41176,
+      "raw_4d": {
+        "fwd": {
+          "count": 41176,
+          "min": -5.879550655933922,
+          "max": 22.078238119477206,
+          "mean": 4.24592057773752,
+          "std_population": 1.4212686956675635
+        },
+        "down": {
+          "count": 41176,
+          "min": -5.171267456029976,
+          "max": 9.57460215869017,
+          "mean": -0.0196552301831498,
+          "std_population": 1.4537322153583276
+        },
+        "yaw": {
+          "count": 41176,
+          "min": -3.1406454055300044,
+          "max": 3.1391313734315274,
+          "mean": -0.002483575049097224,
+          "std_population": 0.34418016550937863
+        },
+        "land": {
+          "count": 41176,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.022100252574315134,
+          "std_population": 0.1470096303323922
+        }
+      },
+      "clipped_4d_float32": {
+        "fwd": {
+          "count": 41176,
+          "min": 0.0,
+          "max": 5.0,
+          "mean": 4.263685453487723,
+          "std_population": 1.3182928149864308
+        },
+        "down": {
+          "count": 41176,
+          "min": -5.0,
+          "max": 5.0,
+          "mean": -0.019787337248570708,
+          "std_population": 1.453071832518841
+        },
+        "yaw": {
+          "count": 41176,
+          "min": -1.100000023841858,
+          "max": 1.100000023841858,
+          "mean": -0.0015263090694253173,
+          "std_population": 0.21894584011265797
+        },
+        "land": {
+          "count": 41176,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.022100252574315134,
+          "std_population": 0.1470096303323922
+        }
+      },
+      "normalized_4d_float32": {
+        "fwd": {
+          "count": 41176,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": 0.7054741813406589,
+          "std_population": 0.5273171259618824
+        },
+        "down": {
+          "count": 41176,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": -0.003957467363926191,
+          "std_population": 0.2906143661874103
+        },
+        "yaw": {
+          "count": 41176,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": -0.0013875533029225721,
+          "std_population": 0.1990416688454761
+        },
+        "land": {
+          "count": 41176,
+          "min": -1.0,
+          "max": 1.0,
+          "mean": -0.9557994948513697,
+          "std_population": 0.2940192606647844
+        }
+      },
+      "clipping": {
+        "fwd": {
+          "below_min": 481,
+          "above_max": 51,
+          "count": 532,
+          "ratio": 0.012920147658830386
+        },
+        "down": {
+          "below_min": 1,
+          "above_max": 71,
+          "count": 72,
+          "ratio": 0.0017485914124732854
+        },
+        "yaw": {
+          "below_min": 467,
+          "above_max": 429,
+          "count": 896,
+          "ratio": 0.02176024868855644
+        },
+        "land": {
+          "below_min": 0,
+          "above_max": 0,
+          "count": 0,
+          "ratio": 0.0
+        }
+      },
+      "any_axis_clipped": 1051,
+      "land": {
+        "positive": 910,
+        "negative": 40266,
+        "positive_ratio": 0.022100252574315134,
+        "last": 761,
+        "penultimate": 149,
+        "both_flags": 0,
+        "last_only": 761,
+        "penultimate_only": 149,
+        "neither": 40266
+      },
+      "num_trajectories": 761
+    }
+  },
+  "audit_examples": {
+    "selection": "first_global_manifest_index_per_split_map_category",
+    "num_samples": 139,
+    "categories_per_map": {
+      "train/Carla_Town01": {
+        "num_samples": 8,
+        "sample_ids": [
+          0,
+          82,
+          83,
+          109,
+          229,
+          521,
+          21326,
+          32277
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "down_below_min",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/Carla_Town04": {
+        "num_samples": 6,
+        "sample_ids": [
+          38742,
+          38793,
+          38824,
+          39188,
+          40130,
+          60062
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/Carla_Town05": {
+        "num_samples": 6,
+        "sample_ids": [
+          63615,
+          63653,
+          63654,
+          63876,
+          64284,
+          71878
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/Carla_Town06": {
+        "num_samples": 7,
+        "sample_ids": [
+          83551,
+          83574,
+          83575,
+          83624,
+          83704,
+          84551,
+          84808
+        ],
+        "categories": [
+          "any_clipping",
+          "down_below_min",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/Carla_Town07": {
+        "num_samples": 5,
+        "sample_ids": [
+          100353,
+          100382,
+          100388,
+          100884,
+          110690
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/Carla_Town10HD": {
+        "num_samples": 7,
+        "sample_ids": [
+          115947,
+          115972,
+          116015,
+          116145,
+          116401,
+          126816,
+          131371
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "down_below_min",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/Carla_Town15": {
+        "num_samples": 6,
+        "sample_ids": [
+          143558,
+          143616,
+          143643,
+          143750,
+          146987,
+          148960
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/ModernCityMap": {
+        "num_samples": 8,
+        "sample_ids": [
+          180170,
+          180183,
+          180184,
+          180207,
+          180210,
+          180286,
+          180881,
+          186043
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/NYCEnvironmentMegapa": {
+        "num_samples": 7,
+        "sample_ids": [
+          193885,
+          193926,
+          193928,
+          194235,
+          194424,
+          195125,
+          231420
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "down_below_min",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/NewYorkCity": {
+        "num_samples": 8,
+        "sample_ids": [
+          303741,
+          303785,
+          303786,
+          303874,
+          304198,
+          304458,
+          315544,
+          317174
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "down_below_min",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "train/TropicalIsland": {
+        "num_samples": 9,
+        "sample_ids": [
+          351597,
+          351655,
+          351657,
+          351658,
+          351705,
+          351934,
+          352684,
+          360459,
+          373570
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "down_below_min",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/Carla_Town01": {
+        "num_samples": 6,
+        "sample_ids": [
+          284,
+          314,
+          315,
+          1653,
+          2773,
+          21978
+        ],
+        "categories": [
+          "any_clipping",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/Carla_Town04": {
+        "num_samples": 5,
+        "sample_ids": [
+          38794,
+          38822,
+          38823,
+          39581,
+          48816
+        ],
+        "categories": [
+          "any_clipping",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/Carla_Town05": {
+        "num_samples": 5,
+        "sample_ids": [
+          64345,
+          64390,
+          64573,
+          66023,
+          67265
+        ],
+        "categories": [
+          "any_clipping",
+          "first_in_map",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/Carla_Town06": {
+        "num_samples": 5,
+        "sample_ids": [
+          83654,
+          83702,
+          83703,
+          84181,
+          85279
+        ],
+        "categories": [
+          "any_clipping",
+          "first_in_map",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/Carla_Town07": {
+        "num_samples": 6,
+        "sample_ids": [
+          100525,
+          100529,
+          100544,
+          100832,
+          101830,
+          102466
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/Carla_Town10HD": {
+        "num_samples": 4,
+        "sample_ids": [
+          117070,
+          117088,
+          117089,
+          118291
+        ],
+        "categories": [
+          "any_clipping",
+          "first_in_map",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/Carla_Town15": {
+        "num_samples": 6,
+        "sample_ids": [
+          144051,
+          144110,
+          144440,
+          144441,
+          146098,
+          153722
+        ],
+        "categories": [
+          "any_clipping",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/ModernCityMap": {
+        "num_samples": 4,
+        "sample_ids": [
+          180307,
+          180337,
+          180338,
+          181484
+        ],
+        "categories": [
+          "any_clipping",
+          "first_in_map",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/NYCEnvironmentMegapa": {
+        "num_samples": 8,
+        "sample_ids": [
+          194606,
+          194675,
+          194677,
+          195989,
+          196688,
+          198006,
+          208487,
+          208515
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/NewYorkCity": {
+        "num_samples": 5,
+        "sample_ids": [
+          303969,
+          304003,
+          304004,
+          305379,
+          305380
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "first_in_map",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      },
+      "val/TropicalIsland": {
+        "num_samples": 8,
+        "sample_ids": [
+          352753,
+          352754,
+          352790,
+          352792,
+          355308,
+          356109,
+          370894,
+          406348
+        ],
+        "categories": [
+          "any_clipping",
+          "down_above_max",
+          "down_below_min",
+          "first_in_map",
+          "fwd_above_max",
+          "fwd_below_min",
+          "land_negative",
+          "land_positive",
+          "last_step",
+          "penultimate_step",
+          "yaw_above_max",
+          "yaw_below_min"
+        ]
+      }
+    }
+  }
+}

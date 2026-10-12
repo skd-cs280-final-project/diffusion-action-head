@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "verified_utc": "2026-10-11T15:22:58.817212+00:00",
+  "matched_unique_tasks": 10,
+  "all_reference_and_mark_files_identical": true,
+  "all_saved_object_descriptions_identical": true,
+  "diffusion_metrics_match_original_run": true,
+  "contiguous_log_indices_and_ten_camera_streams_checked": true,
+  "five_duplicate_states_per_action_verified": true,
+  "current_protocol_files_identical": true,
+  "spawn_rule_resolved_targets_equal_in_both_projects": true,
+  "baseline_saved_states": 4475,
+  "diffusion_saved_states": 3475,
+  "baseline_camera_pngs": 9030,
+  "diffusion_camera_pngs": 7030,
+  "output_sha256": {
+    "build_comparison.py": "0a1a01e2bcbb9e57e64d68509e82db84598686a8ad4f2a73aa3127decc5de016",
+    "comparison_data.json": "aa9d627844bc77ebfd84c2a17af096ee6e1a1e8024e36e11d92c34e41471de4f",
+    "paired_results.csv": "7dcaca7be531bee238a8c5ce14d690f52742be648d7b783fda443347b8e322c6",
+    "matched_tasks.json": "8bb6c3d0e21ff427b0fcf7f77419db90a167615acbbe1f0f234fb334841e920d"
+  }
+}

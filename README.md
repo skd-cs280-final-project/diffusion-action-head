@@ -1,5 +1,7 @@
 # AeroVLA: A Vision-Language-Action Model for UAV Navigation via Minimalist End-to-End Control
 
+**Diffusion-head extension (2026-10-12):** This repository extends [upstream AeroVLA](https://github.com/XuPeng23/AeroVLA) with a continuous action diffusion head, frozen-backbone training, offline and closed-loop evaluation, and supervision auditing. Start with the [training and evaluation guide](docs/diffusion_training_evaluation_guide.md). The [snapshot notes](docs/github_snapshot_20261012.md) describe the included code, validation, and external data/model requirements. Collision mitigation and hierarchical planning documents are proposals; those architectures are not implemented in this snapshot.
+
 <p align="center">
   <img src="docs/assets/teaser_figure.png" width="1000" title="AeroVLA">
 </p>
@@ -22,7 +24,7 @@ Vision-Language Navigation (VLN) for Unmanned Aerial Vehicles (UAVs) demands com
 **1. Clone the repository:**
 
 ```bash
-git clone https://github.com/XuPeng23/AeroVLA.git
+git clone https://github.com/xiyang-666/AeroVLA.git
 cd AeroVLA
 ```
 
@@ -105,6 +107,9 @@ AeroVLA/
 ```
 
 ## 🏋️‍♂️ Training
+
+**Diffusion action head (frozen backbone):** See the [training and evaluation guide](docs/diffusion_training_evaluation_guide.md) and [architecture report](docs/diffusion_action_head_report.md). Use `bash scripts/train_diffusion_head.sh` for trajectory-split head-only training and `bash scripts/eval_diffusion_head.sh --checkpoint PATH` for offline validation. `bash scripts/smoke_diffusion_pipeline.sh` runs a short real-data pipeline check. Both the per-frame JSON and trajectory split are required. The commands below retain the original token-based LoRA training workflow.
+
 **1. Prepare the Dataset:**
 Ensure you have downloaded aerovla_train_dataset.json from our Hugging Face repository and placed it inside the data/ directory.
 

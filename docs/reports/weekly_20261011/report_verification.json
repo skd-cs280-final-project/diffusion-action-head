@@ -1,0 +1,48 @@
+{
+  "checked_utc": "2026-10-11T09:53:46.081726+00:00",
+  "cutoff_step": 59019,
+  "local_links_checked": 39,
+  "all_links_exist": true,
+  "snapshot_hashes_validated": true,
+  "numeric_consistency_checked": true,
+  "figures_visually_reviewed": true,
+  "independent_review": "No material numeric or interpretation issues found",
+  "scope": "Report artifacts and existing checkpoints; no new GPU evaluation or full test-suite rerun",
+  "sha256": {
+    "docs/weekly_report_20261011.md": "0888e28e3626d9c9cbcd2c4edaf548ce44e748bbd4e5ba34be5e1ed17b335677",
+    "docs/reports/weekly_20261011/build_analysis.py": "db1182d4d1b565ed00dced790eb86ab2e72b723bb23ac8a76577efc526460457",
+    "docs/reports/weekly_20261011/analysis.json": "53be0f8f379fde4ef53196847fbef245e2511edcfc4834e2b89812da84b35ae1",
+    "docs/reports/weekly_20261011/checkpoint_verification.json": "16c71352357c0385d18072158b4c5c57a9812a6ce426ca73009bcd0c47a34582"
+  },
+  "figures": [
+    {
+      "file": "training_trend.png",
+      "bytes": 297108
+    },
+    {
+      "file": "training_trend.pdf",
+      "bytes": 32103
+    },
+    {
+      "file": "validation_actions.png",
+      "bytes": 155021
+    },
+    {
+      "file": "validation_actions.pdf",
+      "bytes": 20346
+    },
+    {
+      "file": "land_validation.png",
+      "bytes": 95619
+    },
+    {
+      "file": "land_validation.pdf",
+      "bytes": 18964
+    }
+  ],
+  "documentation_updates": [
+    "docs/weekly_report_20261011.md",
+    "docs/diffusion_full_training_20261010.md",
+    "docs/diffusion_training_evaluation_guide.md"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "captured_utc": "2026-10-11T09:45:08.566954+00:00",
+  "cutoff_utc": "2026-10-11T09:44:31.185893+00:00",
+  "cutoff_step": 59019,
+  "run_dir": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045",
+  "files": {
+    "monitor_summary.json": {
+      "source": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/monitoring/latest_summary.json",
+      "sha256": "c2cec7704638819ca4c26a9a458a3ded937c93870633ade29c7a3cfca67cd9c2",
+      "bytes": 21697
+    },
+    "metrics.jsonl": {
+      "source": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/metrics.jsonl",
+      "sha256": "b7e7bc2feede69680086a3bc116c56c6d034ea60a0d9912bdbf99b205b543195",
+      "bytes": 7897701
+    },
+    "validation_metrics.jsonl": {
+      "source": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/validation_metrics.jsonl",
+      "sha256": "6acdd1e486f661e4724d858b583e8287c47d1524d7a41bfbb131f9e83b1d47e6",
+      "bytes": 1937
+    },
+    "run_config.json": {
+      "source": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/run_config.json",
+      "sha256": "80270920c014f6ef562b180ab1871ac14cb3f2ad4afc336c8aaf19798229d541",
+      "bytes": 3481
+    },
+    "best_metrics.json": {
+      "source": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/best_metrics.json",
+      "sha256": "f8e7a402223d8ae71912f1b1d5873db375475910d4a079682b62bfa281dfc487",
+      "bytes": 967
+    },
+    "supervision_summary.json": {
+      "source": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045/supervision/summary.json",
+      "sha256": "52d29cfdd65574b2882886cfbcaed270536353268097ad785b84ae2b12d2e558",
+      "bytes": 23277
+    },
+    "launcher_status.json": {
+      "source": "/data/xiyang/project_orig/AeroVLA/logs/aero_vla_diffusion_full_20261010_200045/status.json",
+      "sha256": "162cb1140d36e6dfa5502de2543dada9951253adb9bacf4acdeade767c28cb0a",
+      "bytes": 80
+    },
+    "launch_manifest.json": {
+      "source": "/data/xiyang/project_orig/AeroVLA/logs/aero_vla_diffusion_full_20261010_200045/launch_manifest.json",
+      "sha256": "ff90f0cb748550d12de1aa95ab00494e399fd9d8f9a564184d63efb698d044bc",
+      "bytes": 1067
+    },
+    "supervision_manifest.json": {
+      "source": "/data/xiyang/project_orig/AeroVLA/logs/aero_vla_diffusion_full_20261010_200045/supervision_manifest.json",
+      "sha256": "3170de3a95eaf93b707da1ffef9e5710044cc8716603b7e9fb58643de1e8b158",
+      "bytes": 612
+    },
+    "monitor_observations.jsonl": {
+      "source": "/data/xiyang/project_orig/AeroVLA/logs/aero_vla_diffusion_full_20261010_200045/monitor.log",
+      "sha256": "92e7e11b92c2b6c3116d2d634503bc9e8f992afdc3a5406a4743d4f67940b346",
+      "bytes": 129686
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "captured_utc": "2026-10-11T14:38:54.799691+00:00",
+  "captured_local": "2026-10-11T22:38:54.799691+08:00",
+  "cutoff_step": 70568,
+  "current_epoch": 4,
+  "total_optimizer_steps": 115400,
+  "steps_per_epoch": 23080,
+  "epoch_boundaries": [
+    23080,
+    46160,
+    69240
+  ],
+  "validation_points": [
+    {
+      "epoch": 1,
+      "step": 23080,
+      "num_samples": 41176,
+      "noise_mse": 0.047845139955443254
+    },
+    {
+      "epoch": 2,
+      "step": 46160,
+      "num_samples": 41176,
+      "noise_mse": 0.039159880106897325
+    },
+    {
+      "epoch": 3,
+      "step": 69240,
+      "num_samples": 41176,
+      "noise_mse": 0.03424759273350384
+    }
+  ],
+  "epoch2_to_epoch3_noise_mse_reduction_percent": 12.544183894292038,
+  "epoch2_to_epoch3_land_f1_percentage_points": -0.8055320390330412,
+  "all_train_records_finite_contiguous": true,
+  "bin_size": 250,
+  "last_bin_updates": 68,
+  "band_meaning": "Within-bin P10-P90; not a confidence interval",
+  "gradient_norm_meaning": "Before gradient clipping",
+  "files": {
+    "training_trend.png": "a8ccb438904db4f77e4ed0447e4dc5c7a699080e7ba45275ec4d8262f4716334",
+    "training_trend.pdf": "5ceebbee6a1ddac24137bb3cdc765198012946f7bc8575fd50377fc45a0a8d18",
+    "build_training_trend.py": "9743a24c699990c273361d172f8443e44bf8cce1fea0eccdfbedc7a52db6d104"
+  }
+}

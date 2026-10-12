@@ -1,0 +1,16 @@
+{
+  "recorded_utc": "2026-10-10T12:02:51.411997+00:00",
+  "run_name": "aero_vla_diffusion_full_20261010_200045",
+  "tmux_session": "aerovla_diffusion_gpu1_20261010_200045",
+  "physical_gpu": 1,
+  "output_dir": "/data/xiyang/project_orig/AeroVLA/checkpoints/aero_vla_diffusion_full_20261010_200045",
+  "source_sha256": {
+    "src/train_diffusion_head.py": "a985a4a67e34338f8e832256037bfe670056004f1ff4c7bf4809d2693110444e",
+    "src/eval_diffusion_head.py": "4d89b38d1c72af9020abc335575b342fc44016cb5ac38d28e45b5ef5431b33da",
+    "src/diffusion_dataset.py": "e7456e449c801ada8145db9f0a3fe4444b1ec527e9027eab59dea28186aa2ba8",
+    "src/diffusion_split.py": "11ba4461fac817f7ac9bcffb2a96bbf1e36261b071190fe1bce25bd086827080",
+    "src/model_wrapper/aerovla_diffusion.py": "371aa37bea6044baacdc520b3e995cff7b21ef71294e25f6d2330a276b3ac33a",
+    "src/model_wrapper/diffusion_action_head.py": "be145238963f00d51e43d0509863c78a74bae05a7a17d38ff89c9eb2f2c08761",
+    "scripts/train_diffusion_head.sh": "bf8b4af3f77d079f24b7c86c10d7e62b05646f8aa22bc789d9770bb8f9f55863"
+  }
+}

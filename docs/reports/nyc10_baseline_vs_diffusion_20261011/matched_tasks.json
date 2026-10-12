@@ -1,0 +1,62 @@
+[
+  {
+    "index": 1,
+    "uuid": "3417f818-690f-4360-8ea2-6fada6319ae7",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/success_3417f818-690f-4360-8ea2-6fada6319ae7",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/success_3417f818-690f-4360-8ea2-6fada6319ae7"
+  },
+  {
+    "index": 2,
+    "uuid": "0c414bd0-ea66-4d6c-b5e2-b8f36ede8d38",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/success_0c414bd0-ea66-4d6c-b5e2-b8f36ede8d38",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/0c414bd0-ea66-4d6c-b5e2-b8f36ede8d38"
+  },
+  {
+    "index": 3,
+    "uuid": "853d4e00-8676-44ec-abf2-aa72c54ce4f4",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/success_853d4e00-8676-44ec-abf2-aa72c54ce4f4",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/success_853d4e00-8676-44ec-abf2-aa72c54ce4f4"
+  },
+  {
+    "index": 4,
+    "uuid": "78e2de8d-2a78-463e-b6d0-0d286623f08d",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/78e2de8d-2a78-463e-b6d0-0d286623f08d",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/success_78e2de8d-2a78-463e-b6d0-0d286623f08d"
+  },
+  {
+    "index": 5,
+    "uuid": "6c665e2a-41ba-48d9-a80c-2a85951edb2a",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/6c665e2a-41ba-48d9-a80c-2a85951edb2a",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/success_6c665e2a-41ba-48d9-a80c-2a85951edb2a"
+  },
+  {
+    "index": 6,
+    "uuid": "4536c7ba-fe76-4ca6-a4e9-d15aad9c1d48",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/4536c7ba-fe76-4ca6-a4e9-d15aad9c1d48",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/4536c7ba-fe76-4ca6-a4e9-d15aad9c1d48"
+  },
+  {
+    "index": 7,
+    "uuid": "2c6e79c2-da85-4907-a8dc-746130d17ff7",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/success_2c6e79c2-da85-4907-a8dc-746130d17ff7",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/success_2c6e79c2-da85-4907-a8dc-746130d17ff7"
+  },
+  {
+    "index": 8,
+    "uuid": "feb11744-ee2d-4441-871d-dbe482685ca0",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/success_feb11744-ee2d-4441-871d-dbe482685ca0",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/success_feb11744-ee2d-4441-871d-dbe482685ca0"
+  },
+  {
+    "index": 9,
+    "uuid": "255f397d-4344-47a3-a090-edd13a61a83d",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/success_255f397d-4344-47a3-a090-edd13a61a83d",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/success_255f397d-4344-47a3-a090-edd13a61a83d"
+  },
+  {
+    "index": 10,
+    "uuid": "c4261e45-6f12-4010-b690-45f679634078",
+    "baseline_directory": "/data/xiyang/project/AeroVLA/eval_results/aero_vla/seen_valset/NYCEnvironmentMegapa/c4261e45-6f12-4010-b690-45f679634078",
+    "diffusion_directory": "/data/xiyang/project_orig/AeroVLA/eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episodes/c4261e45-6f12-4010-b690-45f679634078"
+  }
+]

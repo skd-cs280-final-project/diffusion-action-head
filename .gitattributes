@@ -1,0 +1,2 @@
+# Python's csv writer uses CRLF; retain report CSV bytes and accept that EOL.
+*.csv whitespace=cr-at-eol
