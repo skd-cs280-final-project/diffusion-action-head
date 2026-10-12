@@ -1,6 +1,6 @@
 # AeroVLA: A Vision-Language-Action Model for UAV Navigation via Minimalist End-to-End Control
 
-**Diffusion-head extension (2026-10-12):** This repository extends [upstream AeroVLA](https://github.com/XuPeng23/AeroVLA) with a continuous action diffusion head, frozen-backbone training, offline and closed-loop evaluation, and supervision auditing. Start with the [training and evaluation guide](docs/diffusion_training_evaluation_guide.md). The [snapshot notes](docs/github_snapshot_20261012.md) describe the included code, validation, and external data/model requirements. Collision mitigation and hierarchical planning documents are proposals; those architectures are not implemented in this snapshot.
+**Diffusion-head extension (2026-10-12):** This repository extends [upstream AeroVLA](https://github.com/XuPeng23/AeroVLA) with a continuous action diffusion head, frozen-backbone training, offline and closed-loop evaluation, and supervision auditing. Browse the [documentation index](docs/README.md), or start with the [training and evaluation guide](docs/guides/training_and_evaluation.md). The [snapshot notes](docs/development/github_snapshot_20261012.md) describe the included code, validation, and external data/model requirements. Collision mitigation and hierarchical planning documents are proposals; those architectures are not implemented in this snapshot.
 
 <p align="center">
   <img src="docs/assets/teaser_figure.png" width="1000" title="AeroVLA">
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ```
 
 > **⚠️ Note:**
-> If you experience extremely slow evaluation speeds (e.g., `simGetImages` takes >4s per step), it is likely due to an AirSim RPC communication bug. Please refer to our [Troubleshooting Guide](docs/assets/troubleshooting.md) for a quick fix.
+> If you experience extremely slow evaluation speeds (e.g., `simGetImages` takes >4s per step), it is likely due to an AirSim RPC communication bug. Please refer to our [Troubleshooting Guide](docs/guides/troubleshooting.md) for a quick fix.
 
 
 ## 🌍 Data & Simulation Environment
@@ -80,35 +80,35 @@ AeroVLA uses the Unreal Engine-based AirSim simulator and the dataset provided b
 AeroVLA/
 ├── airsim_plugin/
 ├── checkpoints/
-├── data/                 
-│   ├── meta/             
+├── data/
+│   ├── meta/
 │   ├── uav_dataset/
-│   └── aerovla_train_dataset.json   
+│   └── aerovla_train_dataset.json
 ├── dataset_raw/
-│   ├── BattlefieldKitDesert/     
-│   ├── BrushifyCountryRoads/   
-│   └── ...               
+│   ├── BattlefieldKitDesert/
+│   ├── BrushifyCountryRoads/
+│   └── ...
 ├── envs/
-│   ├── carla_town_envs/     
+│   ├── carla_town_envs/
 │   ├── closeloop_envs/
 │   ├── extra_envs/
-│   └── ...               
-├── eval_results/         
+│   └── ...
+├── eval_results/
 ├── openvla-7b/
 ├── scripts/
-│   ├── eval_aerovla.sh 
-│   └── metric.sh         
+│   ├── eval_aerovla.sh
+│   └── metric.sh
 ├── src/
 │   ├── model_wrapper/
 │   ├── vlnce_src/
 │   ├── aerovla_dataset.py
-│   └── train_aerovla.py   
-└── utils/                
+│   └── train_aerovla.py
+└── utils/
 ```
 
 ## 🏋️‍♂️ Training
 
-**Diffusion action head (frozen backbone):** See the [training and evaluation guide](docs/diffusion_training_evaluation_guide.md) and [architecture report](docs/diffusion_action_head_report.md). Use `bash scripts/train_diffusion_head.sh` for trajectory-split head-only training and `bash scripts/eval_diffusion_head.sh --checkpoint PATH` for offline validation. `bash scripts/smoke_diffusion_pipeline.sh` runs a short real-data pipeline check. Both the per-frame JSON and trajectory split are required. The commands below retain the original token-based LoRA training workflow.
+**Diffusion action head (frozen backbone):** See the [training and evaluation guide](docs/guides/training_and_evaluation.md) and [architecture report](docs/design/diffusion_action_head.md). Use `bash scripts/train_diffusion_head.sh` for trajectory-split head-only training and `bash scripts/eval_diffusion_head.sh --checkpoint PATH` for offline validation. `bash scripts/smoke_diffusion_pipeline.sh` runs a short real-data pipeline check. Both the per-frame JSON and trajectory split are required. The commands below retain the original token-based LoRA training workflow.
 
 **1. Prepare the Dataset:**
 Ensure you have downloaded aerovla_train_dataset.json from our Hugging Face repository and placed it inside the data/ directory.
@@ -155,7 +155,7 @@ We are continuously working on improving AeroVLA and pushing it towards real-wor
 
 ## ⭐ Star History
 
-[![Star History Chart](./docs/assets/star-history.png)](https://star-history.com/#XuPeng23/AeroVLA&Timeline)
+[![Star History Chart](docs/assets/star-history.png)](https://star-history.com/#XuPeng23/AeroVLA&Timeline)
 
 ## 📄 License
 

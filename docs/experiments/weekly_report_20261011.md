@@ -1,8 +1,12 @@
 # AeroVLA 动作扩散头项目周报
 
+[返回文档首页](../README.md)
+
+> **历史周报：固定于 step 59,019。** 本文的“当前”“尚未评测”和耗时估计均对应原统计时点。后续[第三轮验证与更新曲线](full_training_20261010.md#epoch3)、[NYC 闭环及对比](nyc10_evaluation_20261011.md)另有记录；本周报指标、图表及快照保持原统计范围。
+
 **周报周期：2026-10-05—2026-10-11。统计截止：2026-10-11 17:44:31，北京时间。**
 
-本报告汇总本周有记录的开发、数据检查、训练和评估工作；现存实施记录主要集中于 10 月 10—11 日，不补写此前日期的工作。正式训练仍在进行，以下数字固定于 **step 59,019**，不会随后台日志更新而变化。原始快照、统计脚本及图表保存在 [本周报告附件](reports/weekly_20261011/)。
+本报告汇总本周有记录的开发、数据检查、训练和评估工作；现存实施记录主要集中于 10 月 10—11 日，不补写此前日期的工作。正式训练仍在进行，以下数字固定于 **step 59,019**，不会随后台日志更新而变化。原始快照、统计脚本及图表保存在 [本周报告附件](../reports/weekly_20261011/)。
 
 ## 一、本周成果与当前结论
 
@@ -16,18 +20,18 @@
 
 | 工作项 | 完成内容 | 状态与依据 |
 | --- | --- | --- |
-| 架构改造 | 删除新模型路径中的 LMHead；直接读取多模态 Llama 最终层 token 特征，接入 Transformer 动作扩散头 | 已完成；[架构报告](diffusion_action_head_report.md) |
-| NavDP 方法适配 | 采用时间编码、条件 Transformer 去噪、epsilon 预测与 DDPM 采样；保留 AeroVLA 动作定义 | 已完成；[扩散头记录](diffusion_head_worklog.md) |
-| 严格冻结 | 上游 `requires_grad=False`、`eval()`、`no_grad()`；优化器仅包含头参数；训练中检查上游无梯度 | 已完成；[模型记录](diffusion_model_worklog.md) |
-| 原 adapter 兼容 | 合并 LoRA 并保留 projector；保存头权重、配置、处理器及基座/adapter 引用 | 已完成；[模型实现](../src/model_wrapper/aerovla_diffusion.py) |
-| 连续动作数据 | 复用前视/下视拼图；取消原 99 桶动作量化；裁剪并归一化动作；输入文本不含动作答案 | 已完成；[数据记录](diffusion_dataset_worklog.md) |
-| train/val 划分 | 按轨迹严格隔离，校验完整覆盖、重复项及文件/轨迹/索引哈希；支持固定种子子集 | 已完成；[划分记录](diffusion_split_worklog.md) |
-| 训练脚本 | 支持累积梯度、尾批次正确归一化、warmup/cosine、周期保存、每轮验证及 best 选择 | 已完成并运行；[训练评估记录](diffusion_train_eval_worklog.md) |
-| 离线评估 | 实现噪声 MSE、连续动作 MSE、逐轴 MAE/RMSE、LAND 混淆矩阵与 P/R/F1；独立随机数控制 | 已完成；[评估记录](diffusion_eval_worklog.md) |
-| 闭环入口 | wrapper 自动识别扩散检查点；模型 GPU、模拟器 GPU 与端口独立配置；修正 DDP 端口 | 入口与参数测试完成，真实闭环待运行；[闭环记录](diffusion_closed_loop_worklog.md) |
-| GPU 1 正式训练 | 全量 train、5 轮、每 1,000 步保存，tmux 持久运行，退出状态和最终权重核验 | 运行中；[正式训练记录](diffusion_full_training_20261010.md) |
-| 监督数据整理 | 全量合法性/分布/裁剪审计，139 个可追溯抽查样本，逐地图与轨迹统计 | 已完成；[监督审计记录](diffusion_supervision_worklog.md) |
-| 持续监控 | CPU 每 60 秒导出 CSV、曲线、Markdown、告警与权重清单；处理未写完日志及终态竞态 | 已启用；[监控记录](diffusion_monitor_worklog.md) |
+| 架构改造 | 删除新模型路径中的 LMHead；直接读取多模态 Llama 最终层 token 特征，接入 Transformer 动作扩散头 | 已完成；[架构报告](../design/diffusion_action_head.md) |
+| NavDP 方法适配 | 采用时间编码、条件 Transformer 去噪、epsilon 预测与 DDPM 采样；保留 AeroVLA 动作定义 | 已完成；[扩散头记录](../development/changelog.md#head) |
+| 严格冻结 | 上游 `requires_grad=False`、`eval()`、`no_grad()`；优化器仅包含头参数；训练中检查上游无梯度 | 已完成；[模型记录](../development/changelog.md#model) |
+| 原 adapter 兼容 | 合并 LoRA 并保留 projector；保存头权重、配置、处理器及基座/adapter 引用 | 已完成；[模型实现](../../src/model_wrapper/aerovla_diffusion.py) |
+| 连续动作数据 | 复用前视/下视拼图；取消原 99 桶动作量化；裁剪并归一化动作；输入文本不含动作答案 | 已完成；[数据记录](../development/changelog.md#dataset) |
+| train/val 划分 | 按轨迹严格隔离，校验完整覆盖、重复项及文件/轨迹/索引哈希；支持固定种子子集 | 已完成；[划分记录](../development/changelog.md#split) |
+| 训练脚本 | 支持累积梯度、尾批次正确归一化、warmup/cosine、周期保存、每轮验证及 best 选择 | 已完成并运行；[训练评估记录](../development/changelog.md#train-eval) |
+| 离线评估 | 实现噪声 MSE、连续动作 MSE、逐轴 MAE/RMSE、LAND 混淆矩阵与 P/R/F1；独立随机数控制 | 已完成；[评估记录](../development/changelog.md#eval) |
+| 闭环入口 | wrapper 自动识别扩散检查点；模型 GPU、模拟器 GPU 与端口独立配置；修正 DDP 端口 | 入口与参数测试完成，真实闭环待运行；[闭环记录](../development/changelog.md#closed-loop) |
+| GPU 1 正式训练 | 全量 train、5 轮、每 1,000 步保存，tmux 持久运行，退出状态和最终权重核验 | 运行中；[正式训练记录](full_training_20261010.md#launch) |
+| 监督数据整理 | 全量合法性/分布/裁剪审计，139 个可追溯抽查样本，逐地图与轨迹统计 | 已完成；[监督审计记录](../development/changelog.md#supervision) |
+| 持续监控 | CPU 每 60 秒导出 CSV、曲线、Markdown、告警与权重清单；处理未写完日志及终态竞态 | 已启用；[监控记录](../development/changelog.md#monitor) |
 
 当前推理路径为：
 
@@ -68,7 +72,7 @@
 
 train/val 的 fwd 裁剪数分别为 **4,669/532**，down 为 **807/72**，yaw 为 **8,308/896**。同一帧可能在多个轴被裁剪，不能把逐轴数量相加作为独立帧数。当前所有动作评估均针对裁剪后的监督目标，不衡量超出动作范围部分的原始误差。
 
-LAND 规则忠实保留原字段：train 中 last/penultimate 分别为 6,850/1,353，val 为 761/149，并非每条轨迹都有 penultimate 标记。本轮未重写标记。139 个固定检查样本覆盖各 split/map 的 LAND 正负和越界类别，保留原清单索引、指令、图片路径、原始/裁剪/归一化动作；这些是静态抽查样本，不是实际训练 batch，也不包含预测值。[检查样本与完整统计](../checkpoints/aero_vla_diffusion_full_20261010_200045/supervision/README.md)
+LAND 规则忠实保留原字段：train 中 last/penultimate 分别为 6,850/1,353，val 为 761/149，并非每条轨迹都有 penultimate 标记。本轮未重写标记。139 个固定检查样本覆盖各 split/map 的 LAND 正负和越界类别，保留原清单索引、指令、图片路径、原始/裁剪/归一化动作；这些是静态抽查样本，不是实际训练 batch，也不包含预测值。[检查样本与完整统计](../../checkpoints/aero_vla_diffusion_full_20261010_200045/supervision/README.md)
 
 该划分是**同地图内的轨迹留出**。能够确认扩散头训练不使用 val 轨迹，但冻结旧 adapter 是否在此前训练中接触过这些轨迹未知，因此结果称为“扩散头留出验证”，不称为 unseen-map 测试或整个模型从未见过的数据测试。
 
@@ -90,7 +94,7 @@ LAND 规则忠实保留原字段：train 中 last/penultimate 分别为 6,850/1,
 | 数据/轮数 | 全部 369,274 train 帧，5 轮；无样本或 step 限量 |
 | 验证 | 每轮全部 41,176 val 帧；batch 2，seed 42，10 步采样 |
 | 权重选择 | 每 1,000 次更新保存；best 按最低 val noise MSE 选择 |
-| 复现参数 | train seed 42；完整配置见[固定配置快照](reports/weekly_20261011/snapshot/run_config.json) |
+| 复现参数 | train seed 42；完整配置见[固定配置快照](../reports/weekly_20261011/snapshot/run_config.json) |
 
 截止时已运行 **21.70 小时**，完成两轮训练和两轮验证，第三轮完成 12,859/23,080 次更新，约 55.72%。累计训练样本访问次数为 **944,292**，含跨 epoch 重复访问，不等于新增独立样本数。最近记录的学习率为 **5.05795×10⁻⁵**，处于 cosine 下降阶段。
 
@@ -98,7 +102,7 @@ LAND 规则忠实保留原字段：train 中 last/penultimate 分别为 6,850/1,
 
 监控在第三轮观测到约 **0.8302 次更新/秒，即 1.204 秒/更新**。两次 epoch 末停步区间约为 **61.41—63.45 分钟**和 **61.83—63.89 分钟**，主要对应全量验证，同时包含保存/切换与轮询误差；原始指标没有逐步时间戳，因此不将其写成精确验证计时。
 
-剩余 **56,381 次更新**按当前速度约需 **18.86 小时**，加剩余 3 次全量验证约 3.1 小时，合计约 **22 小时**。在吞吐保持相近且无中断时，预计 **10 月 12 日下午**完成。按当前观测直接外推约为 15:40—15:48，但这不是置信区间或完成承诺，对外计划应采用“下午、约 22 小时剩余”的粒度。[计算与停步观测](reports/weekly_20261011/analysis.json)
+剩余 **56,381 次更新**按当前速度约需 **18.86 小时**，加剩余 3 次全量验证约 3.1 小时，合计约 **22 小时**。在吞吐保持相近且无中断时，预计 **10 月 12 日下午**完成。按当前观测直接外推约为 15:40—15:48，但这不是置信区间或完成承诺，对外计划应采用“下午、约 22 小时剩余”的粒度。[计算与停步观测](../reports/weekly_20261011/analysis.json)
 
 ## 五、训练过程分析
 
@@ -113,9 +117,9 @@ LAND 规则忠实保留原字段：train 中 last/penultimate 分别为 6,850/1,
 
 首 1,000 次更新平均 loss 为 0.384398，近期平均值明显降低；第二轮整体平均约为第一轮的一半。训练过程呈现初期快速下降、后续缓慢改善的形态。第三轮尚未完成，不能将其部分轮次均值当作完整第三轮结果。
 
-![固定快照的训练 loss、学习率和裁剪前梯度曲线](reports/weekly_20261011/training_trend.png)
+![固定快照的训练 loss、学习率和裁剪前梯度曲线](../reports/weekly_20261011/training_trend.png)
 
-图中 loss 与梯度按 250 次更新分组，阴影表示组内 loss 的 P10—P90，最后一组可能不足 250 次；阴影不是统计置信区间。竖线为轮次边界，橙点为两次全量验证。loss 与梯度使用对数纵轴，原始训练记录全部保存在快照中。[可导出 PDF](reports/weekly_20261011/training_trend.pdf)
+图中 loss 与梯度按 250 次更新分组，阴影表示组内 loss 的 P10—P90，最后一组可能不足 250 次；阴影不是统计置信区间。竖线为轮次边界，橙点为两次全量验证。loss 与梯度使用对数纵轴，原始训练记录全部保存在快照中。[可导出 PDF](../reports/weekly_20261011/training_trend.pdf)
 
 全部 **59,019 条记录 step 连续、无重复，loss/LR/梯度范数等数值均有限**。最近 1,000 步裁剪前梯度范数中位数为 **0.8238**、P95 为 **1.9465**、最大值为 **4.4935**，有 356 步超过裁剪阈值 1.0。这里记录的是 `clip_grad_norm_` 返回的**裁剪前**范数，超过阈值表示需要裁剪，不表示裁剪失效。
 
@@ -125,7 +129,7 @@ LAND 规则忠实保留原字段：train 中 last/penultimate 分别为 6,850/1,
 
 ## 六、两轮全量验证结果与解释
 
-两次评估均使用同一 val 集、相同 batch/seed/采样步数和同一实现，可作轮次间对比。每次含 41,176 帧、164,704 个噪声坐标以及 123,528 个连续动作坐标；连续动作 MSE 只计算 fwd/down/yaw，不包含 LAND。[固定原始验证记录](reports/weekly_20261011/snapshot/validation_metrics.jsonl)
+两次评估均使用同一 val 集、相同 batch/seed/采样步数和同一实现，可作轮次间对比。每次含 41,176 帧、164,704 个噪声坐标以及 123,528 个连续动作坐标；连续动作 MSE 只计算 fwd/down/yaw，不包含 LAND。[固定原始验证记录](../reports/weekly_20261011/snapshot/validation_metrics.jsonl)
 
 ### 6.1 噪声与连续动作
 
@@ -161,9 +165,9 @@ fwd/down 沿用数据定义的 `original_distance_unit`，本周未进一步确�
 | down RMSE | 1.453075 | **0.685596** | 52.82% |
 | yaw RMSE，弧度 | 0.218950 | **0.197200** | 9.93% |
 
-![连续动作误差及训练均值常量基线](reports/weekly_20261011/validation_actions.png)
+![连续动作误差及训练均值常量基线](../reports/weekly_20261011/validation_actions.png)
 
-结果说明整体预测优于简单常量输出，尤其 fwd/down；但 yaw 的收益较小。按动作归一化尺度还原，第二轮每轴归一化 MSE 约为 fwd **0.017347**、down **0.018802**、yaw **0.032139**，yaw 当前最高，应作为后续分析重点。整体 MSE 的大幅优势不能掩盖单轴短板；这一基线也不能代替旧 LMHead 或视觉条件消融实验。[可导出 PDF](reports/weekly_20261011/validation_actions.pdf)
+结果说明整体预测优于简单常量输出，尤其 fwd/down；但 yaw 的收益较小。按动作归一化尺度还原，第二轮每轴归一化 MSE 约为 fwd **0.017347**、down **0.018802**、yaw **0.032139**，yaw 当前最高，应作为后续分析重点。整体 MSE 的大幅优势不能掩盖单轴短板；这一基线也不能代替旧 LMHead 或视觉条件消融实验。[可导出 PDF](../reports/weekly_20261011/validation_actions.pdf)
 
 ### 6.3 LAND 分类能力
 
@@ -180,9 +184,9 @@ fwd/down 沿用数据定义的 `original_distance_unit`，本周未进一步确�
 
 验证集正例仅 910 帧，占 2.210%。若始终预测“不降落”，accuracy 已达 **97.790%**，但正例 recall/F1 为 0。因此第二轮 99.694% accuracy 必须与 **89.890% recall、92.849% F1**一起解释，不能单凭准确率声称降落问题已解决。
 
-![两轮 LAND 混淆矩阵及正类指标](reports/weekly_20261011/land_validation.png)
+![两轮 LAND 混淆矩阵及正类指标](../reports/weekly_20261011/land_validation.png)
 
-总错分数从 165 降至 126，减少 23.64%；正例漏检率仍有 **92/910=10.11%**，负例误报率为 **34/40,266=0.0844%**。这些是帧级指标，不能直接解释成 episode 级错过降落或提前终止的概率。下一步应分别核查 92 个漏检和 34 个误报的观测、目标位置、last/penultimate 标记及动作输出。[可导出 PDF](reports/weekly_20261011/land_validation.pdf)
+总错分数从 165 降至 126，减少 23.64%；正例漏检率仍有 **92/910=10.11%**，负例误报率为 **34/40,266=0.0844%**。这些是帧级指标，不能直接解释成 episode 级错过降落或提前终止的概率。下一步应分别核查 92 个漏检和 34 个误报的观测、目标位置、last/penultimate 标记及动作输出。[可导出 PDF](../reports/weekly_20261011/land_validation.pdf)
 
 ## 七、模型权重与本次实际核验
 
@@ -190,11 +194,11 @@ fwd/down 沿用数据定义的 `original_distance_unit`，本周未进一步确�
 
 | 权重 | 对应 step | 文件大小 | 本次核验 |
 | --- | ---: | ---: | --- |
-| [best/diffusion_head.pt](../checkpoints/aero_vla_diffusion_full_20261010_200045/best/diffusion_head.pt) | 46,160 | 21,088,629 bytes，约 20.1 MiB | CPU 加载成功，81 个张量、5,265,668 个元素均有限 |
-| [checkpoint-59000/diffusion_head.pt](../checkpoints/aero_vla_diffusion_full_20261010_200045/checkpoint-59000/diffusion_head.pt) | 59,000 | 21,088,629 bytes | 同上 |
+| [best/diffusion_head.pt](../../checkpoints/aero_vla_diffusion_full_20261010_200045/best/diffusion_head.pt) | 46,160 | 21,088,629 bytes，约 20.1 MiB | CPU 加载成功，81 个张量、5,265,668 个元素均有限 |
+| [checkpoint-59000/diffusion_head.pt](../../checkpoints/aero_vla_diffusion_full_20261010_200045/checkpoint-59000/diffusion_head.pt) | 59,000 | 21,088,629 bytes | 同上 |
 | 最终根目录 `diffusion_head.pt` | 计划 115,400 | 尚未产生 | 正常，训练仍在进行 |
 
-本次另外核对训练、评估、数据、头实现和监控/审计脚本的 SHA256，均与启动记录一致。权重检查在 CPU 进行，记录了读取前后文件稳定性和 SHA256；它证明头文件可读取且张量有限，**不等于已对当前 best 重新加载完整 7B 并完成独立推理评测**。[权重核验明细与哈希](reports/weekly_20261011/checkpoint_verification.json)
+本次另外核对训练、评估、数据、头实现和监控/审计脚本的 SHA256，均与启动记录一致。权重检查在 CPU 进行，记录了读取前后文件稳定性和 SHA256；它证明头文件可读取且张量有限，**不等于已对当前 best 重新加载完整 7B 并完成独立推理评测**。[权重核验明细与哈希](../reports/weekly_20261011/checkpoint_verification.json)
 
 `best/` 会在后续验证改善时更新，因此本报告用 step 和 SHA256 固定当前结果。检查点只保存扩散头和重载所需配置，仍依赖原基座与 adapter；不含 optimizer/scheduler/RNG 状态，当前不支持精确断点续训。本周报告未改变这一训练行为。
 
@@ -205,7 +209,7 @@ fwd/down 沿用数据定义的 `original_distance_unit`，本周未进一步确�
 | 架构与初次集成 | 36 项测试通过：扩散调度、mask、冻结、LoRA 合并、保存重载、数据与累积梯度等 | 历史首次交付记录 |
 | 完整训练/评估接入 | 扩展后全套 66 项通过 | 历史集成记录；包含前述 36 项，不能相加 |
 | 监督审计与监控 | 新增审计 8 项、监控 13 项通过 | 历史专项验证；与 66 项合计覆盖 87 个测试项，非本次整套重跑 |
-| 真实模型短程流程 | 真实 train 4 帧、val 8 帧、两次更新；独立重载评估与训练后验证一致 | 证明训练→保存→重载→评估可运行，不证明效果；[原始核验](../checkpoints/diffusion_smoke_real/pipeline_check.json) |
+| 真实模型短程流程 | 真实 train 4 帧、val 8 帧、两次更新；独立重载评估与训练后验证一致 | 证明训练→保存→重载→评估可运行，不证明效果；[原始核验](../../checkpoints/diffusion_smoke_real/pipeline_check.json) |
 | 正式训练验证 | 2 次 41,176 帧全量验证，全部有效 | 本周正式训练结果，见第六节 |
 | 本次周报检查 | 固定日志哈希、step 连续性、数值有限、best 选择一致性、两份头权重 CPU 完整性、分析重算、三组图表核对 | 本次实际执行；未因文档工作重跑整套测试或占用 GPU |
 
@@ -231,15 +235,15 @@ fwd/down 沿用数据定义的 `original_distance_unit`，本周未进一步确�
 
 | 产物 | 入口 |
 | --- | --- |
-| 本周报 | `docs/weekly_report_20261011.md` |
-| 固定证据快照 | [snapshot/manifest.json](reports/weekly_20261011/snapshot/manifest.json)，包含采集时间、截止 step、源路径与每份快照 SHA256 |
-| 机器可读统计 | [analysis.json](reports/weekly_20261011/analysis.json) |
-| 统计与绘图脚本 | [build_analysis.py](reports/weekly_20261011/build_analysis.py) |
-| 训练趋势 PNG/PDF | [PNG](reports/weekly_20261011/training_trend.png) / [PDF](reports/weekly_20261011/training_trend.pdf) |
-| 动作误差 PNG/PDF | [PNG](reports/weekly_20261011/validation_actions.png) / [PDF](reports/weekly_20261011/validation_actions.pdf) |
-| LAND 分析 PNG/PDF | [PNG](reports/weekly_20261011/land_validation.png) / [PDF](reports/weekly_20261011/land_validation.pdf) |
-| 实时监控，内容继续变化 | [monitoring/status.md](../checkpoints/aero_vla_diffusion_full_20261010_200045/monitoring/status.md) |
-| 运行与历史改动说明 | [训练评估指南](diffusion_training_evaluation_guide.md)、[全量训练记录](diffusion_full_training_20261010.md) |
+| 本周报 | `docs/experiments/weekly_report_20261011.md` |
+| 固定证据快照 | [snapshot/manifest.json](../reports/weekly_20261011/snapshot/manifest.json)，包含采集时间、截止 step、源路径与每份快照 SHA256 |
+| 机器可读统计 | [analysis.json](../reports/weekly_20261011/analysis.json) |
+| 统计与绘图脚本 | [build_analysis.py](../reports/weekly_20261011/build_analysis.py) |
+| 训练趋势 PNG/PDF | [PNG](../reports/weekly_20261011/training_trend.png) / [PDF](../reports/weekly_20261011/training_trend.pdf) |
+| 动作误差 PNG/PDF | [PNG](../reports/weekly_20261011/validation_actions.png) / [PDF](../reports/weekly_20261011/validation_actions.pdf) |
+| LAND 分析 PNG/PDF | [PNG](../reports/weekly_20261011/land_validation.png) / [PDF](../reports/weekly_20261011/land_validation.pdf) |
+| 实时监控，内容继续变化 | [monitoring/status.md](../../checkpoints/aero_vla_diffusion_full_20261010_200045/monitoring/status.md) |
+| 运行与历史改动说明 | [训练评估指南](../guides/training_and_evaluation.md)、[全量训练记录](full_training_20261010.md#launch) |
 
 在项目根目录重建本周分析与图表：
 

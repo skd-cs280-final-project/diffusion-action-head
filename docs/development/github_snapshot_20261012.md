@@ -1,5 +1,9 @@
 # AeroVLA GitHub 代码快照记录
 
+[返回文档首页](../README.md)
+
+> **历史上传记录。** 本文描述 2026-10-12 已上传的代码快照；本次文档整理及此前新增的历史/位姿调研，不因出现在当前目录中而自动成为该次上传内容。
+
 日期：2026-10-12。目标仓库：<https://github.com/xiyang-666/AeroVLA>。
 
 本次按用户要求保存当前已经实现的代码版本。保留上游代码历史、LICENSE 和原作者引用，新提交集中记录扩散动作头及其训练、评估和实验分析工作。
@@ -17,7 +21,7 @@
 
 ## 运行与复现
 
-先按 [README](../README.md) 配置数据、基础模型、AeroVLA 适配器和仿真环境，再阅读[扩散头训练与评估指南](diffusion_training_evaluation_guide.md)。本仓库不包含训练好的扩散头权重；本地 `checkpoint-70000` 等权重没有随代码上传。
+先按 [README](../../README.md) 配置数据、基础模型、AeroVLA 适配器和仿真环境，再阅读[扩散头训练与评估指南](../guides/training_and_evaluation.md)。本仓库不包含训练好的扩散头权重；本地 `checkpoint-70000` 等权重没有随代码上传。
 
 报告保留实验发生时的绝对路径、指标和来源记录。这些是历史实验记录；在另一台机器上重新执行报告脚本时，需要提供相应原始实验数据并调整路径。已有 `docs/reports` 图表和汇总可直接查看，链接到本地大型运行目录的原始证据文件需要另行提供。
 
@@ -25,8 +29,8 @@
 
 目前已经实现的是单步扩散动作头及配套训练/评估。以下文档属于设计方案，不代表当前代码已经实现其中的安全层、历史状态输入或两阶段规划器：
 
-- [碰撞问题调研与方案](diffusion_collision_mitigation_plan_20261012.md)。
-- [两阶段规划与动作专家方案](hierarchical_planner_action_expert_proposal_20261012.md)。
+- [碰撞问题调研与方案](../research/collision_mitigation_20261012.md)。
+- [两阶段规划与动作专家方案](../research/hierarchical_planner_20261012.md)。
 
 ## 本次整理改动
 

@@ -1,8 +1,12 @@
 # 扩散头训练与评估运行指南
 
-日期：2026-10-10。本次承接[架构报告](diffusion_action_head_report.md)与[数据就绪检查](diffusion_data_readiness_report.md)，补齐轨迹划分、训练中验证、离线动作评估及闭环启动配置。当前代码的运行说明以本文为准。
+[返回文档首页](../README.md)
 
-2026-10-11 的正式训练进度、两轮全量验证、监督数据分析和图表见[项目周报](weekly_report_20261011.md)。下文两步流程检查是历史开发验证，不是正式训练效果。
+> **运行入口。** 命令从 AeroVLA 项目根目录执行；文末测试数和两步流程结果是开发时的记录。已整理的第三轮验证见[训练记录](../experiments/full_training_20261010.md#epoch3)，已完成的 NYC 闭环与对比见[实验报告](../experiments/nyc10_evaluation_20261011.md)。本次目录整理没有重新查询后台训练状态。
+
+日期：2026-10-10。本次承接[架构报告](../design/diffusion_action_head.md)与[数据就绪检查](../design/diffusion_action_head.md#data-readiness)，补齐轨迹划分、训练中验证、离线动作评估及闭环启动配置。当前代码的运行说明以本文为准。
+
+正式训练的第三轮全量验证及更新曲线见[训练记录](../experiments/full_training_20261010.md#epoch3)；较早的两轮验证、监督数据分析见[项目周报](../experiments/weekly_report_20261011.md)。下文两步流程检查是历史开发验证，不是正式训练效果。
 
 ## 当前数据与训练行为
 
@@ -91,7 +95,7 @@ aero_vla_diffusion_train/
 
 ## 训练监控和监督标签检查
 
-当前 GPU 1 全量运行已经启用独立 CPU 监控。常用入口见[全量训练记录](diffusion_full_training_20261010.md)，包含实时 Markdown、CSV、曲线图、检查点清单及监督标签样例。
+GPU 1 全量训练启动时已配置独立 CPU 监控。监控入口和启动记录见[全量训练记录](../experiments/full_training_20261010.md#launch)，包含 Markdown、CSV、曲线图、检查点清单及监督标签样例；是否仍在刷新需以实际运行状态为准。
 
 对其他运行，可用下列命令持续整理现有训练日志：
 
@@ -177,13 +181,13 @@ bash scripts/eval_aerovla.sh --dry-run
 
 本次真实输出可直接查看：
 
-- [流程核验结果](../checkpoints/diffusion_smoke_real/pipeline_check.json)
-- [离线评估完整报告](../checkpoints/diffusion_smoke_real/offline_eval.json)
-- [训练配置与数据摘要](../checkpoints/diffusion_smoke_real/run_config.json)
-- [训练记录](../checkpoints/diffusion_smoke_real/metrics.jsonl)
-- [验证记录](../checkpoints/diffusion_smoke_real/validation_metrics.jsonl)
+- [流程核验结果](../../checkpoints/diffusion_smoke_real/pipeline_check.json)
+- [离线评估完整报告](../../checkpoints/diffusion_smoke_real/offline_eval.json)
+- [训练配置与数据摘要](../../checkpoints/diffusion_smoke_real/run_config.json)
+- [训练记录](../../checkpoints/diffusion_smoke_real/metrics.jsonl)
+- [验证记录](../../checkpoints/diffusion_smoke_real/validation_metrics.jsonl)
 
-这 8 帧验证样本没有 LAND 正例，且仅训练两步，不能用它们判断降落能力或导航性能。随后已按用户要求在 GPU 1 启动 369,274 帧、5 轮正式训练，详情见[本次全量训练记录](diffusion_full_training_20261010.md)。截至 2026-10-11，训练仍在进行，已取得两轮全量验证结果，见[周报](weekly_report_20261011.md)；AirSim 闭环评测仍未完成。上述表格仅属于短程流程检查。
+这 8 帧验证样本没有 LAND 正例，且仅训练两步，不能用它们判断降落能力或导航性能。随后已按用户要求在 GPU 1 启动 369,274 帧、计划 5 轮的正式训练，启动配置见[全量训练记录](../experiments/full_training_20261010.md#launch)。已整理结果包括[第三轮全量验证](../experiments/full_training_20261010.md#epoch3)和[checkpoint-70000 的 NYC 闭环及基线对比](../experiments/nyc10_evaluation_20261011.md)。上述表格仍仅属于短程流程检查。
 
 完整测试命令（测试环境需要 pytest）：
 
@@ -193,4 +197,4 @@ HF_MODULES_CACHE="$PWD/.cache/huggingface/modules" OMP_NUM_THREADS=2 \
 /data/xiyang/.conda/envs/aero_vla/bin/python -m pytest tests -q
 ```
 
-每批修改记录分别见：[训练集成](diffusion_train_eval_worklog.md)、[数据划分](diffusion_split_worklog.md)、[离线评估](diffusion_eval_worklog.md)、[闭环启动](diffusion_closed_loop_worklog.md)。
+每批修改记录分别见：[训练集成](../development/changelog.md#train-eval)、[数据划分](../development/changelog.md#split)、[离线评估](../development/changelog.md#eval)、[闭环启动](../development/changelog.md#closed-loop)。

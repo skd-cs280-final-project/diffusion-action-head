@@ -1,5 +1,9 @@
 # AeroVLA 扩散动作头：碰撞问题调研与改进方案
 
+[返回文档首页](../README.md)
+
+> **调研与设计建议。** 本文提出的新分支、规划器或安全机制尚未作为本项目实现及训练结果交付；现有模型说明见[扩散头架构](../design/diffusion_action_head.md)。
+
 日期：2026-10-12。分析对象：`checkpoint-70000` 的 NYC 10 任务闭环结果、当前 AeroVLA / NavDP 本地代码，以及下文列出的论文和官方文档。
 
 **建议优先实施：保留当前权重，增加三维深度安全检查，将长动作改成可中断的短段执行。随后做多候选筛选，最后补充深度、历史、风险监督和恢复数据重新训练。** 当前问题同时涉及感知输入、动作执行和监督目标，不能仅靠增加训练轮数或预测步数解决。
@@ -8,7 +12,7 @@
 
 ## 1. 先明确当前“碰撞”的含义
 
-已有[配对比较报告第 8 节](diffusion_nyc10_baseline_comparison_20261011.md)区分了主动 STOP、深度近障和接触证据。这次扩散头的 10 个任务成功 7 个、失败 3 个；3 个失败都没有输出 STOP，均由深度近障规则终止，但只有其中一个在最后动作后出现新的接触标志。
+已有[NYC 报告的终止原因分析](../experiments/nyc10_evaluation_20261011.md#termination)区分了主动 STOP、深度近障和接触证据。这次扩散头的 10 个任务成功 7 个、失败 3 个；3 个失败都没有输出 STOP，均由深度近障规则终止，但只有其中一个在最后动作后出现新的接触标志。
 
 | 任务前缀 | 扩散结果 | 终止时的证据 | 正确解释 |
 |---|---|---|---|
@@ -16,7 +20,7 @@
 | `0c414bd0` | 第 6 步失败 | 前视低深度像素占 43.234%；所有保存状态的接触标志为 False | 深度近障终止，保存数据没有物理接触证据 |
 | `c4261e45` | 第 18 步失败 | 前视低深度像素占 94.612%；接触标志由上一决策帧 False 变为 True | 深度近障终止，同时存在接触证据 |
 
-原 `collision` 变量还包括停滞、持续远离目标等启发式规则，不能直接把 `3/10` 作为物理碰撞率。原始证据来自[评估日志](../eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/eval.log)、[动作记录](../eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/action_trace.jsonl)和[任务指标](../eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episode_metrics.jsonl)。
+原 `collision` 变量还包括停滞、持续远离目标等启发式规则，不能直接把 `3/10` 作为物理碰撞率。原始证据来自[评估日志](../../eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/eval.log)、[动作记录](../../eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/action_trace.jsonl)和[任务指标](../../eval_results/diffusion_ckpt70000_nyc10_seed42_gpu2_20261011/episode_metrics.jsonl)。
 
 ### 最后动作之前是否已有近障线索？
 

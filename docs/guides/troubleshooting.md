@@ -1,5 +1,9 @@
 # Troubleshooting
 
+[返回文档首页](../README.md)
+
+> 上游 AirSim 通信延迟排障经验。仅在遇到相应问题并核对环境后参考其中步骤；它不是训练前必须执行的依赖重装清单。
+
 ## AirSim Communication Latency Bug (simGetImages extremely slow)
 
 During the evaluation phase, if you notice that the simulator runs extremely slow and profiling shows that `simGetImages` takes roughly 4~5 seconds per step, you are likely encountering a severe communication bug caused by `msgpack-rpc-python` dependency conflicts and decoding overhead in the C-S architecture.
@@ -28,7 +32,7 @@ pip install --force-reinstall msgpack==1.1.2
 ### Step 2: Modify AirSim Client Encoding (Crucial)
 Locate your installed AirSim `client.py` file (typically found at `miniconda3/envs/YOUR_ENV_NAME/lib/python3.X/site-packages/airsim/client.py`).
 
-Find the `__init__` method of the `VehicleClient` class and **remove the UTF-8 encoding parameters**. 
+Find the `__init__` method of the `VehicleClient` class and **remove the UTF-8 encoding parameters**.
 
 **Change this line:**
 ```python
@@ -40,4 +44,3 @@ self.client = msgpackrpc.Client(msgpackrpc.Address(ip, port), timeout = timeout_
 ```
 
 After applying both steps, restart your environment. The communication latency should return to normal.
-
