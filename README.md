@@ -1,177 +1,68 @@
-# AeroVLA: A Vision-Language-Action Model for UAV Navigation via Minimalist End-to-End Control
+# AeroVLA：无人机导航动作扩散头
 
-**Diffusion-head extension (2026-10-12):** This repository extends [upstream AeroVLA](https://github.com/XuPeng23/AeroVLA) with a continuous action diffusion head, frozen-backbone training, offline and closed-loop evaluation, and supervision auditing. Browse the [documentation index](docs/README.md), or start with the [training and evaluation guide](docs/guides/training_and_evaluation.md). The [snapshot notes](docs/development/github_snapshot_20261012.md) describe the included code, validation, and external data/model requirements. Collision mitigation and hierarchical planning documents are proposals; those architectures are not implemented in this snapshot.
+本项目在 [AeroVLA](https://github.com/XuPeng23/AeroVLA) 基础上，将原有 LMHead 替换为动作扩散头，用于根据视觉观测和导航指令生成无人机动作。项目重点是**冻结视觉语言骨干，只训练扩散头**，并建立训练、评估与实验分析流程。
 
-<p align="center">
-  <img src="docs/assets/teaser_figure.png" width="1000" title="AeroVLA">
-</p>
-
-![Teaser](docs/assets/AerialVLA_Demo_2.gif)
-
-🔥 **[Check out our Project Page for more demo videos and qualitative results!](https://xupeng23.github.io/AeroVLA)**
-
-## 📖 Abstract
-Vision-Language Navigation (VLN) for Unmanned Aerial Vehicles (UAVs) demands complex visual interpretation and continuous control in dynamic 3D environments. Existing hierarchical approaches rely on dense oracle guidance or auxiliary object detectors, creating semantic gaps and limiting genuine autonomy. We propose AeroVLA, a minimalist end-to-end Vision-Language-Action framework mapping raw visual observations and fuzzy linguistic instructions directly to continuous physical control signals. First, we introduce a streamlined dual-view perception strategy that reduces visual redundancy while preserving essential cues for forward navigation and precise grounding, which additionally facilitates future simulation-to-reality transfer. To reclaim genuine autonomy, we deploy a fuzzy directional prompting mechanism derived solely from onboard sensors, completely eliminating the dependency on dense oracle guidance. Ultimately, we formulate a unified control space that integrates continuous 3-Degree-of-Freedom (3-DoF) kinematic commands with an intrinsic landing signal, freeing the agent from external object detectors for precision landing. Extensive experiments on the TravelUAV benchmark demonstrate that AeroVLA achieves state-of-the-art performance in seen environments. Furthermore, it exhibits superior generalization in unseen scenarios by achieving nearly three times the success rate of leading baselines, validating that a minimalist, autonomy-centric paradigm captures more robust visual-motor representations than complex modular systems.
-
-## 🚀 News & Updates
-
-  - **[2026-07]** 🔥 **Training code and training dataset are officially released!** You can now train your own AeroVLA models.
-  - **[2026-06]** **Our paper has been accepted to ECCV 2026!** Please note that the project has been officially renamed from *AerialVLA* to **AeroVLA**.
-  - **[2026-04]** AerialVLA evaluation code and pre-trained LoRA weights are officially released!
-
-## 🛠️ Installation
-
-**1. Clone the repository:**
-
-```bash
-git clone https://github.com/xiyang-666/AeroVLA.git
-cd AeroVLA
-```
-
-**2. Create a Conda environment and activate it:**
-
-```bash
-conda create -n aero_vla python=3.10 -y
-conda activate aero_vla
-```
-
-**3. Install PyTorch:**
-
-> *Note: The following command is for CUDA 11.8. Please adjust it according to your local CUDA version.*
-
-```bash
-pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu118
-```
-
-**4. Install the required dependencies:**
-
-```bash
-pip install -r requirements.txt
-```
-
-> **⚠️ Note:**
-> If you experience extremely slow evaluation speeds (e.g., `simGetImages` takes >4s per step), it is likely due to an AirSim RPC communication bug. Please refer to our [Troubleshooting Guide](docs/guides/troubleshooting.md) for a quick fix.
-
-
-## 🌍 Data & Simulation Environment
-
-AeroVLA uses the Unreal Engine-based AirSim simulator and the dataset provided by the TravelUAV benchmark. You do not need to install AirSim separately; simply download the compiled environment binaries.
-
-1.  Follow the [TravelUAV Official Documentation](https://github.com/prince687028/TravelUAV/tree/main) to download the dataset (`dataset_raw`) and the simulation environments (`envs`).
-
-> **⚠️ Important Data Preprocessing Step:**
-> The evaluation script relies on `merged_data.json`, which is not included in the raw download. You MUST generate it using the tool from the TravelUAV repository. Inside the cloned TravelUAV directory, run:
-> ```bash
-> python tools/generate_merged_json.py --root_dir ./dataset_raw
-> ```
-
-2.  The `data/` directory contains the evaluation JSON files. We have split the original test cases by map to facilitate granular, per-map performance analysis, while **strictly adhering to the original TravelUAV validation splits**.
-
-
-## 📥 Checkpoints
-
-1.  **Base Model:** AeroVLA is built upon `openvla-7b`. You can download the base weights from Hugging Face and place them in the `./openvla-7b` directory.
-2.  **AeroVLA LoRA Weights:** Download our pre-trained LoRA weights from our **[Hugging Face Repository](https://huggingface.co/XuPeng23/AerialVLA)** and place them in `./checkpoints/aerial_vla/`.
-3.  **Training Dataset**: Download aerovla_train_dataset.json from the same Hugging Face repository and place it in the ./data/ directory for training.
-
-## 📁 Project Structure
+## 模型结构
 
 ```text
-AeroVLA/
-├── airsim_plugin/
-├── checkpoints/
-├── data/
-│   ├── meta/
-│   ├── uav_dataset/
-│   └── aerovla_train_dataset.json
-├── dataset_raw/
-│   ├── BattlefieldKitDesert/
-│   ├── BrushifyCountryRoads/
-│   └── ...
-├── envs/
-│   ├── carla_town_envs/
-│   ├── closeloop_envs/
-│   ├── extra_envs/
-│   └── ...
-├── eval_results/
-├── openvla-7b/
-├── scripts/
-│   ├── eval_aerovla.sh
-│   └── metric.sh
-├── src/
-│   ├── model_wrapper/
-│   ├── vlnce_src/
-│   ├── aerovla_dataset.py
-│   └── train_aerovla.py
-└── utils/
+前视图 + 下视图 + 导航指令
+          ↓
+冻结的视觉编码器、projector 与 Llama
+          ↓
+多模态隐藏特征 + 带噪动作 + 扩散时间步
+          ↓
+可训练的 Transformer 动作扩散头
+          ↓
+前进 / 升降 / 转向 + LAND 停止信号
 ```
 
-## 🏋️‍♂️ Training
+扩散头默认采用 hidden 256、4 层、8 个注意力头，以噪声预测 MSE 训练，通过 DDPM 去噪生成动作。当前数据管线与闭环策略为**预测 1 步、执行 1 步**。
 
-**Diffusion action head (frozen backbone):** See the [training and evaluation guide](docs/guides/training_and_evaluation.md) and [architecture report](docs/design/diffusion_action_head.md). Use `bash scripts/train_diffusion_head.sh` for trajectory-split head-only training and `bash scripts/eval_diffusion_head.sh --checkpoint PATH` for offline validation. `bash scripts/smoke_diffusion_pipeline.sh` runs a short real-data pipeline check. Both the per-frame JSON and trajectory split are required. The commands below retain the original token-based LoRA training workflow.
+## 已实现功能
 
-**1. Prepare the Dataset:**
-Ensure you have downloaded aerovla_train_dataset.json from our Hugging Face repository and placed it inside the data/ directory.
+- **扩散头训练**：冻结 OpenVLA 骨干及合并后的 AeroVLA LoRA，仅优化动作头，保存独立头权重。
+- **数据与验证**：按轨迹隔离训练/验证集，支持每轮验证、最佳检查点选择和独立离线评估。
+- **闭环评估**：接入 AirSim / TravelUAV，支持动作执行、结果保存、基线对比和轨迹可视化。
+- **监督与监控**：提供标签统计、样本审计、训练曲线和 Markdown 实验记录。
 
-**2. Configure Training Parameters:**
-You can modify the training hyperparameters (e.g., learning rate, batch size, epochs) directly inside src/train_aerovla.py.
+历史轨迹与当前位姿输入、两阶段规划器和碰撞改进机制目前处于调研与方案设计阶段，详见[研究文档](docs/README.md#下一步研究尚未实施的方案)。
 
-**3. Start Training:**
-Run the provided training script to start fine-tuning:
+## 使用入口
+
+先准备 `aero_vla` 环境及项目依赖（见 [requirements.txt](requirements.txt)），并放置 OpenVLA-7B（`openvla-7b/`）、原 AeroVLA LoRA（`checkpoints/aero_vla/`）、TravelUAV 图像（`dataset_raw/`）及训练标注（`data/aerovla_train_dataset.json`）。训练使用仓库中的 `data/continuous_split_seed42.json` 划分。大型数据、模型权重和仿真环境需另行准备。
+
+在项目根目录执行，GPU 编号可按实际环境修改：
 
 ```bash
-bash scripts/train.sh
+conda activate aero_vla
+
+# 检查数据与划分
+bash scripts/train_diffusion_head.sh --check-data
+
+# 全量训练扩散头（默认 5 轮），使用新的输出目录
+CUDA_VISIBLE_DEVICES=1 bash scripts/train_diffusion_head.sh \
+  --output-dir ./checkpoints/aero_vla_diffusion_train
+
+# 对训练生成的最佳检查点做离线评估
+CUDA_VISIBLE_DEVICES=1 bash scripts/eval_diffusion_head.sh \
+  --checkpoint ./checkpoints/aero_vla_diffusion_train/best \
+  --output ./eval_results/diffusion/offline_val.json
 ```
 
-## 🏃‍♂️ Evaluation
+闭环评估还需启动 AirSim 场景并配置服务端口，完整参数与步骤见[训练与评估指南](docs/guides/training_and_evaluation.md)。
 
-**1. Run Closed-Loop Evaluation:**
-To evaluate AeroVLA on a specific map, modify the `TASK_ID` in `scripts/eval_aerovla.sh` and run:
+## 项目文档
 
-```bash
-bash scripts/eval_aerovla.sh
-```
+| 内容 | 入口 |
+| --- | --- |
+| 全部文档与阅读顺序 | [文档导航](docs/README.md) |
+| 架构、动作定义与损失 | [扩散头设计](docs/design/diffusion_action_head.md) |
+| 全量训练与曲线 | [训练记录](docs/experiments/full_training_20261010.md) |
+| NYC 10 任务评估、基线对比与失败分析 | [闭环实验报告](docs/experiments/nyc10_evaluation_20261011.md) |
+| 逐次改动与验证记录 | [开发日志](docs/development/changelog.md) |
 
-*The model wrapper (`aerovla_wrapper_ui.py`) includes a UI feature that displays real-time dual-view perception, dynamic prompts, and continuous action outputs during inference.*
+## 来源与许可
 
-**2. Calculate Metrics:**
-Once the evaluation is complete, compute the aggregated metrics (SR, OSR, NE, SPL) by running:
+本项目基于 Peng Xu 等作者的 [AeroVLA](https://github.com/XuPeng23/AeroVLA)，扩散头设计参考 [NavDP](https://github.com/InternRobotics/NavDP)。感谢上游项目及其贡献者；原 AeroVLA 论文、演示和实验成果归原作者所有，引用上游工作请参阅其仓库说明。
 
-```bash
-bash scripts/metric.sh aero_vla
-```
-
-*The results will be saved in `eval_results/aero_vla/evaluation_detailed.csv` and `evaluation_summary_aggregated.csv`.*
-
-
-## 📋 TODO List
-
-We are continuously working on improving AeroVLA and pushing it towards real-world applications.
-
-- [x] Release inference code and pre-trained weights.
-- [x] Release the training code and curated trainset.
-- [ ] Hardware Deployment: Deploy AeroVLA on real-world UAVs for physical testing.
-
-
-## ⭐ Star History
-
-[![Star History Chart](docs/assets/star-history.png)](https://star-history.com/#XuPeng23/AeroVLA&Timeline)
-
-## 📄 License
-
-This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for more details.
-
-## ✒️ Citation
-
-If you find our work helpful for your research, please consider citing our paper:
-
-```bibtex
-@inproceedings{xu2026aerovla,
-  title={{AeroVLA}: A Vision-Language-Action Model for {UAV} Navigation via Minimalist End-to-End Control},
-  author={Xu, Peng and Deng, Zhengnan and Deng, Jiayan and Gu, Zonghua and Wan, Shaohua},
-  booktitle={European Conference on Computer Vision (ECCV)},
-  pages={289--305},
-  year={2026},
-  publisher={Springer}
-}
-```
+代码沿用 [Apache License 2.0](LICENSE)，保留原作者版权与许可证。
