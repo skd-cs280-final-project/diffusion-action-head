@@ -4,6 +4,8 @@
 
 [课题简介与报告提纲](docs/course_project.md) · [详细分工](docs/team/README.md)
 
+**[模型权重与仿真环境下载](docs/guides/resource_download.md)**：通过 [GitHub Release](https://github.com/skd-cs280-final-project/diffusion-action-head/releases/tag/inference-assets-v1) 按成员下载，包含基座、模型权重、12 个场景和闭环任务元数据。`git clone` 不会下载这些大文件。
+
 面向无人机导航的 Diffusion Policy 与扩散动作头项目。当前课程工作只使用已经训练好的模型，通过现有入口进行离线与闭环推理测试，整理结果和报告。
 
 不再训练、不修改代码或框架、不开发新接口。固定 DDPM、100 步训练噪声日程、10 步推理去噪，H=1、E=1、history=0；不开展扩散步数实验。
@@ -37,7 +39,7 @@
 
 ## 快速离线评估
 
-准备环境、7B 基座、原 adapter、训练标注与图像，以及选定的已训练模型。检查 checkpoint 配置中的旧绝对路径：离线 CLI 不提供基座/adapter 路径覆盖，本机已准备仅修正资源路径的副本，详见[资源说明](docs/team/resources.md)。
+准备环境、7B 基座、原 adapter、原帧级标注、验证集前视/下视图像，以及选定的已训练模型。Release 不含验证集图像；闭环测试只需任务元数据。检查 checkpoint 配置中的旧绝对路径：离线 CLI 不提供基座/adapter 路径覆盖，本机已准备仅修正资源路径的副本，详见[资源说明](docs/team/resources.md)。
 
 ```bash
 conda activate aero_vla

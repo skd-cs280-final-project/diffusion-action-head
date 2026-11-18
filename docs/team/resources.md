@@ -2,6 +2,8 @@
 
 [分工总表](README.md) · [运行指南](../guides/training_and_evaluation.md)
 
+模型权重、场景与闭环任务元数据可按成员分工从 [GitHub Release 下载](../guides/resource_download.md)。附件独立于 Git 历史，克隆仓库不会自动下载大文件。
+
 ## 当前本机已完成
 
 已核对 20 组原任务清单对应的 3,005 条轨迹，其 merged_data.json、mark.json、object_description.json 均存在；12 个场景的启动脚本和对应二进制存在。ModernCityMap 的真实二进制目录名是 ModernCityDowntown，使用现有启动脚本即可，不改场景映射。
@@ -14,7 +16,7 @@
 
 ## 换机器时
 
-先准备完整基座、原 adapter、所有登记 checkpoint、原始 TravelUAV 数据、帧级 JSON 和场景。解释器路径按本机修改，模型和数据布局保持仓库指南要求。以下是一次性资源文件准备命令，不创建新的推理脚本，也不改变模型结构；当前机器已完成，重复执行时核对已有副本而不覆盖。
+闭环评测先准备完整基座、五模型所需权重、个人场景和个人轨迹元数据；无需下载 TravelUAV 原始摄像头图像。离线评测还需自己负责的检查点、原帧级标注 JSON、数据划分和验证集前视/下视图片。Release 默认下载闭环资源，`--scope all` 增加个人离线检查点及标注，但不含验证集图片。解释器路径按本机修改，模型和数据布局保持仓库指南要求。以下是一次性资源文件准备命令，不创建新的推理脚本，也不改变模型结构；当前机器已完成，重复执行时核对已有副本而不覆盖。
 
 ```bash
 python - <<'PYRESOURCE'
@@ -26,8 +28,14 @@ adapter = (root / 'checkpoints/aero_vla').resolve()
 assert base.is_dir() and adapter.is_dir()
 registry = json.loads((root / 'configs/course/models.json').read_text())
 for model in registry['models']:
+    if model['id'] in registry['core_model_ids']:
+        source = root / model['path']
+        assert all((source / name).is_file() for name in model['required_files']), model['id']
+for model in registry['models']:
     source = root / model['path']
-    assert source.is_dir(), source
+    if not all((source / name).is_file() for name in model['required_files']):
+        print('Not downloaded; skipping optional checkpoint:', model['id'])
+        continue
     target = root / 'eval_results/course_inference/resources/models' / model['id']
     target.mkdir(parents=True, exist_ok=True)
     for item in source.iterdir():
@@ -51,7 +59,7 @@ print('Resource views ready; model inference has not been run.')
 PYRESOURCE
 ```
 
-该目录依赖原文件，不能仅打包符号链接发送给另一人而缺少模型本体。原权重仍需另行分发，不提交 Git。
+该目录依赖原文件，不能仅打包符号链接发送给另一人而缺少模型本体。Release 提供实际文件，原权重不进入 Git 历史。
 
 ## 预检与故障记录
 
