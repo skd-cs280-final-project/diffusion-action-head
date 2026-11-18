@@ -1,0 +1,449 @@
+{
+  "title": "基于预训练扩散动作头的无人机视觉语言导航推理评测与分析",
+  "revision": "existing_entrypoints_only",
+  "status": "planned_not_run",
+  "core_models": [
+    "aerovla_original",
+    "diffusion_head_best",
+    "joint_init",
+    "joint_step_001000",
+    "joint_final"
+  ],
+  "parameters": {
+    "batch_size": 1,
+    "max_waypoints": 200,
+    "inference_steps": 10,
+    "sampler": "DDPM",
+    "train_noise_timesteps": 100,
+    "action_horizon": 1,
+    "execution_horizon": 1,
+    "history_length": 0,
+    "base_precision": "bfloat16",
+    "diffusion_head_precision": "float32",
+    "seed_rule": "existing 100 + rank + dagger_it; single process rank=0 dagger_it=0",
+    "seed_override": false,
+    "offline_batch_size": 2,
+    "offline_seed": 42,
+    "offline_num_workers": 4,
+    "offline_max_length": 2048,
+    "OMP_NUM_THREADS": 4,
+    "OPENBLAS_NUM_THREADS": 4,
+    "single_candidate": true
+  },
+  "total_source_groups": 20,
+  "total_unique_category_trajectories": 3005,
+  "formal_model_episodes": 15025,
+  "preflight_model_episodes": 45,
+  "balance_proxy": "reference trajectory frame count; not measured simulation time",
+  "shard_method": "whole scenes assigned by total count and reference frames; ModularPark sorted by descending reference_frames then UUID and assigned to lowest total reference_frames owner with capacities A337/B310/C311; uses no model outcomes",
+  "members": {
+    "A": {
+      "assignment": "configs/course/assignments/a.json",
+      "episodes": 1002,
+      "formal_runs": 30,
+      "formal_model_episodes": 5010,
+      "preflight_runs": 5,
+      "preflight_model_episodes": 15,
+      "reference_frames": 271982,
+      "offline_diffusion_models": 8,
+      "gpu_id": 0,
+      "simulator_port": 30000,
+      "ddp_master_port": 20001
+    },
+    "B": {
+      "assignment": "configs/course/assignments/b.json",
+      "episodes": 1002,
+      "formal_runs": 30,
+      "formal_model_episodes": 5010,
+      "preflight_runs": 5,
+      "preflight_model_episodes": 15,
+      "reference_frames": 268951,
+      "offline_diffusion_models": 9,
+      "gpu_id": 1,
+      "simulator_port": 35000,
+      "ddp_master_port": 20002
+    },
+    "C": {
+      "assignment": "configs/course/assignments/c.json",
+      "episodes": 1001,
+      "formal_runs": 50,
+      "formal_model_episodes": 5005,
+      "preflight_runs": 5,
+      "preflight_model_episodes": 15,
+      "reference_frames": 263961,
+      "offline_diffusion_models": 9,
+      "gpu_id": 2,
+      "simulator_port": 40000,
+      "ddp_master_port": 20003
+    }
+  },
+  "static_resource_checks": {
+    "scene_launchers_present": true,
+    "scene_binaries_present": true,
+    "merged_data_mark_and_object_description_present": true,
+    "gpu_inventory": "4 x RTX 4090 24564 MiB; availability is point-in-time",
+    "render_and_model_load_tested": false
+  },
+  "source_inventory": [
+    {
+      "category": "seen_valset",
+      "scene": "Carla_Town01",
+      "source": "data/uav_dataset/seen_valset_splits/Carla_Town01.json",
+      "source_sha256": "ac49cee5b4f0ac46f44b3257e9eeeb3f308ae98956d979955b63a68dd2862347",
+      "rows": 7538,
+      "episodes": 165,
+      "reference_frames": 36700,
+      "reference_length_m": 34796.69,
+      "easy": 107,
+      "hard": 58,
+      "launcher": "envs/carla_town_envs/Town01/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town01/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "Carla_Town04",
+      "source": "data/uav_dataset/seen_valset_splits/Carla_Town04.json",
+      "source_sha256": "2e03469b1494cdcdd5083008878d09acadb622725abb741fafdac456df8b6a53",
+      "rows": 5851,
+      "episodes": 106,
+      "reference_frames": 28603,
+      "reference_length_m": 27661.64,
+      "easy": 51,
+      "hard": 55,
+      "launcher": "envs/carla_town_envs/Town04/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town04/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "Carla_Town05",
+      "source": "data/uav_dataset/seen_valset_splits/Carla_Town05.json",
+      "source_sha256": "da82d94e59fc3cde50c911827992d840bee8007c0c1d202ca185d3506c0321dd",
+      "rows": 3765,
+      "episodes": 73,
+      "reference_frames": 18385,
+      "reference_length_m": 17607.12,
+      "easy": 40,
+      "hard": 33,
+      "launcher": "envs/carla_town_envs/Town05/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town05/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "Carla_Town06",
+      "source": "data/uav_dataset/seen_valset_splits/Carla_Town06.json",
+      "source_sha256": "b637db0d7e37fc2e3cadf4508b480b1da3522a5c7cfe288e8894cebf8fee9390",
+      "rows": 2518,
+      "episodes": 47,
+      "reference_frames": 12309,
+      "reference_length_m": 11831.29,
+      "easy": 28,
+      "hard": 19,
+      "launcher": "envs/carla_town_envs/Town06/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town06/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "Carla_Town07",
+      "source": "data/uav_dataset/seen_valset_splits/Carla_Town07.json",
+      "source_sha256": "7036b34bbf9266d4979595c6183399b2c00bcb558e744f2b7af8285c43b6266b",
+      "rows": 2122,
+      "episodes": 60,
+      "reference_frames": 10251,
+      "reference_length_m": 9917.06,
+      "easy": 50,
+      "hard": 10,
+      "launcher": "envs/carla_town_envs/Town07/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town07/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "Carla_Town10HD",
+      "source": "data/uav_dataset/seen_valset_splits/Carla_Town10HD.json",
+      "source_sha256": "60e1bcba69e553116257b7a976e2c143a084f1b338cce5f410be62c5260980a8",
+      "rows": 5568,
+      "episodes": 141,
+      "reference_frames": 26974,
+      "reference_length_m": 25552.52,
+      "easy": 114,
+      "hard": 27,
+      "launcher": "envs/carla_town_envs/Town10HD/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town10HD/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "Carla_Town15",
+      "source": "data/uav_dataset/seen_valset_splits/Carla_Town15.json",
+      "source_sha256": "471a0b256abb37a203b1465eda4d9d964166a3387fb224d0eee947a8f6c63fd6",
+      "rows": 6907,
+      "episodes": 111,
+      "reference_frames": 33878,
+      "reference_length_m": 32391.32,
+      "easy": 48,
+      "hard": 63,
+      "launcher": "envs/carla_town_envs/Town15/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town15/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "ModernCityMap",
+      "source": "data/uav_dataset/seen_valset_splits/ModernCityMap.json",
+      "source_sha256": "1bfdb76e2374c9e748996cdb57320b9233b9ca457f4a809f543456e6cf8df6cf",
+      "rows": 2873,
+      "episodes": 124,
+      "reference_frames": 13615,
+      "reference_length_m": 12847.18,
+      "easy": 124,
+      "hard": 0,
+      "launcher": "envs/closeloop_envs/ModernCityMap.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/ModernCityDowntown/Binaries/Linux/ModernCityDowntown"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "NYCEnvironmentMegapa",
+      "source": "data/uav_dataset/seen_valset_splits/NYCEnvironmentMegapa.json",
+      "source_sha256": "1151901ea89fb3a1cb2d041171b0b9631314156a856920346dc38ed37a9c1905",
+      "rows": 20650,
+      "episodes": 281,
+      "reference_frames": 101581,
+      "reference_length_m": 95452.2,
+      "easy": 81,
+      "hard": 200,
+      "launcher": "envs/closeloop_envs/NYCEnvironmentMegapa.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/NYCEnvironmentMegapa/Binaries/Linux/NYCEnvironmentMegapa"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "NewYorkCity",
+      "source": "data/uav_dataset/seen_valset_splits/NewYorkCity.json",
+      "source_sha256": "7c3c058ed6a0fc0d985b8b9dcd2c326252c447707974c4ff8cfe403b036c565d",
+      "rows": 7464,
+      "episodes": 145,
+      "reference_frames": 36444,
+      "reference_length_m": 34745.12,
+      "easy": 80,
+      "hard": 65,
+      "launcher": "envs/closeloop_envs/NewYorkCity.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/NewYorkCity/Binaries/Linux/NewYorkCity"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "seen_valset",
+      "scene": "TropicalIsland",
+      "source": "data/uav_dataset/seen_valset_splits/TropicalIsland.json",
+      "source_sha256": "599c3c0283c8744bbb990c44c2fd019faeb490783b1cad10dc8a7fc6f4be2c56",
+      "rows": 10118,
+      "episodes": 165,
+      "reference_frames": 49594,
+      "reference_length_m": 48321.93,
+      "easy": 60,
+      "hard": 105,
+      "launcher": "envs/closeloop_envs/TropicalIsland.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/TropicalIsland/Binaries/Linux/TropicalIsland"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_map_valset",
+      "scene": "ModularPark",
+      "source": "data/uav_dataset/unseen_map_valset_splits/ModularPark.json",
+      "source_sha256": "858e813f6f7ea4bac43cf9b27a2e95cd029a991952322856021cd3e57d4c2c2a",
+      "rows": 48836,
+      "episodes": 958,
+      "reference_frames": 238363,
+      "reference_length_m": 229195.14,
+      "easy": 561,
+      "hard": 397,
+      "launcher": "envs/closeloop_envs/ModularPark.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/ModularPark/Binaries/Linux/ModularPark"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "Carla_Town04",
+      "source": "data/uav_dataset/unseen_object_valset_splits/Carla_Town04.json",
+      "source_sha256": "bcb81fe01a7f75e35d6d1689357ca1f6cbc6d5b6167a3bbb7a8fec7d15db34dc",
+      "rows": 753,
+      "episodes": 14,
+      "reference_frames": 3680,
+      "reference_length_m": 3553.2,
+      "easy": 8,
+      "hard": 6,
+      "launcher": "envs/carla_town_envs/Town04/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town04/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "Carla_Town05",
+      "source": "data/uav_dataset/unseen_object_valset_splits/Carla_Town05.json",
+      "source_sha256": "dbe5e4313d3536f5620aed482da50388581becced1e2667c7492c560b7a0241e",
+      "rows": 1016,
+      "episodes": 20,
+      "reference_frames": 4970,
+      "reference_length_m": 4750.54,
+      "easy": 10,
+      "hard": 10,
+      "launcher": "envs/carla_town_envs/Town05/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town05/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "Carla_Town06",
+      "source": "data/uav_dataset/unseen_object_valset_splits/Carla_Town06.json",
+      "source_sha256": "4eae29e9058659de068af438c0fd0508f6f6fcbc2170475c2fcbe9b5c9328309",
+      "rows": 1123,
+      "episodes": 20,
+      "reference_frames": 5495,
+      "reference_length_m": 5282.18,
+      "easy": 11,
+      "hard": 9,
+      "launcher": "envs/carla_town_envs/Town06/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town06/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "Carla_Town07",
+      "source": "data/uav_dataset/unseen_object_valset_splits/Carla_Town07.json",
+      "source_sha256": "699435c562afe52f0664420dbfa17d9026395913f6536f9d0ddac74b4f19f0ed",
+      "rows": 443,
+      "episodes": 11,
+      "reference_frames": 2148,
+      "reference_length_m": 2078.32,
+      "easy": 7,
+      "hard": 4,
+      "launcher": "envs/carla_town_envs/Town07/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town07/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "Carla_Town15",
+      "source": "data/uav_dataset/unseen_object_valset_splits/Carla_Town15.json",
+      "source_sha256": "6a38fb3ed3c2a82516bc78bbf4741751e8aeccbd5cd97accfea3c461733ec08a",
+      "rows": 1935,
+      "episodes": 33,
+      "reference_frames": 9471,
+      "reference_length_m": 9039.76,
+      "easy": 17,
+      "hard": 16,
+      "launcher": "envs/carla_town_envs/Town15/LinuxNoEditor/CarlaUE4.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/carla_town_envs/Town15/LinuxNoEditor/CarlaUE4/Binaries/Linux/CarlaUE4"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "NYCEnvironmentMegapa",
+      "source": "data/uav_dataset/unseen_object_valset_splits/NYCEnvironmentMegapa.json",
+      "source_sha256": "a3dc6fcc95c3396d89a510a1db985df710102e30e860f4f4796df799d02a8a0e",
+      "rows": 13774,
+      "episodes": 189,
+      "reference_frames": 67741,
+      "reference_length_m": 63758.97,
+      "easy": 38,
+      "hard": 151,
+      "launcher": "envs/closeloop_envs/NYCEnvironmentMegapa.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/NYCEnvironmentMegapa/Binaries/Linux/NYCEnvironmentMegapa"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "NewYorkCity",
+      "source": "data/uav_dataset/unseen_object_valset_splits/NewYorkCity.json",
+      "source_sha256": "a90ff76db9eca17d651160a25a0277ad639964df66046dfed3c75384eb68b919",
+      "rows": 3891,
+      "episodes": 76,
+      "reference_frames": 18991,
+      "reference_length_m": 18117.25,
+      "easy": 44,
+      "hard": 32,
+      "launcher": "envs/closeloop_envs/NewYorkCity.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/NewYorkCity/Binaries/Linux/NewYorkCity"
+      ],
+      "missing_files": []
+    },
+    {
+      "category": "unseen_object_valset",
+      "scene": "TropicalIsland",
+      "source": "data/uav_dataset/unseen_object_valset_splits/TropicalIsland.json",
+      "source_sha256": "84c1f6704b812a9f5927f8b2b1065148e6b973bd447c0fd8933c0d67ca3b0170",
+      "rows": 17451,
+      "episodes": 266,
+      "reference_frames": 85701,
+      "reference_length_m": 83487.27,
+      "easy": 74,
+      "hard": 192,
+      "launcher": "envs/closeloop_envs/TropicalIsland.sh",
+      "launcher_exists": true,
+      "binary_candidates": [
+        "envs/closeloop_envs/TropicalIsland/Binaries/Linux/TropicalIsland"
+      ],
+      "missing_files": []
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "date": "2026-11-18",
-  "scope": "existing_entrypoints_only_documentation_and_task_records",
+  "scope": "detailed_existing_entrypoint_closed_loop_assignments",
   "pytest": {
     "passed": 184,
     "warnings": 4,
@@ -18,8 +18,8 @@
       "B": 9,
       "C": 9
     },
-    "markdown_documents": 36,
-    "shell_examples_checked": 9,
+    "markdown_documents": 41,
+    "shell_examples_checked": 173,
     "missing_historical_local_links": 32,
     "errors": []
   },
@@ -41,11 +41,12 @@
         "B": 9,
         "C": 9
       },
-      "markdown_documents": 36,
-      "shell_examples_checked": 9,
+      "markdown_documents": 41,
+      "shell_examples_checked": 173,
       "missing_historical_local_links": 90,
       "errors": []
-    }
+    },
+    "pytest_note": "184 passes belong to the previous code revision; only Markdown/JSON changed afterward, so tests were not rerun."
   },
   "test_file_cleanup": "Removed excess trailing blank lines in two previously untracked test files; AST unchanged.",
   "previous_reorganization_validation": {
@@ -76,7 +77,7 @@
   "current_revision": {
     "files_allowed": [
       "Markdown",
-      "task and record JSON"
+      "task, manifest, reporting and validation JSON"
     ],
     "code_changed": false,
     "framework_structure_changed": false,
@@ -84,7 +85,35 @@
     "pytest_note": "184 passing tests are evidence from the preceding revision; no production code changed in this revision.",
     "new_training_run": false,
     "new_inference_experiments_run": false,
-    "new_simulation_run": false
+    "new_simulation_run": false,
+    "local_resource_preparation": "27 ignored resource views with symlinked original files and copied path-only configs"
   },
-  "task_record_note": "11 specification rows are shared S0/S1 plus each member execution/report steps, not 11 distinct methods. offline_assignments includes the token registry owner for compatibility; actual diffusion offline counts are A8/B9/C9."
+  "task_record_note": "11 specification rows are shared S0/S1 plus each member execution/report steps, not 11 distinct methods. offline_assignments includes the token registry owner for compatibility; actual diffusion offline counts are A8/B9/C9.",
+  "detailed_plan": {
+    "status": "passed",
+    "check_type": "static_assignment_resource_and_existing_launcher_dry_run",
+    "date": "2026-11-18",
+    "unique_scenes": 12,
+    "source_groups": 20,
+    "formal_tasks": 3005,
+    "formal_runs": 110,
+    "formal_model_episodes_planned": 15025,
+    "preflight_runs": 15,
+    "preflight_model_episodes_planned": 45,
+    "dry_runs_checked": 125,
+    "task_overlap": 0,
+    "missing_source_tasks": 0,
+    "unique_result_directories": 125,
+    "model_resource_views": 27,
+    "config_changes_only": [
+      "base_model_path",
+      "adapter_path"
+    ],
+    "weight_files_rewritten": false,
+    "model_tensor_loading_tested": false,
+    "airsim_started": false,
+    "new_training_run": false,
+    "new_formal_inference_run": false,
+    "warning": "Reference-frame workload is a proxy. No true model/renderer runtime or full weight hashing has been performed."
+  }
 }

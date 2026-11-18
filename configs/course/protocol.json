@@ -47,12 +47,15 @@
     "closed_loop_repeated_seeds": [
       100
     ],
-    "final_manifest": null,
-    "manifest_status": "freeze_existing_tasks_before_evaluation",
-    "common_closed_loop_assignment": "three fixed task shards through existing TEST_JSON; same tasks and order for each core model",
-    "no_independent_training_repeats": true
+    "final_manifest": "closed_loop_plan.json",
+    "manifest_status": "frozen_assignments_and_task_shards",
+    "common_closed_loop_assignment": "whole scenes assigned per owner plus frozen ModularPark shards, A1002/B1002/C1001, five models per task",
+    "no_independent_training_repeats": true,
+    "closed_loop_batch_size": 1,
+    "max_waypoints": 200
   },
   "revision": "existing_entrypoints_only",
   "code_changes_allowed": false,
-  "framework_changes_allowed": false
+  "framework_changes_allowed": false,
+  "title": "基于预训练扩散动作头的无人机视觉语言导航推理评测与分析"
 }

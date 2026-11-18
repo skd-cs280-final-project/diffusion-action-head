@@ -43,5 +43,6 @@
     }
   ],
   "revision": "existing_entrypoints_only",
-  "note": "Task records, not new methods or executable runners; member tasks execute the shared protocol."
+  "note": "Task records, not new methods or executable runners; member tasks execute the shared protocol.",
+  "assignment": "../assignments/c.json"
 }

@@ -2,7 +2,7 @@
 
 [项目首页](../../README.md) · [实验协议](../experiments/protocol.md) · [三人分工](../team/README.md)
 
-本阶段只加载已训练权重做推理，不启动训练或含参数更新的 smoke。以下命令从仓库根目录执行，GPU 编号按机器修改。只使用已有评估和指标工具，不开发新入口。JSON 是任务清单，不是批量运行器。
+本阶段只加载已训练权重做推理，不启动训练或含参数更新的 smoke。以下命令从仓库根目录执行。[三人具体命令页](../team/README.md)已固定场景、模型、参数和端口，优先按个人命令执行。只使用已有评估和指标工具，不开发新入口。JSON 是任务清单，不是批量运行器。
 
 ## 1. 安装环境
 
@@ -74,7 +74,7 @@ ln -s /absolute/path/to/TravelUAV dataset_raw
 
 其余每 1,000 步的联合检查点也全部参加 S0 离线评估。联合 v2 必须一起加载 `joint_adapter.pt`、动作头和对应配置，不能只复制动作头而漏掉 LoRA/projector。它们仍依赖原基座与原 adapter；共同条件特征不能跨不同联合权重复用。
 
-旧配置可能记录 `/data/xiyang/project_orig/AeroVLA/` 等绝对路径。离线 CLI 暂无 model-path/adapter-path 覆盖选项；先复制检查点到独立评估目录，再只修正副本的资源路径并记录修改，不改加载代码。保留原始权重和数据哈希。在线 `MODEL_BASE` 只覆盖基座。需保留 processor/tokenizer 等完整文件，不能只搬 `.pt`。
+旧配置可能记录 `/data/xiyang/project_orig/AeroVLA/` 等绝对路径。离线 CLI 暂无 model-path/adapter-path 覆盖选项；先复制检查点到独立评估目录，再只修正副本的资源路径并记录修改，不改加载代码。本机已经按[资源说明](../team/resources.md)准备完成，仅修正副本资源路径。保留原始权重和数据哈希。在线 `MODEL_BASE` 只覆盖基座。需保留 processor/tokenizer 等完整文件，不能只搬 `.pt`。
 
 ## 4. 共同离线评估 S0
 
@@ -82,14 +82,14 @@ ln -s /absolute/path/to/TravelUAV dataset_raw
 
 ```bash
 PYTHON=python CUDA_VISIBLE_DEVICES=0 bash scripts/eval_diffusion_head.sh \
-  --checkpoint ./checkpoints/best \
+  --checkpoint ./eval_results/course_inference/resources/models/diffusion_head_best \
   --data-root ./dataset_raw --data-json ./data/aerovla_train_dataset.json \
   --split-json ./data/continuous_split_seed42.json \
   --batch-size 2 --seed 42 --num-inference-steps 10 \
   --output ./eval_results/inference/diffusion_head_best/offline_seed42.json
 
 PYTHON=python CUDA_VISIBLE_DEVICES=0 bash scripts/eval_diffusion_head.sh \
-  --checkpoint ./checkpoints/joint_lora_stage2_20261103 \
+  --checkpoint ./eval_results/course_inference/resources/models/joint_final \
   --data-root ./dataset_raw --data-json ./data/aerovla_train_dataset.json \
   --split-json ./data/continuous_split_seed42.json \
   --batch-size 2 --seed 42 --num-inference-steps 10 \
@@ -104,7 +104,7 @@ PYTHON=python CUDA_VISIBLE_DEVICES=0 bash scripts/eval_diffusion_head.sh \
 
 ## 5. 标准闭环 S1
 
-三人先固定现有任务清单，再分成互不重叠的三份，通过已有 TEST_JSON 指定。每人对自己的任务运行全部五个代表模型；五个模型保持相同任务和顺序。不开设扰动、候选选择或重复 seed 变体。
+三人任务已按完整场景与 ModularPark 分片固定，通过已有 TEST_JSON 指定，见[详细计划](../../configs/course/closed_loop_plan.json)。每人对自己的任务运行全部五个代表模型；五个模型保持相同任务和顺序。不开设扰动、候选选择或重复 seed 变体。
 
 场景需符合服务端 `env_exec_path_dict`，例如 `envs/closeloop_envs/NYCEnvironmentMegapa.sh`。在独立终端启动场景管理服务：
 
@@ -116,7 +116,7 @@ python -u airsim_plugin/AirVLNSimulatorServerTool.py \
 先打印现有标准策略命令：
 
 ```bash
-PYTHON=python MODEL_DIR=./checkpoints/best GPU_ID=1 \
+PYTHON=python MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best GPU_ID=1 \
   SIMULATOR_GPU_ID=0 SIMULATOR_PORT=30000 \
   TASK_ID=seen_valset/NYCEnvironmentMegapa \
   SAVE_DIR=./eval_results/inference/diffusion_head_best/seen_valset/NYCEnvironmentMegapa \
