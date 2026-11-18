@@ -5,24 +5,28 @@
     {
       "id": "S0",
       "owner": "shared",
-      "model_selector": "all",
-      "purpose": "all-checkpoint offline first-action and LAND evaluation",
-      "implementation_status": "diffusion_cli_available_token_adapter_needed",
+      "model_selector": "diffusion_all",
+      "purpose": "existing diffusion offline evaluation of all 26 diffusion states",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false
     },
     {
       "id": "S1",
       "owner": "shared",
       "model_selector": "core",
-      "purpose": "standard closed-loop reference, disjoint episode shards per member",
-      "implementation_status": "standard_eval_available_seed_and_sharding_wrapper_needed",
+      "purpose": "existing standard closed-loop evaluation of five predefined models",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false
     }
-  ]
+  ],
+  "revision": "existing_entrypoints_only",
+  "note": "Task records, not new methods or executable runners; member tasks execute the shared protocol."
 }

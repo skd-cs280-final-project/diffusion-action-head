@@ -5,35 +5,43 @@
     {
       "id": "B1",
       "owner": "B",
-      "model_selector": "core",
-      "purpose": "front/down information ablation with layout-preserving masks",
-      "implementation_status": "input_transform_needed",
+      "model_selector": "diffusion_all",
+      "purpose": "B: run assigned diffusion checkpoints using existing offline CLI",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     },
     {
       "id": "B2",
       "owner": "B",
       "model_selector": "core",
-      "purpose": "frozen visual corruption strengths and severity analysis",
-      "implementation_status": "input_transform_needed",
+      "purpose": "B: run five standard models on assigned closed-loop task shard",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     },
     {
       "id": "B3",
       "owner": "B",
-      "model_selector": "core",
-      "purpose": "meaning-preserving paraphrases and separate direction/object ablations",
-      "implementation_status": "prompt_transform_needed",
+      "model_selector": "all",
+      "purpose": "B: summarize existing metrics and task cases without new instrumentation",
+      "implementation_status": "report_only",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     }
-  ]
+  ],
+  "revision": "existing_entrypoints_only",
+  "note": "Task records, not new methods or executable runners; member tasks execute the shared protocol."
 }

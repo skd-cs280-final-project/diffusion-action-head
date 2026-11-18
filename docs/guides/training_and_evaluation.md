@@ -2,7 +2,7 @@
 
 [项目首页](../../README.md) · [实验协议](../experiments/protocol.md) · [三人分工](../team/README.md)
 
-本阶段只加载已训练权重做推理，不启动训练或含参数更新的 smoke。以下命令从仓库根目录执行，GPU 编号按机器修改。新增去噪记录、输入扰动、多候选选择及统一分片入口仍需按分工实现；JSON 是实验规格，不能当作已实现的批量运行器。
+本阶段只加载已训练权重做推理，不启动训练或含参数更新的 smoke。以下命令从仓库根目录执行，GPU 编号按机器修改。只使用已有评估和指标工具，不开发新入口。JSON 是任务清单，不是批量运行器。
 
 ## 1. 安装环境
 
@@ -62,7 +62,7 @@ ln -s /absolute/path/to/TravelUAV dataset_raw
 
 ## 3. 核对模型与加载路径
 
-全部模型及各人负责的 9 项见 [models.json](../../configs/course/models.json)。登记时只检查元数据和必需文件存在，尚不代表全部权重已逐一加载或完成新评测。运行前补齐文件哈希和实际重载检查。
+全部模型及各人负责的 9 项登记（A 含原 token 参考）见 [models.json](../../configs/course/models.json)。登记时只检查元数据和必需文件存在，尚不代表全部权重已逐一加载或完成新评测。运行前补齐文件哈希和实际重载检查。
 
 | 代表模型 | 目录 | 解释 |
 | --- | --- | --- |
@@ -74,7 +74,7 @@ ln -s /absolute/path/to/TravelUAV dataset_raw
 
 其余每 1,000 步的联合检查点也全部参加 S0 离线评估。联合 v2 必须一起加载 `joint_adapter.pt`、动作头和对应配置，不能只复制动作头而漏掉 LoRA/projector。它们仍依赖原基座与原 adapter；共同条件特征不能跨不同联合权重复用。
 
-旧配置可能记录 `/data/xiyang/project_orig/AeroVLA/` 等绝对路径。离线 CLI 暂无 model-path/adapter-path 覆盖选项；先复制检查点到独立评估目录，再只修正副本的资源路径并记录修改，或使用模型 API 显式覆盖。保留原始权重和数据哈希。在线 `MODEL_BASE` 只覆盖基座。需保留 processor/tokenizer 等完整文件，不能只搬 `.pt`。
+旧配置可能记录 `/data/xiyang/project_orig/AeroVLA/` 等绝对路径。离线 CLI 暂无 model-path/adapter-path 覆盖选项；先复制检查点到独立评估目录，再只修正副本的资源路径并记录修改，不改加载代码。保留原始权重和数据哈希。在线 `MODEL_BASE` 只覆盖基座。需保留 processor/tokenizer 等完整文件，不能只搬 `.pt`。
 
 ## 4. 共同离线评估 S0
 
@@ -96,15 +96,15 @@ PYTHON=python CUDA_VISIBLE_DEVICES=0 bash scripts/eval_diffusion_head.sh \
   --output ./eval_results/inference/joint_final/offline_seed42.json
 ```
 
-默认使用全部 val。相同清单、batch 和顺序用于各 checkpoint，记录前三维动作误差与 LAND 混淆矩阵。扩散 noise MSE 只在扩散模型间使用；原 AeroVLA 的共同动作解码/离线指标适配需补充，无 noise MSE 应记 null。解码失败必须计数，不能静默删去样本。
+默认使用全部 val。相同清单、batch 和顺序用于各 checkpoint，记录前三维动作误差与 LAND 混淆矩阵。扩散 noise MSE 只在扩散模型间使用；原 AeroVLA 不参加此离线测试，只参加已有闭环，离线指标记“不适用”，不开发适配器。
 
-小规模检查可以加 `--max-samples`，但该入口的 `--seed` 同时影响子集抽取和采样随机性。A 的多 seed 比较不能直接通过变更 seed 同时更换子集：应使用全 val，或先固定观测清单，再由新入口独立控制采样 seed。不同 seed 的推理不是独立训练重复。
+小规模检查可以加 `--max-samples`，只用于确认加载和入口可用。正式使用全 val、batch=2、seed42；不增加多 seed 分析或内部去噪记录。
 
-固定 DDPM、100 步噪声日程、10 步采样，H=1、E=1、history_length=0；不运行扩散步数对比。三人分别运行登记到自己的 9 个状态，按共同 schema 合并。
+固定 DDPM、100 步噪声日程、10 步采样，H=1、E=1、history_length=0；不运行扩散步数对比。A 运行 8 个扩散状态，B/C 各 9 个，整理现有 JSON。
 
-## 5. 共同闭环 S1 与各自变体
+## 5. 标准闭环 S1
 
-三人先冻结开发/最终清单，再把 S1 任务按 UUID 分成互不重叠的三份。每人对自己那份任务运行全部五个代表模型；合并后每个模型的任务集合应完全相同。各人另外负责本研究线的正式变体闭环。
+三人先固定现有任务清单，再分成互不重叠的三份，通过已有 TEST_JSON 指定。每人对自己的任务运行全部五个代表模型；五个模型保持相同任务和顺序。不开设扰动、候选选择或重复 seed 变体。
 
 场景需符合服务端 `env_exec_path_dict`，例如 `envs/closeloop_envs/NYCEnvironmentMegapa.sh`。在独立终端启动场景管理服务：
 
@@ -125,7 +125,7 @@ PYTHON=python MODEL_DIR=./checkpoints/best GPU_ID=1 \
 
 去掉 `--dry-run` 才执行。模型与场景 GPU 可同为 0，但共享显存。管理端口区别于场景 RPC；并发任务需独立管理服务、RPC/DDP 端口与输出目录。不要同时向同一管理服务提交多组任务。
 
-`TEST_JSON` 指向冻结的任务或分片清单，`DATASET_PATH` 覆盖原始轨迹目录。原 AeroVLA 设置 `MODEL_DIR=./checkpoints/aero_vla`。当前在线入口以硬编码 `100 + rank + dagger_it` 设置随机种子（默认单进程评估为 100）；A3 多 seed 闭环需要先显式接入种子控制，不能宣称仅设置环境变量就已生效。输入扰动与候选选择也需要对应适配，不存在可直接套用的新 CLI 开关。
+`TEST_JSON` 指向冻结的任务或分片清单，`DATASET_PATH` 覆盖原始轨迹目录。原 AeroVLA 设置 `MODEL_DIR=./checkpoints/aero_vla`。当前在线入口以硬编码 `100 + rank + dagger_it` 设置随机种子（默认单进程评估为 100），保持不变。本阶段不做多 seed 闭环，不修改输入和候选策略。记录任务顺序、batch 和分片，因为现有全局 RNG 不保证分片与整批运行完全一致。
 
 ```bash
 python utils/metric.py \
@@ -138,7 +138,7 @@ root 是包含 seen_valset 的结果根。分片结果先按 UUID 查重、查�
 
 ## 6. 记录与验收
 
-每个运行使用独立输出目录，保存权重哈希、代码版本、输入清单、seed、变体参数和逐任务结果。模板见 [run_manifest](../../evaluation/course/run_manifest.example.json)。先在开发任务固定扰动强度/选择规则，再跑最终任务，不按最终效果选 checkpoint 或删失败任务。
+每个运行使用独立输出目录，保存权重哈希、代码版本、输入清单、实际命令、既有 seed 规则和逐任务结果。模板见 [run_manifest](../../evaluation/course/run_manifest.example.json)。使用预先指定的模型和任务，不按最终效果选 checkpoint 或删失败任务。模板仅手工记录，程序输出无需改动。
 
 ```bash
 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 CUDA_VISIBLE_DEVICES="" \
@@ -147,7 +147,7 @@ HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 CUDA_VISIBLE_DEVICES="" \
 python scripts/check_course_repository.py
 ```
 
-仓库检查和单元测试不代表真实 7B 或 AirSim 评测通过。三人完成各自入口后应验证默认条件、单候选行为与旧流程一致。常见加载、显存与 RPC 问题见[排障](troubleshooting.md)。
+仓库检查和单元测试不代表真实 7B 或 AirSim 评测通过。本阶段不编写新入口，只核对实际加载资源、执行命令和结果完整性。常见加载、显存与 RPC 问题见[排障](troubleshooting.md)。
 
 <a id="joint-lora"></a>
 <a id="uav-history"></a>

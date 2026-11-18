@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "date": "2026-11-18",
-  "scope": "pretrained_inference_plan_v2_documentation_and_specifications",
+  "scope": "existing_entrypoints_only_documentation_and_task_records",
   "pytest": {
     "passed": 184,
     "warnings": 4,
@@ -71,5 +71,20 @@
     }
   },
   "new_inference_experiments_run": false,
-  "weight_inventory_check": "metadata and required-file existence only; no full tensor reload or artifact hash verification"
+  "weight_inventory_check": "metadata and required-file existence only; no full tensor reload or artifact hash verification",
+  "revision": "existing_entrypoints_only",
+  "current_revision": {
+    "files_allowed": [
+      "Markdown",
+      "task and record JSON"
+    ],
+    "code_changed": false,
+    "framework_structure_changed": false,
+    "pytest_rerun": false,
+    "pytest_note": "184 passing tests are evidence from the preceding revision; no production code changed in this revision.",
+    "new_training_run": false,
+    "new_inference_experiments_run": false,
+    "new_simulation_run": false
+  },
+  "task_record_note": "11 specification rows are shared S0/S1 plus each member execution/report steps, not 11 distinct methods. offline_assignments includes the token registry owner for compatibility; actual diffusion offline counts are A8/B9/C9."
 }

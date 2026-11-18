@@ -34,7 +34,7 @@
     "selection_rule": "single",
     "input_variant": "identity",
     "run_seed": null,
-    "episode_seed_derivation": null,
+    "episode_seed_derivation": "existing global RNG; no episode-level derivation",
     "sampling_rng": null,
     "transform_rng": null
   },
@@ -49,5 +49,9 @@
   },
   "metrics": null,
   "artifacts": {},
-  "limitations": []
+  "limitations": [],
+  "revision": "existing_entrypoints_only",
+  "command": null,
+  "code_modified": false,
+  "note": "Manual record only; existing CLI output is unchanged. Token diffusion-only fields must be null."
 }

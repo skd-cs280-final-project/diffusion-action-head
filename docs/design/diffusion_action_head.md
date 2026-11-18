@@ -26,26 +26,14 @@ a_t^{(k)}=\sqrt{\bar\alpha_k}a_t+\sqrt{1-\bar\alpha_k}\epsilon,
 \qquad \mathcal L=\|\epsilon_\theta(a_t^{(k)},k,C_t)-\epsilon\|^2
 \]
 
-学习条件动作去噪。当前阶段不计算梯度，加载模型后固定 10 次反向更新。A 记录完整去噪过程，比较不同初始噪声下的动作与 LAND，而不提前截断或更改步数。
+学习条件动作去噪。当前阶段固定模型参数，加载已有权重后使用原实现进行 10 步去噪和单动作预测，不记录内部去噪过程，不加入候选选择。
 
-中间 noisy sample 不代表可执行动作；可以另记录 scheduler 定义下的干净动作估计，但应保留裁剪等细节。动作多样性可能是有用模式，也可能是误差，必须结合固定任务证据；方差不直接解释成风险概率。
+## 推理测试内容
 
-## 条件敏感性
+对全部 26 个扩散状态使用已有离线入口，对预先指定的五个代表模型使用已有闭环入口。比较现有动作误差、LAND 与导航指标，分析头训练和联合训练模型的表现，以及同一联合训练轨迹上检查点的差异。
 
-B 保持模型结构与输入布局，改变一项可声明的视觉或语言条件。遮蔽、模糊和信息删除会引入分布偏移，研究的是当前模型依赖；不等于训练得到的单视角/其他条件网络消融。语义等价改写与方向/目标信息删除分开。
-
-## 多候选推理设计
-
-C 对同一条件生成 N=1/4/8 个候选，每个候选固定 10 次去噪。N 不是扩散步数，也不是未来动作长度。一次提取条件，复用在同一观测的候选生成中。
-
-medoid 在归一化前三维距离上选择实际候选，保留该候选四维输出；LAND 投票版本先决定停止，再在继续飞行候选中选代表。固定平票规则，不使用标签、未来轨迹或执行成败排序，不预设多采样一定改善。
-
-## 代码与边界
-
-现有 [动作头](../../src/model_wrapper/diffusion_action_head.py)、[模型加载](../../src/model_wrapper/aerovla_diffusion.py)、[在线 wrapper](../../src/model_wrapper/aerovla_wrapper_ui.py) 保持生产路径。新增生成、条件与选择逻辑分别放在 `evaluation/course/generation/`、`conditions/`、`selection/`，按默认一致性检查接入。
-
-不复用 H=1 权重伪造 H=4/8；不替换 MLP 或改变层数后声称结构实验成立；不把独立停止头/数值历史当作现有能力。原实现细节见[历史设计](../archive/design/diffusion_action_head.md)。
+现有 [动作头](../../src/model_wrapper/diffusion_action_head.py)、[模型加载](../../src/model_wrapper/aerovla_diffusion.py)、[在线 wrapper](../../src/model_wrapper/aerovla_wrapper_ui.py) 均不修改。不添加去噪 hook、输入变换、采样选择、历史输入或新的动作预测长度。原实现细节见[历史设计](../archive/design/diffusion_action_head.md)。
 
 ## 来源
 
-[AeroVLA](https://github.com/XuPeng23/AeroVLA)、[Diffusion Policy](https://diffusion-policy.cs.columbia.edu/) 和 [NavDP](https://github.com/InternRobotics/NavDP) 是方法与实现来源。本次新增贡献是受控推理策略、机制分析、鲁棒性和实证评估，而非声称重新训练了新架构。
+[AeroVLA](https://github.com/XuPeng23/AeroVLA)、[Diffusion Policy](https://diffusion-policy.cs.columbia.edu/) 和 [NavDP](https://github.com/InternRobotics/NavDP) 是方法与实现来源。课程内容是已有方法说明、标准推理复现与结果分析，不声称提出新网络或推理算法。

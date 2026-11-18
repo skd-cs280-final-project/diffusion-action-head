@@ -6,34 +6,42 @@
       "id": "A1",
       "owner": "A",
       "model_selector": "diffusion_all",
-      "purpose": "fixed 10-step denoising traces on a frozen observation subset",
-      "implementation_status": "trace_logging_needed",
+      "purpose": "A: run assigned diffusion checkpoints using existing offline CLI",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     },
     {
       "id": "A2",
       "owner": "A",
-      "model_selector": "diffusion_all",
-      "purpose": "fixed-input action distributions across inference noise seeds",
-      "implementation_status": "sampling_harness_needed",
+      "model_selector": "core",
+      "purpose": "A: run five standard models on assigned closed-loop task shard",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     },
     {
       "id": "A3",
       "owner": "A",
-      "model_selector": "core_diffusion",
-      "purpose": "repeated standard-policy rollouts and action instability failure analysis",
-      "implementation_status": "seed_control_needed",
+      "model_selector": "all",
+      "purpose": "A: summarize existing metrics and task cases without new instrumentation",
+      "implementation_status": "report_only",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     }
-  ]
+  ],
+  "revision": "existing_entrypoints_only",
+  "note": "Task records, not new methods or executable runners; member tasks execute the shared protocol."
 }

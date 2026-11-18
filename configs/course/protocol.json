@@ -1,6 +1,6 @@
 {
   "protocol_version": 2,
-  "scope": "pretrained_diffusion_policy_inference",
+  "scope": "existing_entrypoints_inference_only",
   "training_allowed": false,
   "weight_updates_allowed": false,
   "diffusion": {
@@ -25,7 +25,7 @@
   "checkpoints": {
     "registry": "models.json",
     "include_joint_trained_models": true,
-    "offline_coverage": "all_registered_models",
+    "offline_coverage": "all_26_diffusion_states_only_token_reference_closed_loop",
     "formal_closed_loop_coverage": "predeclared_core_models",
     "smoke_models_are_performance_baselines": false
   },
@@ -41,21 +41,18 @@
     "offline_batch_size": 2,
     "primary_inference_seed": 42,
     "repeated_inference_seeds": [
-      42,
-      43,
-      44
+      42
     ],
     "closed_loop_primary_seed": 100,
     "closed_loop_repeated_seeds": [
-      100,
-      101,
-      102
+      100
     ],
-    "development_manifest": null,
     "final_manifest": null,
-    "manifest_status": "must_freeze_before_experiments",
-    "common_closed_loop_assignment": "episode-level disjoint A/B/C shards, identical shard tasks for every core model",
-    "per_member_variant_closed_loop_budget": "up to 3 frozen variant conditions on the same final task list; start with 1 and pilot timing",
+    "manifest_status": "freeze_existing_tasks_before_evaluation",
+    "common_closed_loop_assignment": "three fixed task shards through existing TEST_JSON; same tasks and order for each core model",
     "no_independent_training_repeats": true
-  }
+  },
+  "revision": "existing_entrypoints_only",
+  "code_changes_allowed": false,
+  "framework_changes_allowed": false
 }

@@ -5,43 +5,43 @@
     {
       "id": "C1",
       "owner": "C",
-      "model_selector": "core_diffusion",
-      "purpose": "single sample versus normalized-action medoid from N=4/8 candidates",
-      "candidate_counts": [
-        1,
-        4,
-        8
-      ],
-      "implementation_status": "selection_adapter_needed",
+      "model_selector": "diffusion_all",
+      "purpose": "C: run assigned diffusion checkpoints using existing offline CLI",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     },
     {
       "id": "C2",
       "owner": "C",
-      "model_selector": "core_diffusion",
-      "purpose": "LAND vote plus moving-candidate medoid at fixed N=4",
-      "candidate_counts": [
-        4
-      ],
-      "implementation_status": "selection_adapter_needed",
+      "model_selector": "core",
+      "purpose": "C: run five standard models on assigned closed-loop task shard",
+      "implementation_status": "existing_entrypoint_available",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     },
     {
       "id": "C3",
       "owner": "C",
-      "model_selector": "core",
-      "purpose": "paired navigation, backbone/head/end-to-end timing and task cost",
-      "implementation_status": "timing_and_summary_needed",
+      "model_selector": "all",
+      "purpose": "C: summarize existing metrics and task cases without new instrumentation",
+      "implementation_status": "report_only",
       "action_horizon": 1,
       "execution_horizon": 1,
       "run_status": "not_run",
-      "requires_training": false
+      "requires_training": false,
+      "requires_code_changes": false,
+      "selection_note": "restrict to evaluation_owner for offline; fixed owner task shard for closed-loop"
     }
-  ]
+  ],
+  "revision": "existing_entrypoints_only",
+  "note": "Task records, not new methods or executable runners; member tasks execute the shared protocol."
 }

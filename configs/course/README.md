@@ -1,9 +1,9 @@
-# 推理实验规格 v2
+# 现有入口推理测试清单
 
-`protocol.json` 固定不训练/不更新权重、DDPM/100/10、H=1/E=1；`models.json` 登记全部现有正式检查点与 S0 离线负责人。`shared/experiments.json` 是共同任务，`a/`、`b/`、`c/` 分别登记三人本线实验。
+协议格式仍为 v2，revision 为 existing_entrypoints_only。只使用已有命令，不训练、不改代码或框架；固定 DDPM/100/10 与 H=1/E=1。
 
-清单共 27 个状态，A/B/C 各负责 9 个 S0；其中 step0 是初始化对照，两步 smoke 排除。五个预定代表参加 S1 和细化变体，其余中间权重保留在完整离线轨迹中。文件存在核对不等于成功加载或结果已完成。
+models.json 登记 27 项，evaluation_owner 各分 9 项。26 个扩散状态运行现有离线评估；原 token 仅参加闭环。offline_owner 为旧兼容字段，不能据此要求原 token 做扩散离线。
 
-这些 JSON 是规格和任务登记，不被现有训练/评估 CLI 自动读取；新增去噪 hook、扰动、候选策略与统一运行器仍待实现。原扩散离线和标准在线入口可用。没有新训练、结构对比、扩散步数实验或多步控制任务。
+shared/ 的 S0/S1 是共同离线/闭环定义。a/b/c 的第 1 项为各自离线、第 2 项为闭环分片、第 3 项为结果整理，表示分工步骤而非新方法。清单不由现有 CLI 自动读取，不安排新运行器。
 
-所有新结果先为 not_run，按照[协议](../../docs/experiments/protocol.md)与[接口](../../docs/design/interfaces.md)执行。模型路径可在运行清单提供本机映射，禁止提交模型权重和原始大数据。
+完整约定见[团队分工](../../docs/team/README.md)与[测试协议](../../docs/experiments/protocol.md)。当前没有新增正式评测结果。

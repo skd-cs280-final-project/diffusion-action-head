@@ -16,7 +16,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": false
     },
     {
       "id": "diffusion_head_best",
@@ -34,7 +36,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_init",
@@ -53,7 +57,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_001000",
@@ -72,7 +78,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_002000",
@@ -91,7 +99,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_step_003000",
@@ -110,7 +120,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_004000",
@@ -129,7 +141,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_005000",
@@ -148,7 +162,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_step_006000",
@@ -167,7 +183,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_007000",
@@ -186,7 +204,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_008000",
@@ -205,7 +225,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_step_009000",
@@ -224,7 +246,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_010000",
@@ -243,7 +267,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_011000",
@@ -262,7 +288,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_step_012000",
@@ -281,7 +309,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_013000",
@@ -300,7 +330,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_014000",
@@ -319,7 +351,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_step_015000",
@@ -338,7 +372,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_016000",
@@ -357,7 +393,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_017000",
@@ -376,7 +414,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_step_018000",
@@ -395,7 +435,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_019000",
@@ -414,7 +456,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_020000",
@@ -433,7 +477,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_step_021000",
@@ -452,7 +498,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     },
     {
       "id": "joint_step_022000",
@@ -471,7 +519,9 @@
       ],
       "offline_owner": "A",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "A",
+      "offline_supported": true
     },
     {
       "id": "joint_step_023000",
@@ -490,7 +540,9 @@
       ],
       "offline_owner": "B",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "B",
+      "offline_supported": true
     },
     {
       "id": "joint_final",
@@ -509,7 +561,9 @@
       ],
       "offline_owner": "C",
       "availability": "local_files_present",
-      "independent_training_seed": false
+      "independent_training_seed": false,
+      "evaluation_owner": "C",
+      "offline_supported": true
     }
   ],
   "core_model_ids": [
@@ -522,5 +576,6 @@
   "excluded": [
     "checkpoints/joint_smoke_20261103 and its best/checkpoint-2 copies"
   ],
-  "note": "Step 0 is an initialization control. Periodic joint checkpoints share one training run; they are not independent training replicas."
+  "note": "Step 0 is an initialization control. Periodic joint checkpoints share one training run; they are not independent training replicas.",
+  "assignment_note": "evaluation_owner is current ownership; offline_owner retained for compatibility only. A: 8 diffusion offline + token closed-loop reference, B/C: 9 diffusion offline each. No token offline adapter development."
 }
