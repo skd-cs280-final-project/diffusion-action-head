@@ -1,9 +1,9 @@
-# 课程实验规格
+# 推理实验规格 v2
 
-`protocol.json` 是固定控制变量；`a/experiments.json`、`b/experiments.json` 和 `eval/experiments.json` 分别登记 A/B/C 任务。
+`protocol.json` 固定不训练/不更新权重、DDPM/100/10、H=1/E=1；`models.json` 登记全部现有正式检查点与 S0 离线负责人。`shared/experiments.json` 是共同任务，`a/`、`b/`、`c/` 分别登记三人本线实验。
 
-这些文件用于分工和复现记录，**不是现有训练脚本自动读取的配置**。A0 可按[运行指南](../../docs/guides/training_and_evaluation.md)调用现有 CLI。A1–A3、B1–B4 的模型/序列接口仍待对应成员实现，不能仅通过改 JSON 运行。
+清单共 27 个状态，A/B/C 各负责 9 个 S0；其中 step0 是初始化对照，两步 smoke 排除。五个预定代表参加 S1 和细化变体，其余中间权重保留在完整离线轨迹中。文件存在核对不等于成功加载或结果已完成。
 
-扩散模型统一固定 DDPM、100 个训练噪声步和 10 步推理去噪。没有扩散步数或采样器对比实验。`H` 是动作预测长度，`E` 是每次重新决策前执行的动作数。
+这些 JSON 是规格和任务登记，不被现有训练/评估 CLI 自动读取；新增去噪 hook、扰动、候选策略与统一运行器仍待实现。原扩散离线和标准在线入口可用。没有新训练、结构对比、扩散步数实验或多步控制任务。
 
-`implementation_status` 描述代码能力，`run_status` 描述本次课程正式运行；历史模型已完成不等于课程 A0 已完成。B0 引用 A0，B4 复用 B1 权重，不新增训练。
+所有新结果先为 not_run，按照[协议](../../docs/experiments/protocol.md)与[接口](../../docs/design/interfaces.md)执行。模型路径可在运行清单提供本机映射，禁止提交模型权重和原始大数据。

@@ -1,7 +1,12 @@
-# 成员 C 课程评估工作区
+# 三人推理实验工作区
 
-这里归属模型无关评估、任务清单、配对统计、成本测量和作图。当前目录提供运行记录模板，不宣称已实现新的多模型评估器。
+| 子目录 | 负责人 | 内容 |
+| --- | --- | --- |
+| `generation/` | A | 去噪轨迹、候选采样、随机性 |
+| `conditions/` | B | 图像/语言变换、观测清单 |
+| `selection/` | C | 多候选选择、成本测量 |
+| `shared/` | 三人分担 | 模型预检、任务分片、指标与记录 |
 
-现有离线入口为 [eval_diffusion_head.py](../../src/eval_diffusion_head.py)，专用于扩散；现有闭环入口为 [eval_aerovla.sh](../../scripts/eval_aerovla.sh)。C 在[接口约定](../../docs/design/interfaces.md)确定后接入新增模型。
+各人完成自己的离线和闭环，不集中交给 C。当前目录是开发边界与模板，新增工具尚待实现。已有 [离线入口](../../src/eval_diffusion_head.py) 支持扩散，原 token 模型仍需共同指标适配；已有 [闭环入口](../../scripts/eval_aerovla.sh) 支持标准策略。
 
-复制 `run_manifest.example.json` 到本地结果目录并填写真实值；示例中的 null / planned 不是结果。完整权重、图像和日志不提交此目录。协议见[实验说明](../../docs/experiments/protocol.md)。
+复制 run_manifest.example.json 到本地结果目录，填真实模型/哈希/任务/种子/变体/成本，未测量项留 null。共同原始结果只生成一次，按模型和输入一致的条件复用。详见[团队分工](../../docs/team/README.md)。

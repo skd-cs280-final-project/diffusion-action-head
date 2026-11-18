@@ -1,18 +1,25 @@
 {
   "status": "passed",
   "date": "2026-11-18",
-  "scope": "repository_reorganization",
+  "scope": "pretrained_inference_plan_v2_documentation_and_specifications",
   "pytest": {
     "passed": 184,
     "warnings": 4,
-    "seconds": 15.17,
+    "seconds": 6.71,
     "environment": "existing aero_vla Python 3.10 / torch 2.1.2+cu121",
-    "cuda_visible_devices": ""
+    "cuda_visible_devices": "",
+    "execution_location": "isolated publication checkout"
   },
   "repository_check": {
-    "experiments": 10,
-    "markdown_documents": 33,
-    "shell_examples_checked": 15,
+    "experiments": 11,
+    "registered_models": 27,
+    "offline_assignments": {
+      "A": 9,
+      "B": 9,
+      "C": 9
+    },
+    "markdown_documents": 36,
+    "shell_examples_checked": 9,
     "missing_historical_local_links": 32,
     "errors": []
   },
@@ -24,15 +31,45 @@
   "publication_checkout": {
     "pytest_passed": 184,
     "pytest_warnings": 4,
-    "seconds": 6.68,
+    "seconds": 6.71,
     "external_model_and_dataset_directories_present": false,
     "repository_check": {
-      "experiments": 10,
-      "markdown_documents": 33,
-      "shell_examples_checked": 15,
+      "experiments": 11,
+      "registered_models": 27,
+      "offline_assignments": {
+        "A": 9,
+        "B": 9,
+        "C": 9
+      },
+      "markdown_documents": 36,
+      "shell_examples_checked": 9,
       "missing_historical_local_links": 90,
       "errors": []
     }
   },
-  "test_file_cleanup": "Removed excess trailing blank lines in two previously untracked test files; AST unchanged."
+  "test_file_cleanup": "Removed excess trailing blank lines in two previously untracked test files; AST unchanged.",
+  "previous_reorganization_validation": {
+    "pytest": {
+      "passed": 184,
+      "warnings": 4,
+      "seconds": 15.17,
+      "environment": "existing aero_vla Python 3.10 / torch 2.1.2+cu121",
+      "cuda_visible_devices": ""
+    },
+    "publication_checkout": {
+      "pytest_passed": 184,
+      "pytest_warnings": 4,
+      "seconds": 6.68,
+      "external_model_and_dataset_directories_present": false,
+      "repository_check": {
+        "experiments": 10,
+        "markdown_documents": 33,
+        "shell_examples_checked": 15,
+        "missing_historical_local_links": 90,
+        "errors": []
+      }
+    }
+  },
+  "new_inference_experiments_run": false,
+  "weight_inventory_check": "metadata and required-file existence only; no full tensor reload or artifact hash verification"
 }

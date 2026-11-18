@@ -1,43 +1,51 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "example_only": true,
+  "protocol_version": 2,
   "run_id": null,
   "experiment_id": null,
+  "owner": null,
   "status": "planned",
+  "training_performed": false,
   "code_commit": null,
-  "protocol_version": 1,
-  "training": {
-    "seed": null,
-    "budget": null,
-    "actual_optimizer_steps": null,
-    "sample_exposures": null
+  "model": {
+    "registry_id": null,
+    "checkpoint_path": null,
+    "checkpoint_sha256_manifest": null,
+    "base_model": null,
+    "original_adapter": null,
+    "checkpoint_training_stage": null,
+    "checkpoint_step": null
   },
   "data": {
-    "train_json_sha256": null,
+    "data_json_sha256": null,
     "split_json_sha256": null,
-    "episode_manifest_sha256": null
+    "observation_manifest_sha256": null,
+    "episode_manifest_sha256": null,
+    "shard_id": null
   },
-  "checkpoint": {
-    "path": null,
-    "sha256_manifest": null,
-    "base_model": null,
-    "original_adapter": null
-  },
-  "model": {
-    "model_type": null,
-    "action_horizon": null,
-    "execution_horizon": null,
-    "diffusion_sampler": null,
-    "num_train_timesteps": null,
-    "num_inference_steps": null
+  "inference": {
+    "action_horizon": 1,
+    "execution_horizon": 1,
+    "sampler": "DDPM",
+    "num_train_timesteps": 100,
+    "num_inference_steps": 10,
+    "candidate_count": 1,
+    "selection_rule": "single",
+    "input_variant": "identity",
+    "run_seed": null,
+    "episode_seed_derivation": null,
+    "sampling_rng": null,
+    "transform_rng": null
   },
   "evaluation": {
-    "seed": null,
     "hardware": null,
     "requested_episodes": null,
     "completed_episodes": null,
     "resumed": false,
-    "rng_restored": false
+    "rng_restored": false,
+    "gpu_hours": null,
+    "simulator_hours": null
   },
   "metrics": null,
   "artifacts": {},

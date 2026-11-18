@@ -1,0 +1,47 @@
+{
+  "protocol": "../protocol.json",
+  "specification_only": true,
+  "experiments": [
+    {
+      "id": "C1",
+      "owner": "C",
+      "model_selector": "core_diffusion",
+      "purpose": "single sample versus normalized-action medoid from N=4/8 candidates",
+      "candidate_counts": [
+        1,
+        4,
+        8
+      ],
+      "implementation_status": "selection_adapter_needed",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "run_status": "not_run",
+      "requires_training": false
+    },
+    {
+      "id": "C2",
+      "owner": "C",
+      "model_selector": "core_diffusion",
+      "purpose": "LAND vote plus moving-candidate medoid at fixed N=4",
+      "candidate_counts": [
+        4
+      ],
+      "implementation_status": "selection_adapter_needed",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "run_status": "not_run",
+      "requires_training": false
+    },
+    {
+      "id": "C3",
+      "owner": "C",
+      "model_selector": "core",
+      "purpose": "paired navigation, backbone/head/end-to-end timing and task cost",
+      "implementation_status": "timing_and_summary_needed",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "run_status": "not_run",
+      "requires_training": false
+    }
+  ]
+}

@@ -3,64 +3,37 @@
   "specification_only": true,
   "experiments": [
     {
-      "id": "B0",
-      "owner": "B",
-      "model": "transformer_diffusion",
-      "conditioning": "token_cross_attention",
-      "action_horizon": 1,
-      "execution_horizon": 1,
-      "action_attention": "causal",
-      "implementation_status": "available",
-      "run_status": "not_run",
-      "checkpoint_reference": "A0"
-    },
-    {
       "id": "B1",
       "owner": "B",
-      "model": "transformer_diffusion",
-      "conditioning": "token_cross_attention",
-      "action_horizon": 4,
+      "model_selector": "core",
+      "purpose": "front/down information ablation with layout-preserving masks",
+      "implementation_status": "input_transform_needed",
+      "action_horizon": 1,
       "execution_horizon": 1,
-      "action_attention": "causal",
-      "implementation_status": "planned",
       "run_status": "not_run",
-      "checkpoint_reference": null
+      "requires_training": false
     },
     {
       "id": "B2",
       "owner": "B",
-      "model": "transformer_diffusion",
-      "conditioning": "token_cross_attention",
-      "action_horizon": 8,
+      "model_selector": "core",
+      "purpose": "frozen visual corruption strengths and severity analysis",
+      "implementation_status": "input_transform_needed",
+      "action_horizon": 1,
       "execution_horizon": 1,
-      "action_attention": "causal",
-      "implementation_status": "planned",
       "run_status": "not_run",
-      "checkpoint_reference": null
+      "requires_training": false
     },
     {
       "id": "B3",
       "owner": "B",
-      "model": "transformer_diffusion",
-      "conditioning": "token_cross_attention",
-      "action_horizon": 4,
+      "model_selector": "core",
+      "purpose": "meaning-preserving paraphrases and separate direction/object ablations",
+      "implementation_status": "prompt_transform_needed",
+      "action_horizon": 1,
       "execution_horizon": 1,
-      "action_attention": "bidirectional",
-      "implementation_status": "planned",
       "run_status": "not_run",
-      "checkpoint_reference": null
-    },
-    {
-      "id": "B4",
-      "owner": "B",
-      "model": "transformer_diffusion",
-      "conditioning": "token_cross_attention",
-      "action_horizon": 4,
-      "execution_horizon": 2,
-      "action_attention": "causal",
-      "implementation_status": "planned",
-      "run_status": "not_run",
-      "checkpoint_reference": "B1"
+      "requires_training": false
     }
   ]
 }

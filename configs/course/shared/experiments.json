@@ -1,0 +1,28 @@
+{
+  "protocol": "../protocol.json",
+  "specification_only": true,
+  "experiments": [
+    {
+      "id": "S0",
+      "owner": "shared",
+      "model_selector": "all",
+      "purpose": "all-checkpoint offline first-action and LAND evaluation",
+      "implementation_status": "diffusion_cli_available_token_adapter_needed",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "run_status": "not_run",
+      "requires_training": false
+    },
+    {
+      "id": "S1",
+      "owner": "shared",
+      "model_selector": "core",
+      "purpose": "standard closed-loop reference, disjoint episode shards per member",
+      "implementation_status": "standard_eval_available_seed_and_sharding_wrapper_needed",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "run_status": "not_run",
+      "requires_training": false
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 {
-  "protocol_version": 1,
-  "scope": "diffusion_action_head_and_sequence_policy",
+  "protocol_version": 2,
+  "scope": "pretrained_diffusion_policy_inference",
+  "training_allowed": false,
+  "weight_updates_allowed": false,
   "diffusion": {
     "sampler": "DDPM",
     "num_train_timesteps": 100,
@@ -15,9 +17,17 @@
     "history_length": 0,
     "future_observations": false
   },
-  "backbone": {
-    "frozen": true,
-    "joint_lora": false
+  "execution": {
+    "action_horizon": 1,
+    "execution_horizon": 1,
+    "legacy_controller_unchanged": true
+  },
+  "checkpoints": {
+    "registry": "models.json",
+    "include_joint_trained_models": true,
+    "offline_coverage": "all_registered_models",
+    "formal_closed_loop_coverage": "predeclared_core_models",
+    "smoke_models_are_performance_baselines": false
   },
   "action_order": [
     "fwd",
@@ -25,29 +35,27 @@
     "yaw",
     "land"
   ],
-  "training": {
-    "epochs": 5,
-    "batch_size": 2,
-    "gradient_accumulation_steps": 8,
-    "learning_rate": 0.0001,
-    "weight_decay": 0.01,
-    "warmup_ratio": 0.03,
-    "max_grad_norm": 1.0,
-    "seeds": [
+  "evaluation": {
+    "data_json": "data/aerovla_train_dataset.json",
+    "split_json": "data/continuous_split_seed42.json",
+    "offline_batch_size": 2,
+    "primary_inference_seed": 42,
+    "repeated_inference_seeds": [
       42,
       43,
       44
     ],
-    "checkpoint_selection": "fixed_budget_final",
-    "train_json": "data/aerovla_train_dataset.json",
-    "split_json": "data/continuous_split_seed42.json"
-  },
-  "evaluation": {
-    "offline_seed": 42,
-    "offline_batch_size": 2,
-    "closed_loop_seed": 100,
+    "closed_loop_primary_seed": 100,
+    "closed_loop_repeated_seeds": [
+      100,
+      101,
+      102
+    ],
     "development_manifest": null,
     "final_manifest": null,
-    "manifest_status": "must_freeze_before_experiments"
+    "manifest_status": "must_freeze_before_experiments",
+    "common_closed_loop_assignment": "episode-level disjoint A/B/C shards, identical shard tasks for every core model",
+    "per_member_variant_closed_loop_budget": "up to 3 frozen variant conditions on the same final task list; start with 1 and pilot timing",
+    "no_independent_training_repeats": true
   }
 }

@@ -1,34 +1,21 @@
-# 可选历史输入与联合 LoRA
+# 已有训练与扩展实现的来源
 
-这些实现来自课程重组之前，保留用于已有检查点兼容与后续研究。课程主实验使用 history_length=0、冻结骨干，不包含这些变量。
+当前阶段只做已训练模型推理；这里解释权重来源和兼容边界，不安排新训练。联合训练模型已纳入[当前实验协议](../experiments/protocol.md)，数值历史扩展不作为本阶段变量。
+
+## 仅动作头训练
+
+`checkpoints/best` 来自冻结骨干、训练扩散动作头的阶段。保留 `src/train_diffusion_head.py` 和对应脚本用于解释与复现历史实现；当前三人无需重新执行。参数和当时验证范围见[历史训练记录](../archive/experiments/full_training_20261010.md)。
+
+## 已完成的联合 LoRA
+
+联合阶段从已训练扩散模型恢复，训练视觉与 Llama 的 LoRA、projector 和扩散头，基座主体参数仍冻结，不是全部 7B 参数全量微调。正式运行完成 1 epoch、23,080 次更新，保存中间检查点与 final。v2 必须加载对应 `joint_adapter.pt` 和动作头，仍依赖基座与原 adapter。
+
+联合目录 `best/` 依据 noise MSE 选择，实际保留 step 0；它是初始化对照，不是联合更新后的最佳检查点。每 1,000 步的检查点来自同一次训练，不是不同随机种子训练。当前登记全部正式检查点做离线评估，并预先指定 step 1,000 和 final 等代表模型参加闭环。
+
+结果与口径见[联合训练归档](../archive/experiments/joint_lora_20261103.md)和[281 条闭环](../archive/experiments/nyc_joint_final_seen281_20261104.md)。旧结果不等于当前新实验已完成，也不保证联合模型所有指标更好。
 
 ## UAV 数值历史
 
-`--history-length 4` 表示当前及最多三个过去的观测；1 为当前状态，0 为关闭。状态进入动作头，不进入 Llama；没有历史 RGB 或长期语义记忆。详细字段、坐标和缺失值规则见[历史设计](../archive/design/diffusion_action_head.md#uav-history)。
+实现支持历史状态进入动作头，不进入 Llama；没有历史 RGB 或长期语义记忆。详细字段与坐标见[历史设计](../archive/design/diffusion_action_head.md#uav-history)。当前使用模型的 history_length=0，不能直接打开 K=4 当成无需训练的对照。已有状态审计和两步 smoke 只证明流程，不作为当前性能模型。
 
-```bash
-PYTHON=python bash scripts/train_diffusion_head.sh   --history-length 4 --check-data --max-samples 4 --max-val-samples 8 --num-workers 0
-PYTHON=python CUDA_VISIBLE_DEVICES=0 HISTORY_LENGTH=4 SMOKE_OUTPUT_DIR=./checkpoints/history_smoke_new bash scripts/smoke_diffusion_pipeline.sh
-```
-
-需要原始逐帧 log；评估从 checkpoint 自动恢复历史长度。K=0 权重不能直接当作 K=4；历史训练入口没有自动扩展旧权重的 warm-start。状态日志缺速度/时间时通过有效位表达，K=1 的相对位置恒为零。
-
-静态审计读取保留的源清单：
-
-```bash
-python scripts/audit_uav_history.py --output-dir ./eval_results/history_audit_new
-```
-
-历史 smoke 与特征审计只证明流程，不证明新分支闭环收益。
-
-## 联合 LoRA
-
-从已训练扩散 checkpoint 恢复，新增视觉/Llama LoRA，同时训练 projector 与动作头。继承原头的 H 和历史配置，不属于精确 optimizer/RNG 续训。
-
-```bash
-PYTHON=python CUDA_VISIBLE_DEVICES=0,1 NPROC_PER_NODE=2 bash scripts/train_diffusion_joint.sh   --checkpoint ./checkpoints/course_A0_seed42   --model-path ./openvla-7b --adapter-path ./checkpoints/aero_vla   --output-dir ./checkpoints/joint_extension_new   --epochs 1 --batch-size 2 --gradient-accumulation-steps 4 --eval-batch-size 2   --lora-rank 16 --lora-alpha 32   --lora-lr 2e-5 --projector-lr 1e-5 --head-lr 1e-5   --max-val-samples 512 --eval-steps 1000 --save-steps 1000
-```
-
-联合入口中 `--max-val-samples 0` 表示完整 val，单步训练/离线入口则要求正数或省略。step 0 先验证，best 可能停在初始化。v2 保存 joint_adapter.pt 和动作头，仍依赖基座及原 adapter。
-
-`scripts/smoke_diffusion_joint.sh` 固定使用 `checkpoints/best`，解释器需显式设置 `PYTHON=python`；使用其他初始化权重时改用上面的正式入口并加小样本/max-steps 参数。结果参见[联合训练归档](../archive/experiments/joint_lora_20261103.md)和[281 条闭环](../archive/experiments/nyc_joint_final_seen281_20261104.md)。
+现有训练和 smoke 脚本保留，但 smoke 会更新参数，因此不属于本次“只推理”的验收入口。推理运行方式见[指南](training_and_evaluation.md)。

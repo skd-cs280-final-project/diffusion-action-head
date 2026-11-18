@@ -3,52 +3,37 @@
   "specification_only": true,
   "experiments": [
     {
-      "id": "A0",
-      "owner": "A",
-      "model": "transformer_diffusion",
-      "conditioning": "token_cross_attention",
-      "action_horizon": 1,
-      "execution_horizon": 1,
-      "action_attention": "causal",
-      "implementation_status": "available",
-      "run_status": "not_run",
-      "checkpoint_reference": null
-    },
-    {
       "id": "A1",
       "owner": "A",
-      "model": "transformer_regression",
-      "conditioning": "token_cross_attention",
+      "model_selector": "diffusion_all",
+      "purpose": "fixed 10-step denoising traces on a frozen observation subset",
+      "implementation_status": "trace_logging_needed",
       "action_horizon": 1,
       "execution_horizon": 1,
-      "action_attention": "single_step",
-      "implementation_status": "planned",
       "run_status": "not_run",
-      "checkpoint_reference": null
+      "requires_training": false
     },
     {
       "id": "A2",
       "owner": "A",
-      "model": "mlp_diffusion",
-      "conditioning": "pooled_modulation",
+      "model_selector": "diffusion_all",
+      "purpose": "fixed-input action distributions across inference noise seeds",
+      "implementation_status": "sampling_harness_needed",
       "action_horizon": 1,
       "execution_horizon": 1,
-      "action_attention": "not_applicable",
-      "implementation_status": "planned",
       "run_status": "not_run",
-      "checkpoint_reference": null
+      "requires_training": false
     },
     {
       "id": "A3",
       "owner": "A",
-      "model": "transformer_diffusion",
-      "conditioning": "pooled_modulation",
+      "model_selector": "core_diffusion",
+      "purpose": "repeated standard-policy rollouts and action instability failure analysis",
+      "implementation_status": "seed_control_needed",
       "action_horizon": 1,
       "execution_horizon": 1,
-      "action_attention": "causal",
-      "implementation_status": "planned",
       "run_status": "not_run",
-      "checkpoint_reference": null
+      "requires_training": false
     }
   ]
 }

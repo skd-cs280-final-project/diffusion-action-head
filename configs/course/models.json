@@ -1,0 +1,526 @@
+{
+  "inventory_date": "2026-11-18",
+  "weights_distributed_in_git": false,
+  "check_scope": "metadata and required-file existence, not tensor reload or artifact hashing",
+  "models": [
+    {
+      "id": "aerovla_original",
+      "path": "checkpoints/aero_vla",
+      "family": "token",
+      "stage": "original_adapter",
+      "step": null,
+      "role": "core_reference",
+      "required_files": [
+        "adapter_config.json",
+        "adapter_model.safetensors"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "diffusion_head_best",
+      "path": "checkpoints/best",
+      "family": "diffusion",
+      "stage": "head_only",
+      "step": 115400,
+      "role": "core_reference",
+      "format_version": 1,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_init",
+      "path": "checkpoints/joint_lora_stage2_20261103/best",
+      "family": "diffusion",
+      "stage": "joint_initialization",
+      "step": 0,
+      "role": "initialization_control",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_001000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-1000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 1000,
+      "role": "core_candidate",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_002000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-2000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 2000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_003000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-3000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 3000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_004000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-4000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 4000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_005000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-5000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 5000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_006000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-6000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 6000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_007000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-7000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 7000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_008000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-8000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 8000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_009000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-9000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 9000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_010000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-10000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 10000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_011000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-11000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 11000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_012000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-12000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 12000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_013000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-13000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 13000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_014000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-14000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 14000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_015000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-15000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 15000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_016000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-16000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 16000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_017000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-17000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 17000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_018000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-18000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 18000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_019000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-19000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 19000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_020000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-20000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 20000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_021000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-21000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 21000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_022000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-22000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 22000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "A",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_step_023000",
+      "path": "checkpoints/joint_lora_stage2_20261103/checkpoint-23000",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 23000,
+      "role": "trajectory_checkpoint",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "B",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    },
+    {
+      "id": "joint_final",
+      "path": "checkpoints/joint_lora_stage2_20261103",
+      "family": "diffusion",
+      "stage": "joint_lora",
+      "step": 23080,
+      "role": "core_reference",
+      "format_version": 2,
+      "action_horizon": 1,
+      "history_length": 0,
+      "required_files": [
+        "diffusion_head.pt",
+        "diffusion_config.json",
+        "joint_adapter.pt"
+      ],
+      "offline_owner": "C",
+      "availability": "local_files_present",
+      "independent_training_seed": false
+    }
+  ],
+  "core_model_ids": [
+    "aerovla_original",
+    "diffusion_head_best",
+    "joint_init",
+    "joint_step_001000",
+    "joint_final"
+  ],
+  "excluded": [
+    "checkpoints/joint_smoke_20261103 and its best/checkpoint-2 copies"
+  ],
+  "note": "Step 0 is an initialization control. Periodic joint checkpoints share one training run; they are not independent training replicas."
+}

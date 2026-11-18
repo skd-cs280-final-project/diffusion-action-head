@@ -4,6 +4,7 @@ Uses only the standard library. Historical archive links to local run artifacts
 are reported separately; no model, data, GPU or simulator is loaded.
 """
 from pathlib import Path
+from collections import Counter
 import ast
 import json
 import re
@@ -20,30 +21,51 @@ def check():
                 'num_inference_steps': 10, 'sweep_allowed': False}
     if protocol.get('diffusion') != expected:
         errors.append('Course diffusion configuration must remain fixed at DDPM/100/10.')
-    if protocol['inputs']['history_length'] != 0 or not protocol['backbone']['frozen']:
-        errors.append('Main experiments require no numeric history and a frozen backbone.')
+    if (protocol.get('protocol_version') != 2 or
+            protocol.get('training_allowed') is not False or
+            protocol.get('weight_updates_allowed') is not False):
+        errors.append('Protocol v2 requires pretrained inference without weight updates.')
+    if (protocol['inputs']['history_length'] != 0 or
+            protocol['execution']['action_horizon'] != 1 or
+            protocol['execution']['execution_horizon'] != 1):
+        errors.append('Main experiments require H=1, E=1 and no numeric history.')
+    registry = json.loads((ROOT / 'configs/course' / protocol['checkpoints']['registry']).read_text())
+    models = registry['models']
+    model_ids = [model['id'] for model in models]
+    if len(model_ids) != len(set(model_ids)) or not set(registry['core_model_ids']) <= set(model_ids):
+        errors.append('Duplicate model IDs or unknown core models.')
+    assignments = Counter(model['offline_owner'] for model in models)
+    if set(assignments) != {'A', 'B', 'C'} or max(assignments.values()) - min(assignments.values()) > 1:
+        errors.append('All-model offline assignments must be balanced across A/B/C.')
+    for model in models:
+        if 'smoke' in model['path']:
+            errors.append('Smoke checkpoints cannot be performance baselines.')
+        if model['family'] == 'diffusion' and (model.get('action_horizon') != 1 or model.get('history_length') != 0):
+            errors.append(f'Unexpected pretrained architecture: {model["id"]}')
+        if model['id'] == 'joint_init' and (model['step'] != 0 or model['role'] != 'initialization_control'):
+            errors.append('Joint best is a step-0 initialization control.')
+    # Local model files are intentionally not required in a published code checkout.
     rows = []
-    for folder in ('a', 'b', 'eval'):
+    for folder in ('shared', 'a', 'b', 'c'):
         path = ROOT / 'configs/course' / folder / 'experiments.json'
         spec = json.loads(path.read_text())
         if not spec.get('specification_only') or not (path.parent / spec['protocol']).is_file():
             errors.append(f'Invalid specification/protocol reference: {path.relative_to(ROOT)}')
         rows.extend(spec['experiments'])
     ids = [row['id'] for row in rows]
-    if len(ids) != len(set(ids)) or set(ids) != {'A0', 'A1', 'A2', 'A3', 'B0', 'B1', 'B2', 'B3', 'B4', 'C0'}:
+    if len(ids) != len(set(ids)) or set(ids) != {'S0', 'S1', 'A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3'}:
         errors.append('Experiment IDs are incomplete or duplicated.')
     for row in rows:
-        if not 1 <= row['execution_horizon'] <= row['action_horizon']:
+        if row['execution_horizon'] != 1 or row['action_horizon'] != 1:
             errors.append(f'Invalid H/E for {row["id"]}')
-        if row.get('checkpoint_reference') and row['checkpoint_reference'] not in ids:
-            errors.append(f'Unknown checkpoint reference for {row["id"]}')
-    by_id = {row['id']: row for row in rows}
-    if by_id.get('B0', {}).get('checkpoint_reference') != 'A0' or by_id.get('B4', {}).get('checkpoint_reference') != 'B1':
-        errors.append('B0 must reuse A0; B4 must reuse B1.')
+        if row.get('requires_training') is not False:
+            errors.append(f'Training is outside the current scope: {row["id"]}')
+        if row.get('model_selector') not in {'all', 'diffusion_all', 'core', 'core_diffusion'}:
+            errors.append(f'Unknown model selector: {row["id"]}')
 
     documents = [ROOT / 'README.md']
-    for directory in ('docs', 'configs/course', 'src/course_heads', 'src/course_sequence',
-                      'evaluation/course', 'scripts/course_train', 'tools', 'third_party', 'data'):
+    for directory in ('docs', 'configs/course', 'evaluation/course',
+                      'scripts/course_infer', 'tools', 'third_party', 'data'):
         documents.extend((ROOT / directory).rglob('*.md'))
     shell_examples = 0
     missing_historical = []
@@ -80,7 +102,9 @@ def check():
                 ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
             except (SyntaxError, UnicodeDecodeError) as exc:
                 errors.append(f'Python syntax: {exc}')
-    print(json.dumps({'experiments': len(rows), 'markdown_documents': len(set(documents)),
+    print(json.dumps({'experiments': len(rows), 'registered_models': len(models),
+                      'offline_assignments': dict(assignments),
+                      'markdown_documents': len(set(documents)),
                       'shell_examples_checked': shell_examples,
                       'missing_historical_local_links': len(missing_historical),
                       'errors': errors}, ensure_ascii=False, indent=2))
