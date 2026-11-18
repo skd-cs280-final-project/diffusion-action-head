@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "date": "2026-11-18",
-  "scope": "detailed_existing_entrypoint_closed_loop_assignments",
+  "scope": "inference_execution_metrics_and_visualization_documentation",
   "pytest": {
     "passed": 184,
     "warnings": 4,
@@ -18,8 +18,8 @@
       "B": 9,
       "C": 9
     },
-    "markdown_documents": 41,
-    "shell_examples_checked": 173,
+    "markdown_documents": 43,
+    "shell_examples_checked": 301,
     "missing_historical_local_links": 32,
     "errors": []
   },
@@ -41,8 +41,8 @@
         "B": 9,
         "C": 9
       },
-      "markdown_documents": 41,
-      "shell_examples_checked": 173,
+      "markdown_documents": 43,
+      "shell_examples_checked": 301,
       "missing_historical_local_links": 90,
       "errors": []
     },
@@ -115,5 +115,14 @@
     "new_training_run": false,
     "new_formal_inference_run": false,
     "warning": "Reference-frame workload is a proxy. No true model/renderer runtime or full weight hashing has been performed."
+  },
+  "handbook_validation": {
+    "embedded_python_snippets_syntax_checked": 2,
+    "offline_template_models": 26,
+    "figure_deliverables": 11,
+    "separated_metric_blocks": 125,
+    "templates_contain_no_results": true,
+    "code_changes": false,
+    "new_model_or_simulator_runs": false
   }
 }

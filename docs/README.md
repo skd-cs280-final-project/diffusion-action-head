@@ -4,6 +4,8 @@
 
 | 文档 | 内容 |
 | --- | --- |
+| [执行与记录手册](guides/inference_test_handbook.md) | 开始前检查、预检、正式运行、异常恢复、指标与交付 |
+| [可视化手册](guides/inference_visualization.md) | 必做图、案例选择、绘制步骤与图注 |
 | [课题简介](course_project.md) | 课题题目、研究问题与报告提纲 |
 | [资源准备](team/resources.md) | 本机资源副本与迁移 |
 | [项目首页](../README.md) | 范围与快速入口 |

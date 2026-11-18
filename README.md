@@ -28,6 +28,8 @@
 
 ## 文档
 
+优先阅读[推理测试执行与记录手册](docs/guides/inference_test_handbook.md)和[可视化要求](docs/guides/inference_visualization.md)，再按个人命令页执行。
+
 - [推理指南](docs/guides/training_and_evaluation.md)：已有命令、资源与路径。
 - [测试协议](docs/experiments/protocol.md)：固定设置、模型和指标。
 - [已有动作头设计](docs/design/diffusion_action_head.md)：模型原理与代码位置。

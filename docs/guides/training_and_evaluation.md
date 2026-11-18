@@ -1,5 +1,7 @@
 # 已有模型推理与评估指南
 
+运行顺序、完整性核验、指标字段和异常处理统一按[执行手册](inference_test_handbook.md)；图表按[可视化手册](inference_visualization.md)。
+
 [项目首页](../../README.md) · [实验协议](../experiments/protocol.md) · [三人分工](../team/README.md)
 
 本阶段只加载已训练权重做推理，不启动训练或含参数更新的 smoke。以下命令从仓库根目录执行。[三人具体命令页](../team/README.md)已固定场景、模型、参数和端口，优先按个人命令执行。只使用已有评估和指标工具，不开发新入口。JSON 是任务清单，不是批量运行器。

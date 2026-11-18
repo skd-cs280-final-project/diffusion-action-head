@@ -11,7 +11,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "aerovla_original",
@@ -23,7 +29,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "aerovla_original",
@@ -35,7 +47,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "aerovla_original",
@@ -47,7 +65,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "diffusion_head_best",
@@ -59,7 +83,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "diffusion_head_best",
@@ -71,7 +101,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "diffusion_head_best",
@@ -83,7 +119,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "diffusion_head_best",
@@ -95,7 +137,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_init",
@@ -107,7 +155,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_init",
@@ -119,7 +173,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_init",
@@ -131,7 +191,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_init",
@@ -143,7 +209,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_step_001000",
@@ -155,7 +227,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_step_001000",
@@ -167,7 +245,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_step_001000",
@@ -179,7 +263,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_step_001000",
@@ -191,7 +281,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_final",
@@ -203,7 +299,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_final",
@@ -215,7 +317,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_final",
@@ -227,7 +335,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "model_id": "joint_final",
@@ -239,7 +353,13 @@
       "osr_percent": null,
       "spl_percent": null,
       "ne_m": null,
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     }
   ]
 }

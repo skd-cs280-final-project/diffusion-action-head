@@ -17,7 +17,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_TropicalIsland",
@@ -34,7 +40,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_TropicalIsland",
@@ -51,7 +63,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_TropicalIsland",
@@ -68,7 +86,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_TropicalIsland",
@@ -85,7 +109,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_TropicalIsland",
@@ -102,7 +132,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_TropicalIsland",
@@ -119,7 +155,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_TropicalIsland",
@@ -136,7 +178,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_TropicalIsland",
@@ -153,7 +201,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_TropicalIsland",
@@ -170,7 +224,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_TropicalIsland",
@@ -187,7 +247,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_TropicalIsland",
@@ -204,7 +270,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_TropicalIsland",
@@ -221,7 +293,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_TropicalIsland",
@@ -238,7 +316,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_TropicalIsland",
@@ -255,7 +339,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_object_valset_TropicalIsland",
@@ -272,7 +362,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_object_valset_TropicalIsland",
@@ -289,7 +385,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_object_valset_TropicalIsland",
@@ -306,7 +408,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_object_valset_TropicalIsland",
@@ -323,7 +431,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_object_valset_TropicalIsland",
@@ -340,7 +454,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_object_valset_TropicalIsland",
@@ -357,7 +477,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_object_valset_TropicalIsland",
@@ -374,7 +500,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_object_valset_TropicalIsland",
@@ -391,7 +523,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_object_valset_TropicalIsland",
@@ -408,7 +546,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_object_valset_TropicalIsland",
@@ -425,7 +569,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_object_valset_TropicalIsland",
@@ -442,7 +592,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_object_valset_TropicalIsland",
@@ -459,7 +615,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_object_valset_TropicalIsland",
@@ -476,7 +638,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_object_valset_TropicalIsland",
@@ -493,7 +661,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_object_valset_TropicalIsland",
@@ -510,7 +684,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_object_valset/TropicalIsland.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_Carla_Town04",
@@ -527,7 +707,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_Carla_Town04",
@@ -544,7 +730,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_Carla_Town04",
@@ -561,7 +753,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_Carla_Town04",
@@ -578,7 +776,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_Carla_Town04",
@@ -595,7 +799,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_Carla_Town04",
@@ -612,7 +822,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_Carla_Town04",
@@ -629,7 +845,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_Carla_Town04",
@@ -646,7 +868,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_Carla_Town04",
@@ -663,7 +891,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_Carla_Town04",
@@ -680,7 +914,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_Carla_Town04",
@@ -697,7 +937,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_Carla_Town04",
@@ -714,7 +960,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_Carla_Town04",
@@ -731,7 +983,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_Carla_Town04",
@@ -748,7 +1006,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_Carla_Town04",
@@ -765,7 +1029,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_object_valset_Carla_Town04",
@@ -782,7 +1052,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_object_valset_Carla_Town04",
@@ -799,7 +1075,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_object_valset_Carla_Town04",
@@ -816,7 +1098,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_object_valset_Carla_Town04",
@@ -833,7 +1121,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_object_valset_Carla_Town04",
@@ -850,7 +1144,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_object_valset_Carla_Town04",
@@ -867,7 +1167,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_object_valset_Carla_Town04",
@@ -884,7 +1190,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_object_valset_Carla_Town04",
@@ -901,7 +1213,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_object_valset_Carla_Town04",
@@ -918,7 +1236,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_object_valset_Carla_Town04",
@@ -935,7 +1259,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_object_valset_Carla_Town04",
@@ -952,7 +1282,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_object_valset_Carla_Town04",
@@ -969,7 +1305,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_object_valset_Carla_Town04",
@@ -986,7 +1328,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_object_valset_Carla_Town04",
@@ -1003,7 +1351,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_object_valset_Carla_Town04",
@@ -1020,7 +1374,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_object_valset/Carla_Town04.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_Carla_Town10HD",
@@ -1037,7 +1397,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_Carla_Town10HD",
@@ -1054,7 +1420,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_seen_valset_Carla_Town10HD",
@@ -1071,7 +1443,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_Carla_Town10HD",
@@ -1088,7 +1466,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_Carla_Town10HD",
@@ -1105,7 +1489,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_seen_valset_Carla_Town10HD",
@@ -1122,7 +1512,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_Carla_Town10HD",
@@ -1139,7 +1535,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_Carla_Town10HD",
@@ -1156,7 +1558,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_seen_valset_Carla_Town10HD",
@@ -1173,7 +1581,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_Carla_Town10HD",
@@ -1190,7 +1604,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_Carla_Town10HD",
@@ -1207,7 +1627,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_seen_valset_Carla_Town10HD",
@@ -1224,7 +1650,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_Carla_Town10HD",
@@ -1241,7 +1673,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_Carla_Town10HD",
@@ -1258,7 +1696,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_seen_valset_Carla_Town10HD",
@@ -1275,7 +1719,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/seen_valset/Carla_Town10HD.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_map_valset_ModularPark",
@@ -1292,7 +1742,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_map_valset_ModularPark",
@@ -1309,7 +1765,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_aerovla_original_unseen_map_valset_ModularPark",
@@ -1326,7 +1788,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/aerovla_original/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_map_valset_ModularPark",
@@ -1343,7 +1811,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_map_valset_ModularPark",
@@ -1360,7 +1834,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_diffusion_head_best_unseen_map_valset_ModularPark",
@@ -1377,7 +1857,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/diffusion_head_best/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_map_valset_ModularPark",
@@ -1394,7 +1880,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_map_valset_ModularPark",
@@ -1411,7 +1903,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_init_unseen_map_valset_ModularPark",
@@ -1428,7 +1926,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_init/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_map_valset_ModularPark",
@@ -1445,7 +1949,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_map_valset_ModularPark",
@@ -1462,7 +1972,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_step_001000_unseen_map_valset_ModularPark",
@@ -1479,7 +1995,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_step_001000/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_map_valset_ModularPark",
@@ -1496,7 +2018,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_map_valset_ModularPark",
@@ -1513,7 +2041,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "B_formal_joint_final_unseen_map_valset_ModularPark",
@@ -1530,7 +2064,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/b/formal/joint_final/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     }
   ]
 }

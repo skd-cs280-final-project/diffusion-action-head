@@ -1,0 +1,204 @@
+{
+  "example_only": true,
+  "note": "No figures/results have been generated. Fill working copies only after integrity checks. Videos are optional.",
+  "figures": [
+    {
+      "figure_id": "V01",
+      "kind": "overall_navigation",
+      "owners": [
+        "A"
+      ],
+      "required_content": "all/seen/unseen-object/unseen-map x M0-M4, SR/OSR/SPL/NE panels",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V02",
+      "kind": "scene_heatmaps",
+      "owners": [
+        "B"
+      ],
+      "required_content": "20 category/scene rows x 5 models, separate SR and SPL, n per cell",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V03",
+      "kind": "difficulty_comparison",
+      "owners": [
+        "C"
+      ],
+      "required_content": "easy/hard SR and SPL, full sample counts",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V04",
+      "kind": "joint_checkpoint_offline",
+      "owners": [
+        "A"
+      ],
+      "required_content": "25 joint states with step axis, head-only reference shown separately",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V05",
+      "kind": "land_confusion",
+      "owners": [
+        "B"
+      ],
+      "required_content": "M1-M4 count confusion matrices and supports",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V06_A",
+      "kind": "paired_trajectory_cases",
+      "owners": [
+        "A"
+      ],
+      "required_content": "at least two common-task UUID cases with five models and reference",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V06_B",
+      "kind": "paired_trajectory_cases",
+      "owners": [
+        "B"
+      ],
+      "required_content": "at least two common-task UUID cases with five models and reference",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V06_C",
+      "kind": "paired_trajectory_cases",
+      "owners": [
+        "C"
+      ],
+      "required_content": "at least two common-task UUID cases with five models and reference",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V07_A",
+      "kind": "case_keyframes",
+      "owners": [
+        "A"
+      ],
+      "required_content": "at least one front/down keyframe board linked to trajectory case",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V07_B",
+      "kind": "case_keyframes",
+      "owners": [
+        "B"
+      ],
+      "required_content": "at least one front/down keyframe board linked to trajectory case",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    },
+    {
+      "figure_id": "V07_C",
+      "kind": "case_keyframes",
+      "owners": [
+        "C"
+      ],
+      "required_content": "at least one front/down keyframe board linked to trajectory case",
+      "status": "not_run",
+      "source_run_ids": [],
+      "source_tables": [],
+      "sample_counts": null,
+      "selection_rule": null,
+      "units": null,
+      "aggregation_method": null,
+      "exports": [],
+      "caption": null,
+      "reviewer": null
+    }
+  ]
+}

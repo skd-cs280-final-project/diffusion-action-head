@@ -17,7 +17,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_NewYorkCity",
@@ -34,7 +40,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_NewYorkCity",
@@ -51,7 +63,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_NewYorkCity",
@@ -68,7 +86,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_NewYorkCity",
@@ -85,7 +109,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_NewYorkCity",
@@ -102,7 +132,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_NewYorkCity",
@@ -119,7 +155,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_NewYorkCity",
@@ -136,7 +178,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_NewYorkCity",
@@ -153,7 +201,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_NewYorkCity",
@@ -170,7 +224,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_NewYorkCity",
@@ -187,7 +247,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_NewYorkCity",
@@ -204,7 +270,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_NewYorkCity",
@@ -221,7 +293,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_NewYorkCity",
@@ -238,7 +316,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_NewYorkCity",
@@ -255,7 +339,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_NewYorkCity",
@@ -272,7 +362,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_NewYorkCity",
@@ -289,7 +385,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_NewYorkCity",
@@ -306,7 +408,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_NewYorkCity",
@@ -323,7 +431,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_NewYorkCity",
@@ -340,7 +454,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_NewYorkCity",
@@ -357,7 +477,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_NewYorkCity",
@@ -374,7 +500,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_NewYorkCity",
@@ -391,7 +523,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_NewYorkCity",
@@ -408,7 +546,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_NewYorkCity",
@@ -425,7 +569,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_NewYorkCity",
@@ -442,7 +592,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_NewYorkCity",
@@ -459,7 +615,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_NewYorkCity",
@@ -476,7 +638,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_NewYorkCity",
@@ -493,7 +661,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_NewYorkCity",
@@ -510,7 +684,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/NewYorkCity.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town01",
@@ -527,7 +707,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town01",
@@ -544,7 +730,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town01",
@@ -561,7 +753,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town01",
@@ -578,7 +776,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town01",
@@ -595,7 +799,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town01",
@@ -612,7 +822,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town01",
@@ -629,7 +845,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town01",
@@ -646,7 +868,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town01",
@@ -663,7 +891,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town01",
@@ -680,7 +914,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town01",
@@ -697,7 +937,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town01",
@@ -714,7 +960,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town01",
@@ -731,7 +983,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town01",
@@ -748,7 +1006,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town01",
@@ -765,7 +1029,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town01.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town05",
@@ -782,7 +1052,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town05",
@@ -799,7 +1075,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town05",
@@ -816,7 +1098,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town05",
@@ -833,7 +1121,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town05",
@@ -850,7 +1144,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town05",
@@ -867,7 +1167,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town05",
@@ -884,7 +1190,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town05",
@@ -901,7 +1213,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town05",
@@ -918,7 +1236,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town05",
@@ -935,7 +1259,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town05",
@@ -952,7 +1282,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town05",
@@ -969,7 +1305,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town05",
@@ -986,7 +1328,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town05",
@@ -1003,7 +1351,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town05",
@@ -1020,7 +1374,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town05",
@@ -1037,7 +1397,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town05",
@@ -1054,7 +1420,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town05",
@@ -1071,7 +1443,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town05",
@@ -1088,7 +1466,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town05",
@@ -1105,7 +1489,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town05",
@@ -1122,7 +1512,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town05",
@@ -1139,7 +1535,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town05",
@@ -1156,7 +1558,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town05",
@@ -1173,7 +1581,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town05",
@@ -1190,7 +1604,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town05",
@@ -1207,7 +1627,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town05",
@@ -1224,7 +1650,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town05",
@@ -1241,7 +1673,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town05",
@@ -1258,7 +1696,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town05",
@@ -1275,7 +1719,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town05.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town06",
@@ -1292,7 +1742,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town06",
@@ -1309,7 +1765,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town06",
@@ -1326,7 +1788,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town06",
@@ -1343,7 +1811,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town06",
@@ -1360,7 +1834,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town06",
@@ -1377,7 +1857,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town06",
@@ -1394,7 +1880,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town06",
@@ -1411,7 +1903,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town06",
@@ -1428,7 +1926,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town06",
@@ -1445,7 +1949,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town06",
@@ -1462,7 +1972,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town06",
@@ -1479,7 +1995,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town06",
@@ -1496,7 +2018,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town06",
@@ -1513,7 +2041,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town06",
@@ -1530,7 +2064,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town06",
@@ -1547,7 +2087,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town06",
@@ -1564,7 +2110,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town06",
@@ -1581,7 +2133,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town06",
@@ -1598,7 +2156,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town06",
@@ -1615,7 +2179,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town06",
@@ -1632,7 +2202,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town06",
@@ -1649,7 +2225,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town06",
@@ -1666,7 +2248,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town06",
@@ -1683,7 +2271,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town06",
@@ -1700,7 +2294,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town06",
@@ -1717,7 +2317,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town06",
@@ -1734,7 +2340,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town06",
@@ -1751,7 +2363,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town06",
@@ -1768,7 +2386,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town06",
@@ -1785,7 +2409,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town06.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town15",
@@ -1802,7 +2432,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town15",
@@ -1819,7 +2455,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_seen_valset_Carla_Town15",
@@ -1836,7 +2478,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town15",
@@ -1853,7 +2501,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town15",
@@ -1870,7 +2524,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_seen_valset_Carla_Town15",
@@ -1887,7 +2547,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town15",
@@ -1904,7 +2570,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town15",
@@ -1921,7 +2593,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_seen_valset_Carla_Town15",
@@ -1938,7 +2616,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town15",
@@ -1955,7 +2639,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town15",
@@ -1972,7 +2662,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_seen_valset_Carla_Town15",
@@ -1989,7 +2685,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town15",
@@ -2006,7 +2708,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town15",
@@ -2023,7 +2731,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_seen_valset_Carla_Town15",
@@ -2040,7 +2754,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town15",
@@ -2057,7 +2777,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town15",
@@ -2074,7 +2800,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_object_valset_Carla_Town15",
@@ -2091,7 +2823,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town15",
@@ -2108,7 +2846,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town15",
@@ -2125,7 +2869,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_object_valset_Carla_Town15",
@@ -2142,7 +2892,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town15",
@@ -2159,7 +2915,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town15",
@@ -2176,7 +2938,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_object_valset_Carla_Town15",
@@ -2193,7 +2961,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town15",
@@ -2210,7 +2984,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town15",
@@ -2227,7 +3007,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_object_valset_Carla_Town15",
@@ -2244,7 +3030,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town15",
@@ -2261,7 +3053,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town15",
@@ -2278,7 +3076,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_object_valset_Carla_Town15",
@@ -2295,7 +3099,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town15.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_map_valset_ModularPark",
@@ -2312,7 +3122,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_map_valset_ModularPark",
@@ -2329,7 +3145,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_aerovla_original_unseen_map_valset_ModularPark",
@@ -2346,7 +3168,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/aerovla_original/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_map_valset_ModularPark",
@@ -2363,7 +3191,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_map_valset_ModularPark",
@@ -2380,7 +3214,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_diffusion_head_best_unseen_map_valset_ModularPark",
@@ -2397,7 +3237,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/diffusion_head_best/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_map_valset_ModularPark",
@@ -2414,7 +3260,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_map_valset_ModularPark",
@@ -2431,7 +3283,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_init_unseen_map_valset_ModularPark",
@@ -2448,7 +3306,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_init/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_map_valset_ModularPark",
@@ -2465,7 +3329,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_map_valset_ModularPark",
@@ -2482,7 +3352,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_step_001000_unseen_map_valset_ModularPark",
@@ -2499,7 +3375,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_step_001000/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_map_valset_ModularPark",
@@ -2516,7 +3398,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_map_valset_ModularPark",
@@ -2533,7 +3421,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     },
     {
       "run_id": "C_formal_joint_final_unseen_map_valset_ModularPark",
@@ -2550,7 +3444,13 @@
       "spl_percent": null,
       "ne_m": null,
       "metrics_log": "logs/course_inference/c/formal/joint_final/unseen_map_valset/ModularPark.metrics.log",
-      "status": "not_run"
+      "status": "not_run",
+      "metric_count": null,
+      "spl_count": null,
+      "ne_count": null,
+      "aggregation_method": null,
+      "rounded_group_means_used": null,
+      "integrity_record": null
     }
   ]
 }

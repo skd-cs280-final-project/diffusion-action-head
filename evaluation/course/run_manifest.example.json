@@ -45,7 +45,9 @@
     "resumed": false,
     "rng_restored": false,
     "gpu_hours": null,
-    "simulator_hours": null
+    "simulator_hours": null,
+    "observed_gpu_memory_mib": null,
+    "gpu_memory_measurement_method": null
   },
   "metrics": null,
   "artifacts": {},
@@ -53,5 +55,37 @@
   "revision": "existing_entrypoints_only",
   "command": null,
   "code_modified": false,
-  "note": "Manual record only; existing CLI output is unchanged. Token diffusion-only fields must be null."
+  "note": "Manual record only; existing CLI output is unchanged. Token diffusion-only fields must be null. Wall time is not per-action latency; sampled GPU memory is not an exact peak. Complete includes normal navigation failures.",
+  "timing": {
+    "started_at": null,
+    "ended_at": null,
+    "timezone": "Asia/Shanghai",
+    "wall_seconds": null,
+    "measurement_source": null
+  },
+  "execution_record": {
+    "attempt_id": null,
+    "exit_code": null,
+    "console_log": null,
+    "simulator_log": null,
+    "environment_record": null,
+    "worktree_clean": null,
+    "local_diff_record": null
+  },
+  "integrity": {
+    "expected_episodes": null,
+    "accepted_complete_episodes": null,
+    "missing_or_invalid_episodes": null,
+    "duplicate_episodes": null,
+    "unexpected_episodes": null,
+    "accepted_episode_index": null,
+    "checked_by": null,
+    "checked_at": null
+  },
+  "metric_source": {
+    "metrics_log": null,
+    "offline_json": null,
+    "aggregation_method": null,
+    "rounded_group_means_used": null
+  }
 }

@@ -1,5 +1,7 @@
 # 成员 C：详细评测任务
 
+**执行前必读：[测试过程与指标记录](../guides/inference_test_handbook.md) · [图表与案例要求](../guides/inference_visualization.md)。**
+
 课题：**《基于预训练扩散动作头的无人机视觉语言导航推理评测与分析》**。
 
 [团队总览](README.md) · [全部可复制命令](member_c_commands.md) · [机器可读任务单](../../configs/course/assignments/c.json)

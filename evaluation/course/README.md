@@ -5,3 +5,5 @@
 复制 run_manifest.example.json 到独立结果目录，手工填真实命令/模型/任务/结果。模板不是新运行器，未测量字段留 null。原 token 只做闭环。
 
 generation、conditions、selection、shared 是此前方案留下的占位说明，本次不开发、不接入；保留目录结构。
+
+运行、逐任务与案例字段见 run_manifest.example.json、episode_record.example.json、case_record.example.json。它们是记录模板，不改变程序日志。详细使用方法见[执行手册](../../docs/guides/inference_test_handbook.md)。

@@ -1,5 +1,7 @@
 # 成员 C 可复制命令
 
+[执行与完整性检查](../guides/inference_test_handbook.md) · [可视化要求](../guides/inference_visualization.md)。每个推理块结束后先核验任务完整性，再复制其后的指标块。
+
 [个人任务](member_c.md) · [资源准备](resources.md)
 
 以下均从仓库根目录执行，只调用现有脚本。先完成环境和资源检查；此页面记录命令，不表示已经运行。控制台日志会覆盖同名文件，首次执行用这里的全新目录；续跑须保留旧日志并记录 resume，不混入独立重复结果。正式结果不可与预检混合。
@@ -39,7 +41,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./configs/course/manifests/c/preflight/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/preflight/aerovla_original/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/preflight/aerovla_original/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/preflight/aerovla_original \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -54,7 +60,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./configs/course/manifests/c/preflight/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/preflight/diffusion_head_best/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/preflight/diffusion_head_best/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/preflight/diffusion_head_best \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -69,7 +79,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./configs/course/manifests/c/preflight/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/preflight/joint_init/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/preflight/joint_init/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/preflight/joint_init \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -84,7 +98,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./configs/course/manifests/c/preflight/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/preflight/joint_step_001000/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/preflight/joint_step_001000/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/preflight/joint_step_001000 \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -99,7 +117,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./configs/course/manifests/c/preflight/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/preflight/joint_final/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/preflight/joint_final/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/preflight/joint_final \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -118,7 +140,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./data/uav_dataset/seen_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -133,7 +159,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./data/uav_dataset/seen_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -148,7 +178,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./data/uav_dataset/seen_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -163,7 +197,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./data/uav_dataset/seen_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -178,7 +216,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=seen_valset/NewYorkCity TEST_JSON=./data/uav_dataset/seen_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/seen_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/seen_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list seen_valset/NewYorkCity --path_type_list full easy hard \
@@ -197,7 +239,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=unseen_object_valset/NewYorkCity TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/unseen_object_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/unseen_object_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list unseen_object_valset/NewYorkCity --path_type_list full easy hard \
@@ -212,7 +258,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=unseen_object_valset/NewYorkCity TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/unseen_object_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list unseen_object_valset/NewYorkCity --path_type_list full easy hard \
@@ -227,7 +277,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=unseen_object_valset/NewYorkCity TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/unseen_object_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/unseen_object_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list unseen_object_valset/NewYorkCity --path_type_list full easy hard \
@@ -242,7 +296,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=unseen_object_valset/NewYorkCity TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/unseen_object_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list unseen_object_valset/NewYorkCity --path_type_list full easy hard \
@@ -257,7 +315,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=unseen_object_valset/NewYorkCity TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/NewYorkCity.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/unseen_object_valset/NewYorkCity \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/unseen_object_valset/NewYorkCity.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list unseen_object_valset/NewYorkCity --path_type_list full easy hard \
@@ -276,7 +338,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=seen_valset/Carla_Town01 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town01.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town01 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town01.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list seen_valset/Carla_Town01 --path_type_list full easy hard \
@@ -291,7 +357,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=seen_valset/Carla_Town01 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town01.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town01 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town01.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list seen_valset/Carla_Town01 --path_type_list full easy hard \
@@ -306,7 +376,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=seen_valset/Carla_Town01 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town01.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/seen_valset/Carla_Town01 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town01.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list seen_valset/Carla_Town01 --path_type_list full easy hard \
@@ -321,7 +395,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=seen_valset/Carla_Town01 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town01.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town01 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town01.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list seen_valset/Carla_Town01 --path_type_list full easy hard \
@@ -336,7 +414,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=seen_valset/Carla_Town01 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town01.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/seen_valset/Carla_Town01 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town01.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list seen_valset/Carla_Town01 --path_type_list full easy hard \
@@ -355,7 +437,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=seen_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list seen_valset/Carla_Town05 --path_type_list full easy hard \
@@ -370,7 +456,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=seen_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list seen_valset/Carla_Town05 --path_type_list full easy hard \
@@ -385,7 +475,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=seen_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/seen_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list seen_valset/Carla_Town05 --path_type_list full easy hard \
@@ -400,7 +494,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=seen_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list seen_valset/Carla_Town05 --path_type_list full easy hard \
@@ -415,7 +513,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=seen_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/seen_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list seen_valset/Carla_Town05 --path_type_list full easy hard \
@@ -434,7 +536,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=unseen_object_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list unseen_object_valset/Carla_Town05 --path_type_list full easy hard \
@@ -449,7 +555,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=unseen_object_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list unseen_object_valset/Carla_Town05 --path_type_list full easy hard \
@@ -464,7 +574,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=unseen_object_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list unseen_object_valset/Carla_Town05 --path_type_list full easy hard \
@@ -479,7 +593,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=unseen_object_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list unseen_object_valset/Carla_Town05 --path_type_list full easy hard \
@@ -494,7 +612,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=unseen_object_valset/Carla_Town05 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town05.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town05 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town05.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list unseen_object_valset/Carla_Town05 --path_type_list full easy hard \
@@ -513,7 +635,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=seen_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list seen_valset/Carla_Town06 --path_type_list full easy hard \
@@ -528,7 +654,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=seen_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list seen_valset/Carla_Town06 --path_type_list full easy hard \
@@ -543,7 +673,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=seen_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/seen_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list seen_valset/Carla_Town06 --path_type_list full easy hard \
@@ -558,7 +692,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=seen_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list seen_valset/Carla_Town06 --path_type_list full easy hard \
@@ -573,7 +711,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=seen_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/seen_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list seen_valset/Carla_Town06 --path_type_list full easy hard \
@@ -592,7 +734,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=unseen_object_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list unseen_object_valset/Carla_Town06 --path_type_list full easy hard \
@@ -607,7 +753,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=unseen_object_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list unseen_object_valset/Carla_Town06 --path_type_list full easy hard \
@@ -622,7 +772,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=unseen_object_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list unseen_object_valset/Carla_Town06 --path_type_list full easy hard \
@@ -637,7 +791,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=unseen_object_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list unseen_object_valset/Carla_Town06 --path_type_list full easy hard \
@@ -652,7 +810,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=unseen_object_valset/Carla_Town06 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town06.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town06 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town06.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list unseen_object_valset/Carla_Town06 --path_type_list full easy hard \
@@ -671,7 +833,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=seen_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/seen_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list seen_valset/Carla_Town15 --path_type_list full easy hard \
@@ -686,7 +852,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=seen_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/seen_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list seen_valset/Carla_Town15 --path_type_list full easy hard \
@@ -701,7 +871,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=seen_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/seen_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/seen_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list seen_valset/Carla_Town15 --path_type_list full easy hard \
@@ -716,7 +890,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=seen_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/seen_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list seen_valset/Carla_Town15 --path_type_list full easy hard \
@@ -731,7 +909,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=seen_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/seen_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/seen_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/seen_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list seen_valset/Carla_Town15 --path_type_list full easy hard \
@@ -750,7 +932,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=unseen_object_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/unseen_object_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list unseen_object_valset/Carla_Town15 --path_type_list full easy hard \
@@ -765,7 +951,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=unseen_object_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/unseen_object_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list unseen_object_valset/Carla_Town15 --path_type_list full easy hard \
@@ -780,7 +970,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=unseen_object_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/unseen_object_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list unseen_object_valset/Carla_Town15 --path_type_list full easy hard \
@@ -795,7 +989,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=unseen_object_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/unseen_object_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list unseen_object_valset/Carla_Town15 --path_type_list full easy hard \
@@ -810,7 +1008,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=unseen_object_valset/Carla_Town15 TEST_JSON=./data/uav_dataset/unseen_object_valset_splits/Carla_Town15.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town15 \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/unseen_object_valset/Carla_Town15.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list unseen_object_valset/Carla_Town15 --path_type_list full easy hard \
@@ -829,7 +1031,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/aerovla_original \
   TASK_ID=unseen_map_valset/ModularPark TEST_JSON=./configs/course/manifests/c/unseen_map_valset/ModularPark.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/aerovla_original/unseen_map_valset/ModularPark \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/aerovla_original/unseen_map_valset/ModularPark.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/aerovla_original \
   --analysis_list unseen_map_valset/ModularPark --path_type_list full easy hard \
@@ -844,7 +1050,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/diffusion_head_best \
   TASK_ID=unseen_map_valset/ModularPark TEST_JSON=./configs/course/manifests/c/unseen_map_valset/ModularPark.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/diffusion_head_best/unseen_map_valset/ModularPark \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/diffusion_head_best/unseen_map_valset/ModularPark.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/diffusion_head_best \
   --analysis_list unseen_map_valset/ModularPark --path_type_list full easy hard \
@@ -859,7 +1069,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_init \
   TASK_ID=unseen_map_valset/ModularPark TEST_JSON=./configs/course/manifests/c/unseen_map_valset/ModularPark.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_init/unseen_map_valset/ModularPark \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_init/unseen_map_valset/ModularPark.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_init \
   --analysis_list unseen_map_valset/ModularPark --path_type_list full easy hard \
@@ -874,7 +1088,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_step_001000 \
   TASK_ID=unseen_map_valset/ModularPark TEST_JSON=./configs/course/manifests/c/unseen_map_valset/ModularPark.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_step_001000/unseen_map_valset/ModularPark \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_step_001000/unseen_map_valset/ModularPark.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_step_001000 \
   --analysis_list unseen_map_valset/ModularPark --path_type_list full easy hard \
@@ -889,7 +1107,11 @@ MODEL_DIR=./eval_results/course_inference/resources/models/joint_final \
   TASK_ID=unseen_map_valset/ModularPark TEST_JSON=./configs/course/manifests/c/unseen_map_valset/ModularPark.json \
   SAVE_DIR=./eval_results/course_inference/c/formal/joint_final/unseen_map_valset/ModularPark \
   bash scripts/eval_aerovla.sh > logs/course_inference/c/formal/joint_final/unseen_map_valset/ModularPark.log 2>&1
+```
 
+先按手册核验本包的任务覆盖、保存完整性和异常，再执行统计；不完整的结果只能标 partial。
+
+```bash
 "$PYTHON" utils/metric.py \
   --root_dir ./eval_results/course_inference/c/formal/joint_final \
   --analysis_list unseen_map_valset/ModularPark --path_type_list full easy hard \
