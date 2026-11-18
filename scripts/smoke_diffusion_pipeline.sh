@@ -13,6 +13,7 @@ export OMP_NUM_THREADS="${OMP_NUM_THREADS:-4}"
 export OPENBLAS_NUM_THREADS="${OPENBLAS_NUM_THREADS:-4}"
 export TOKENIZERS_PARALLELISM=false
 SMOKE_OUTPUT_DIR="${SMOKE_OUTPUT_DIR:-$PROJECT_ROOT/checkpoints/diffusion_smoke_real}"
+HISTORY_LENGTH="${HISTORY_LENGTH:-0}"
 
 # Fail before loading the large dataset/model if the execution environment
 # does not expose CUDA. The smoke checkpoint is not a trained navigation policy.
@@ -20,7 +21,8 @@ SMOKE_OUTPUT_DIR="${SMOKE_OUTPUT_DIR:-$PROJECT_ROOT/checkpoints/diffusion_smoke_
 bash scripts/train_diffusion_head.sh \
     --output-dir "$SMOKE_OUTPUT_DIR" --max-samples 4 --max-val-samples 8 \
     --epochs 1 --max-steps 2 --batch-size 2 --gradient-accumulation-steps 1 \
-    --eval-batch-size 2 --seed 42 --eval-seed 42 --num-workers 0 --save-steps 1
+    --eval-batch-size 2 --seed 42 --eval-seed 42 --num-workers 0 --save-steps 1 \
+    --history-length "$HISTORY_LENGTH"
 bash scripts/eval_diffusion_head.sh \
     --checkpoint "$SMOKE_OUTPUT_DIR" --max-samples 8 --batch-size 2 \
     --seed 42 --num-workers 0 --output "$SMOKE_OUTPUT_DIR/offline_eval.json"
@@ -45,6 +47,7 @@ for key in ("noise_mse", "normalized_continuous_mse"):
     assert math.isclose(last_validation[key], report["metrics"][key], rel_tol=1e-5, abs_tol=1e-6), key
 assert last_validation["land"] == report["metrics"]["land"]
 result = {"status": "passed", "train_samples": metadata["train_split"]["num_samples"],
+          "history_length": metadata.get("history_length", 0),
           "validation_samples": report["metrics"]["num_samples"],
           "optimizer_steps": metadata["global_step"], "reload_metrics_match": True,
           "scope": "Real-label pipeline check only; no convergence or navigation claim"}

@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "optimizer_steps": 2,
+  "world_size": 2,
+  "train_samples": 8,
+  "validation_samples": 4,
+  "four_parameter_groups_updated": {
+    "vision_lora": true,
+    "llm_lora": true,
+    "projector": true,
+    "diffusion_head": true
+  },
+  "reload_metrics_match": true,
+  "scope": "Pipeline and gradient validation, not convergence or navigation improvement",
+  "cpu_tests": {
+    "passed": 171,
+    "seconds": 13.42
+  },
+  "trainable_parameter_groups": {
+    "vision_lora": 13444096,
+    "llm_lora": 39976960,
+    "projector": 71385600,
+    "diffusion_head": 5265668
+  },
+  "validation_noise_mse": 0.06938577308756066,
+  "checkpoint_dir": "/data/xiyang/project_orig/AeroVLA_stat/checkpoints/joint_smoke_20261103",
+  "source_files_sha256": {
+    "src/model_wrapper/aerovla_diffusion.py": "f526df98703cadecd9c6ffb3394ec1735ef7c43cf85be039bf9f88fac1dbda85",
+    "src/train_diffusion_joint.py": "2a1a1374bab68530e42d7c9dfde85f2e25724874812c9b497dbb5f90f728a36b",
+    "scripts/train_diffusion_joint.sh": "c054c76084e2c6cb6797459ebd32e14177101cb75faea345582b5d614a77387d",
+    "scripts/smoke_diffusion_joint.sh": "d79b9345fdc0f78a59586634873baa3ebf889cc5781becadf24085196d647721",
+    "scripts/launch_joint_training.py": "b6a6974863bcf5abdb8689eb4bb3ee5ed3ece343d7794a9d86aa36c80ef43f7f"
+  }
+}

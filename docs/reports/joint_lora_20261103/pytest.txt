@@ -1,0 +1,14 @@
+........................................................................ [ 42%]
+........................................................................ [ 84%]
+...........................                                              [100%]
+=============================== warnings summary ===============================
+../../.conda/envs/aero_vla/lib/python3.10/site-packages/torch/utils/cpp_extension.py:28
+  /data/xiyang/.conda/envs/aero_vla/lib/python3.10/site-packages/torch/utils/cpp_extension.py:28: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+    from pkg_resources import packaging  # type: ignore[attr-defined]
+
+tests/test_aerovla_diffusion.py::test_head_only_checkpoint_round_trip_and_metadata[False]
+  /data/xiyang/.conda/envs/aero_vla/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+    return self.fget.__get__(instance, owner)()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+171 passed, 2 warnings in 13.42s

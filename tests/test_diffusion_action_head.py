@@ -47,7 +47,7 @@ class DiffusionActionHeadTests(unittest.TestCase):
     def test_loss_supplies_noised_targets_and_uses_epsilon(self):
         captured = {}
 
-        def predict(noisy_actions, timesteps, condition, condition_mask):
+        def predict(noisy_actions, timesteps, condition, condition_mask, **kwargs):
             captured["noisy_actions"] = noisy_actions
             return self.noise
 
@@ -186,6 +186,120 @@ class DiffusionActionHeadTests(unittest.TestCase):
         ))
         output = head.sample(self.condition)
         self.assertEqual(output.shape, (2, 1, 4))
+
+    def history_head(self):
+        values = self.config.to_dict()
+        values.update(state_dim=6, history_length=4)
+        return DiffusionActionHead(DiffusionActionHeadConfig(**values))
+
+    def test_state_history_affects_conditioning_and_masks_padding_before_mlp(self):
+        head = self.history_head()
+        history = torch.randn(2, 4, 6)
+        mask = torch.tensor([[0, 0, 1, 1], [0, 1, 1, 1]], dtype=torch.bool)
+        original = head(self.actions, self.timesteps, self.condition,
+                        state_history=history, state_history_mask=mask)
+        padded = history.clone()
+        padded[~mask] = float("nan")
+        actual = head(self.actions, self.timesteps, self.condition,
+                      state_history=padded, state_history_mask=mask)
+        torch.testing.assert_close(actual, original, rtol=0, atol=0)
+        changed = history.clone()
+        changed[mask] += 4
+        altered = head(self.actions, self.timesteps, self.condition,
+                       state_history=changed, state_history_mask=mask)
+        self.assertFalse(torch.allclose(original, altered))
+        absent = head(self.actions, self.timesteps, self.condition,
+                      state_history=torch.full_like(history, float("nan")),
+                      state_history_mask=torch.zeros_like(mask))
+        self.assertTrue(torch.isfinite(absent).all())
+        # Loss and gradients stay finite even with non-finite padded observations.
+        padded.requires_grad_()
+        loss = head.compute_loss(
+            self.condition, self.actions, noise=self.noise, timesteps=self.timesteps,
+            state_history=padded, state_history_mask=mask,
+        )
+        loss.backward()
+        self.assertTrue(torch.isfinite(loss))
+        for name, parameter in head.state_encoder.named_parameters():
+            self.assertIsNotNone(parameter.grad, name)
+            self.assertTrue(torch.isfinite(parameter.grad).all(), name)
+            self.assertGreater(parameter.grad.abs().sum().item(), 0, name)
+        torch.testing.assert_close(padded.grad[~mask], torch.zeros_like(padded.grad[~mask]))
+        self.assertGreater(padded.grad[mask].abs().sum().item(), 0)
+        self.assertGreater(head.state_positions.weight.grad.abs().sum().item(), 0)
+        self.assertGreater(head.state_type_embedding.grad.abs().sum().item(), 0)
+
+    def test_history_sampling_round_trip_uses_history_and_preserves_rng(self):
+        head = self.history_head().eval()
+        history = torch.randn(2, 4, 6)
+        mask = torch.tensor([[0, 0, 1, 1], [0, 1, 1, 1]], dtype=torch.bool)
+        restored = DiffusionActionHead(DiffusionActionHeadConfig.from_dict(head.config.to_dict()))
+        buffer = io.BytesIO()
+        torch.save(head.state_dict(), buffer)
+        buffer.seek(0)
+        restored.load_state_dict(torch.load(buffer, weights_only=True))
+        first = head.sample(self.condition, state_history=history, state_history_mask=mask,
+                            generator=torch.Generator().manual_seed(92))
+        padded = history.clone()
+        padded[~mask] = float("inf")
+        second = restored.sample(self.condition, state_history=padded, state_history_mask=mask,
+                                 generator=torch.Generator().manual_seed(92))
+        torch.testing.assert_close(first, second, rtol=0, atol=0)
+        changed = restored.sample(self.condition, state_history=history + 5, state_history_mask=mask,
+                                  generator=torch.Generator().manual_seed(92))
+        self.assertFalse(torch.allclose(first, changed))
+        self.assertTrue(torch.isfinite(first).all())
+        self.assertLessEqual(first.abs().max().item(), 1.0)
+
+    def test_history_contract_rejects_missing_disabled_malformed_and_nonfinite_inputs(self):
+        head = self.history_head()
+        history, mask = torch.zeros(2, 4, 6), torch.ones(2, 4, dtype=torch.bool)
+        for state, valid in ((None, None), (history, None), (None, mask)):
+            with self.subTest(missing_state=state is None, missing_mask=valid is None):
+                with self.assertRaisesRegex(ValueError, "requires state_history"):
+                    head(self.actions, 2, self.condition, state_history=state, state_history_mask=valid)
+        for invoke in (
+            lambda: head.sample(self.condition),
+            lambda: head.compute_loss(self.condition, self.actions),
+        ):
+            with self.assertRaisesRegex(ValueError, "requires state_history"):
+                invoke()
+        for state, valid in ((history, mask), (history, None), (None, mask)):
+            with self.assertRaisesRegex(ValueError, "history-enabled"):
+                self.head(self.actions, 2, self.condition, state_history=state, state_history_mask=valid)
+        with self.assertRaisesRegex(ValueError, "history-enabled"):
+            self.head.sample(self.condition, state_history=history, state_history_mask=mask)
+        with self.assertRaisesRegex(ValueError, "history-enabled"):
+            self.head.compute_loss(self.condition, self.actions, state_history=history, state_history_mask=mask)
+        for state, valid, message in (
+            (history[:, :3], mask, "state_history must have shape"),
+            (history[..., :5], mask, "state_history must have shape"),
+            (history, mask[:, :3], "state_history_mask must have shape"),
+            (history, torch.full((2, 4), 0.5), "zero and one"),
+            (history, torch.full((2, 4), float("nan")), "zero and one"),
+            (history + float("nan"), mask, "must be finite"),
+            (history + float("inf"), mask, "must be finite"),
+        ):
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(ValueError, message):
+                    head(self.actions, 2, self.condition, state_history=state, state_history_mask=valid)
+
+    def test_history_config_validates_schema_and_legacy_defaults(self):
+        for overrides in (
+            {"state_dim": 6}, {"history_length": 4},
+            {"state_dim": -1}, {"history_length": True},
+            {"state_dim": 6.0, "history_length": 4},
+            {"state_schema_version": 0}, {"state_schema_version": True},
+        ):
+            with self.subTest(overrides=overrides):
+                with self.assertRaises(ValueError):
+                    DiffusionActionHeadConfig(condition_dim=12, **overrides)
+        old_values = self.config.to_dict()
+        for key in ("state_dim", "history_length", "state_schema_version"):
+            old_values.pop(key)
+        legacy = DiffusionActionHeadConfig.from_dict(old_values)
+        self.assertEqual(legacy, self.config)
+        self.assertFalse(any(name.startswith("state_") for name in self.head.state_dict()))
 
 
 if __name__ == "__main__":

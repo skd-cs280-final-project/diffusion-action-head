@@ -1,47 +1,31 @@
-# AeroVLA 文档导航
+# 文档导航
 
-整理日期：2026-10-12。原 23 篇文档合并为 12 篇（含本页）。从下表按任务进入；各报告的统计截止时间保留在正文，实验快照不表示当前训练进程状态。
+项目主线是 Diffusion Policy 和动作扩散头。阅读顺序为项目简介 → 设计与固定协议 → 三人分工 → 运行指南 → 历史证据。课程实验固定 DDPM、训练噪声步数 100、推理去噪步数 10；不安排扩散步数实验。
 
-## 从这里开始
+| 文档 | 用途 |
+| --- | --- |
+| [项目首页](../README.md) | 功能状态、目录与快速开始 |
+| [动作头设计](design/diffusion_action_head.md) | 当前架构、候选结构、多步设计与限制 |
+| [接口约定](design/interfaces.md) | 数据张量、预测、checkpoint、交付协议 |
+| [固定实验协议](experiments/protocol.md) | A0–B4、训练预算、评估与统计 |
+| [团队总览](team/README.md) | 文件归属、协作边界、里程碑 |
+| [成员 A](team/member_a.md) | 单步头与条件注入 |
+| [成员 B](team/member_b.md) | 多步序列与滚动执行 |
+| [成员 C](team/member_c.md) | 评估、基线与结果分析 |
+| [运行指南](guides/training_and_evaluation.md) | 安装、资源、训练、离线和闭环 |
+| [可选扩展](guides/extensions.md) | 已有历史输入、联合 LoRA；不进入主实验 |
+| [AirSim 专项排障](guides/troubleshooting.md) | RPC 取图延迟排障 |
+| [历史归档](archive/README.md) | 旧实验、详细实现记录、证据边界 |
+| [图表与证据](reports/README.md) | 固定报告快照及生成脚本 |
+| [本次整理记录](maintenance.md) | 文件迁移、删除范围、验证方式 |
 
-| 你想做什么 | 阅读入口 | 内容状态 |
-| --- | --- | --- |
-| 跑训练、保存权重、做离线或闭环评估 | [训练与评估指南](guides/training_and_evaluation.md) | 已实现功能的运行说明 |
-| 理解 LMHead 替换、冻结方式、扩散结构与损失 | [扩散头架构与数据合同](design/diffusion_action_head.md) | 已实现；含历史数据就绪附录 |
-| 看全量训练配置、监督检查和第三轮曲线 | [全量训练记录](experiments/full_training_20261010.md) | 固定快照至 step 70,568；含三轮验证 |
-| 看周报和训练结果的详细分析 | [2026-10-11 周报](experiments/weekly_report_20261011.md) | 固定快照至 step 59,019；含两轮验证 |
-| 比较扩散头与原 AeroVLA 的飞行效果 | [NYC 10 任务评估与对比](experiments/nyc10_evaluation_20261011.md) | 已完成闭环、小样本对比及可视化 |
-| 查哪些任务早停、近障或有接触证据 | [终止原因分析](experiments/nyc10_evaluation_20261011.md#termination) | 同一份 NYC 报告的证据分析 |
-| 解决 AirSim 取图通信延迟 | [环境排障](guides/troubleshooting.md) | 上游特定问题经验，按需参考 |
-| 查每次实现改动与当时的验证 | [统一变更日志](development/changelog.md) | 合并原 10 份工作记录 |
-| 查 GitHub 快照包含什么、复现还缺什么 | [GitHub 快照记录](development/github_snapshot_20261012.md) | 历史上传范围与外部依赖 |
+## 内容状态
 
-## 下一步研究：尚未实施的方案
+- 已实现：单步 Transformer 扩散策略、训练/离线/闭环入口；历史输入和联合 LoRA 为可选扩展。
+- 待实现：A1–A3、B1–B4，新的统一课程结果汇总与正式实验。
+- 实验规格：`configs/course/` 只是共同配置与任务登记，不会被现有 CLI 自动读取。
+- 历史材料：`archive/` 和 `reports/` 的数字保留原统计日期，不能混作课程新增结果。
 
-| 阅读顺序 | 文档 | 主要问题 |
-| --- | --- | --- |
-| 1 | [碰撞改进方案](research/collision_mitigation_20261012.md) | 终止口径、几何安全检查、候选动作与恢复数据 |
-| 2 | [两阶段规划与动作专家](research/hierarchical_planner_20261012.md) | 可读中间计划、上下层接口与监督数据生产 |
-| 3 | [历史轨迹与当前位姿调研](research/history_pose_20261012.md) | 机器人论文如何把历史、pose 和运动状态交给 LLM / action expert |
+## 维护规则
 
-已有单步扩散头与训练/评估流程；上述三篇提出的新机制不能直接当作现有 checkpoint 的能力。
-
-## 目录与维护约定
-
-```text
-docs/
-├── README.md       文档首页
-├── guides/         运行指南、环境排障（2 篇）
-├── design/         已实现的架构与数据合同（1 篇）
-├── experiments/    训练记录、周报、NYC 评估（3 篇）
-├── research/       碰撞、两阶段、历史与位姿方案（3 篇）
-├── development/    统一变更日志、GitHub 快照（2 篇）
-├── reports/        图表、统计、生成脚本与固定日志快照
-└── assets/         项目展示图片、动图
-```
-
-- 同一功能的运行命令集中维护在运行指南；小改动追加到统一变更日志的对应模块，避免再次生成零散 `*_worklog.md`。
-- 同一实验的后续结果追加到对应报告，并标注日期和统计截止点；正式周报及其固定快照保持原统计范围。
-- 新主题调研再新增独立文档，并在本页登记“已实现”或“建议/待验证”。命令默认从 AeroVLA 项目根目录执行。
-- 图表和轻量证据保留在 `reports/` 原位置。链接到 `checkpoints/`、`eval_results/` 的文件是本地运行产物，GitHub 代码仓库未包含这些大型目录。
-- 旧文件名请查[完整迁移表](development/changelog.md#docs-20261012)。仓库内链接已更新；此前聊天或外部收藏中的旧路径需按该表定位。
+新方法只更新设计、对应成员页面和实验规格；完成实验后由 C 统一登记运行清单。不要新增临时进度周报或重复的运行指南。当前文档使用相对路径；归档中的绝对路径只表示原实验环境。报告原始大文件、训练日志和权重放到本地输出目录，不提交 Git。

@@ -18,6 +18,60 @@ sys.path.insert(0, cur_path+"/..")
 from utils.logger import logger
 
 
+def _decode_image_responses(image_datas, cameras):
+    """Validate an entire camera batch before exposing any image to inference."""
+    expected_count = 2 * len(cameras)
+    if image_datas is None or len(image_datas) != expected_count:
+        actual_count = None if image_datas is None else len(image_datas)
+        raise ValueError(f"Expected {expected_count} AirSim image responses, received {actual_count}")
+    images, depth_images = [], []
+    for idx, camera_name in enumerate(cameras):
+        rgb_resp, depth_resp = image_datas[2 * idx:2 * idx + 2]
+        for kind, response in (("RGB", rgb_resp), ("depth", depth_resp)):
+            height, width = response.height, response.width
+            if (not isinstance(height, (int, np.integer)) or not isinstance(width, (int, np.integer))
+                    or height <= 0 or width <= 0):
+                raise ValueError(f"{camera_name} {kind}: invalid image dimensions {width}x{height}")
+        rgb_data = np.frombuffer(rgb_resp.image_data_uint8, dtype=np.uint8)
+        expected_rgb_size = rgb_resp.height * rgb_resp.width * 3
+        if rgb_data.size != expected_rgb_size:
+            raise ValueError(f"{camera_name} RGB: expected {expected_rgb_size} bytes, received {rgb_data.size}")
+        depth_size = len(depth_resp.image_data_float)
+        expected_depth_size = depth_resp.height * depth_resp.width
+        if depth_size != expected_depth_size:
+            raise ValueError(f"{camera_name} depth: expected {expected_depth_size} values, received {depth_size}")
+        image = rgb_data.reshape(rgb_resp.height, rgb_resp.width, 3)
+        depth_img_in_meters = airsim.list_to_2d_float_array(
+            depth_resp.image_data_float, depth_resp.width, depth_resp.height)
+        # Preserve the existing depth conversion and valid black image pixels.
+        depth_image = (np.clip(depth_img_in_meters, 0, 100) / 100 * 255).astype(np.uint8)
+        images.append(image)
+        depth_images.append(depth_image)
+    return images, depth_images
+
+
+def _request_image_responses(airsim_client, cameras):
+    """Retry the same observation request; never execute an action or reuse frames."""
+    if airsim_client is None:
+        raise RuntimeError("AirSim image capture requires a connected client")
+    max_attempts = 11  # Preserve the previous time_sleep_cnt > 10 retry limit.
+    for attempt in range(1, max_attempts + 1):
+        try:
+            requests = []
+            for camera_name in cameras:
+                requests.append(airsim.ImageRequest(camera_name, airsim.ImageType.Scene,
+                                                    pixels_as_float=False, compress=False))
+                requests.append(airsim.ImageRequest(camera_name, airsim.ImageType.DepthPerspective,
+                                                    pixels_as_float=True, compress=False))
+            image_datas = airsim_client.simGetImages(requests=requests)
+            return _decode_image_responses(image_datas, cameras)
+        except Exception as error:
+            logger.error("AirSim image capture attempt %d/%d failed: %s", attempt, max_attempts, error)
+            if attempt == max_attempts:
+                raise RuntimeError(f"AirSim image capture failed after {max_attempts} attempts: {error}") from error
+            time.sleep(1)
+
+
 class BaseSensor:
     def __init__(self) -> None:
         pass
@@ -523,35 +577,7 @@ class AirVLNSimulatorClientTool:
     
     def getImageResponses(self, cameras=['FrontCamera', 'LeftCamera', 'RightCamera', 'RearCamera', 'DownCamera'], poses=None):
         def _getImages(airsim_client: airsim.VehicleClient):
-            if airsim_client is None:
-                raise Exception('client is None.')
-                return None, None
-            time_sleep_cnt = 0
-            while True:
-                try:
-                    ImageRequest = []
-                    for camera_name in cameras:
-                        ImageRequest.append(airsim.ImageRequest(camera_name, airsim.ImageType.Scene, pixels_as_float=False, compress=False))
-                        ImageRequest.append(airsim.ImageRequest(camera_name, airsim.ImageType.DepthPerspective, pixels_as_float=True, compress=False))
-                    image_datas = airsim_client.simGetImages(requests=ImageRequest)
-                    images, depth_images = [], []
-                    for idx, camera_name in enumerate(cameras):
-                        rgb_resp = image_datas[2 * idx]
-                        image = np.frombuffer(rgb_resp.image_data_uint8, dtype=np.uint8).reshape(rgb_resp.height, rgb_resp.width, 3)
-                        depth_resp = image_datas[2* idx + 1]
-                        depth_img_in_meters = airsim.list_to_2d_float_array(depth_resp.image_data_float, depth_resp.width, depth_resp.height)
-                        depth_image = (np.clip(depth_img_in_meters, 0, 100) / 100 * 255).astype(np.uint8)
-                        images.append(image)
-                        depth_images.append(depth_image)
-                    break
-                except Exception as e:
-                    time_sleep_cnt += 1
-                    logger.error("图片获取错误: " + str(e))
-                    logger.error('time_sleep_cnt: {}'.format(time_sleep_cnt))
-                    time.sleep(1)
-                if time_sleep_cnt > 10:
-                    raise Exception('图片获取失败')
-            return images, depth_images
+            return _request_image_responses(airsim_client, cameras)
 
         threads = []
         thread_results = []
@@ -579,7 +605,7 @@ class AirVLNSimulatorClientTool:
         threads = []
         if not (np.array(thread_results) == True).all():
             logger.error('getImageResponses失败')
-            return None
+            raise RuntimeError("AirSim image capture failed; an image worker exhausted retries or has no client")
 
         return responses
     
@@ -685,5 +711,4 @@ class AirVLNSimulatorClientTool:
             logger.error('getSensorInfo failed.')
             return None
         return results 
-
 

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "train_samples": 4,
+  "history_length": 4,
+  "validation_samples": 8,
+  "optimizer_steps": 2,
+  "reload_metrics_match": true,
+  "scope": "Real-label pipeline check only; no convergence or navigation claim"
+}

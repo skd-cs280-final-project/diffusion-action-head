@@ -1,0 +1,48 @@
+{
+  "recorded_at_utc": "2026-10-12T08:16:15.207459+00:00",
+  "status": "passed",
+  "scope": "Implementation/pipeline verification only; no full training or AirSim closed-loop evaluation",
+  "tests": {
+    "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 HF_HOME=\"$PWD/.cache/huggingface\" HF_MODULES_CACHE=\"$PWD/.cache/huggingface/modules\" /data/xiyang/.conda/envs/aero_vla/bin/python -m pytest tests -q",
+    "passed": 123,
+    "failed": 0,
+    "seconds": 7.17
+  },
+  "static_checks": [
+    "python -m compileall -q src tests",
+    "bash -n scripts/smoke_diffusion_pipeline.sh scripts/train_diffusion_head.sh scripts/eval_diffusion_head.sh scripts/eval_aerovla.sh",
+    "git diff --check"
+  ],
+  "runtime": {
+    "physical_gpu": 1,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "python_environment": "/data/xiyang/.conda/envs/aero_vla",
+    "torch": "2.1.2+cu121",
+    "transformers": "4.42.4",
+    "backbone_dtype": "bfloat16",
+    "head_dtype": "float32"
+  },
+  "smoke_command": "PYTHON=/data/xiyang/.conda/envs/aero_vla/bin/python CUDA_VISIBLE_DEVICES=1 HISTORY_LENGTH=4 SMOKE_OUTPUT_DIR=./checkpoints/diffusion_history_smoke_20261012 bash scripts/smoke_diffusion_pipeline.sh",
+  "smoke": {
+    "status": "passed",
+    "train_samples": 4,
+    "history_length": 4,
+    "validation_samples": 8,
+    "optimizer_steps": 2,
+    "reload_metrics_match": true,
+    "scope": "Real-label pipeline check only; no convergence or navigation claim"
+  },
+  "parameters": {
+    "frozen_parameters": 7409644992,
+    "trainable_parameters": 5339652
+  },
+  "checkpoint": "/data/xiyang/project_orig/AeroVLA_stat/checkpoints/diffusion_history_smoke_20261012",
+  "snapshot_sha256": {
+    "run_config.json": "0fca6ce4ab53720623d6903b3f663be75df5f7a67477066e9fe39d48b760806b",
+    "metrics.jsonl": "47c8d2e4f51f623756dbc236db603b8d0eb3df2d2de7b6ff546b701dc1154ec7",
+    "validation_metrics.jsonl": "c96293115ce256c215effdad771be33349e42fd95b90344f818db384c553d39f",
+    "offline_eval.json": "8a1ae0054c4f49600b86f547e0ad884f67111a7080b8aa61b055b618a661c3fb",
+    "pipeline_check.json": "5158b711735827cc291d0261447e3c174252fd757493b3bbd4521df2c7df7602",
+    "diffusion_config.json": "b3a3a1e53b179acfd01a8fb984743b08a56496484536cac0402adc88ac8460ec"
+  }
+}

@@ -1,0 +1,3993 @@
+{
+  "audit_date_utc": "2026-10-12T08:07:39.020842+00:00",
+  "scope": "Fixed-seed sample audit only, not a complete dataset audit. No raw data modified.",
+  "seed": 20261012,
+  "method": "Uniformly select 128 distinct sorted trajectory IDs; select one training row uniformly within each selected trajectory using the same Python random.Random instance. Validate raw files without loading descriptions or labels into this report.",
+  "data_json": "/data/xiyang/project_orig/AeroVLA_stat/data/aerovla_train_dataset.json",
+  "data_json_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67",
+  "data_root_resolved": "/data/xiyang/dataset/OpenUAV/TravelUAV",
+  "population_rows": 410450,
+  "population_trajectories": 7611,
+  "population_dagger_trajectories": 0,
+  "sample_size": 128,
+  "sample_maps": {
+    "Carla_Town01": 24,
+    "Carla_Town04": 7,
+    "Carla_Town05": 6,
+    "Carla_Town06": 6,
+    "Carla_Town07": 4,
+    "Carla_Town10HD": 11,
+    "Carla_Town15": 10,
+    "ModernCityMap": 10,
+    "NYCEnvironmentMegapa": 24,
+    "NewYorkCity": 11,
+    "TropicalIsland": 15
+  },
+  "counts": {
+    "front_image_exists": 128,
+    "down_image_exists": 128,
+    "log_frame_matches_image": 128,
+    "sample_frame_in_merged_index": 128,
+    "merged_index_strictly_increasing": 128,
+    "merged_index_raw_lengths_match": 128,
+    "quaternion_finite_xyzw_length4": 128,
+    "position_finite_length3": 128,
+    "log_pose_matches_merged_raw_1e_6": 128,
+    "quaternion_unit_within_1e_4": 128,
+    "merged_raw_matches_detailed_at_frame": 128,
+    "has_timestamp": 10,
+    "has_linear_velocity": 10,
+    "has_angular_velocity": 10,
+    "has_linear_acceleration": 10,
+    "has_angular_acceleration": 10,
+    "valid_linear_velocity": 10,
+    "valid_angular_velocity": 10,
+    "valid_positive_timestamp": 10
+  },
+  "failed_samples": 0,
+  "max_quaternion_norm_error": 1.0129453031915148e-07,
+  "max_log_merged_pose_abs_error": 0.0,
+  "quaternion_order": {
+    "order": [
+      "x",
+      "y",
+      "z",
+      "w"
+    ],
+    "evidence": [
+      "airsim_plugin/AirVLNSimulatorClientTool_AeroVLA.py:46 uses list(data.kinematics_estimated.orientation)",
+      "/data/xiyang/.conda/envs/aero_vla/lib/python3.10/site-packages/airsim/types.py:241 Quaternionr.__iter__ returns (x_val, y_val, z_val, w_val)",
+      "src/vlnce_src/env_uav.py:29 unpacks x,y,z,w and :390 passes orientation to airsim.Quaternionr(*orientation)"
+    ],
+    "caveat": "Array ordering is established by producer/consumer code, not inferred from quaternion norm."
+  },
+  "coordinate_cautions": [
+    "Position is AirSim world NED. Down-positive z is not altitude above terrain.",
+    "Missing timestamps/velocities must be masked, not derived as meters per second from frame gaps.",
+    "Do not use future pose entries or current action/terminal flags as input.",
+    "No DAgger directory occurs in this training JSON; separate DAgger state availability does not establish expert label validity.",
+    "Online action execution currently repeats each terminal state five times; deduplicate using observation identity before interpreting history."
+  ],
+  "failures": [],
+  "samples": [
+    {
+      "trajectory": "Carla_Town15/7e2f410b-cdb8-4191-b906-a4d52338dad4",
+      "row_index": 160729,
+      "img_name": "000135.png",
+      "frame": 135,
+      "merged_observation_index": 27,
+      "trajectory_observation_count": 51,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 4.718955826099602e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/17cbc758-8925-41f9-9c14-024612e19555",
+      "row_index": 3002,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 35,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.2896131030877314e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/c2db40c0-854e-457d-8ecd-cce12216c974",
+      "row_index": 339978,
+      "img_name": "000320.png",
+      "frame": 320,
+      "merged_observation_index": 64,
+      "trajectory_observation_count": 74,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.6706992173330946e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/8cbc508e-11f9-41e1-8cb5-efc977b1efa3",
+      "row_index": 20254,
+      "img_name": "000090.png",
+      "frame": 90,
+      "merged_observation_index": 18,
+      "trajectory_observation_count": 22,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.225441148555717e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/04a023ab-926c-4796-9982-bafae475a635",
+      "row_index": 458,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 70,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.0901910646742294e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/78afa511-5aae-4d05-9c53-ad8d1d5a2df4",
+      "row_index": 17193,
+      "img_name": "000035.png",
+      "frame": 35,
+      "merged_observation_index": 7,
+      "trajectory_observation_count": 26,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.4242730267687307e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/406380d6-c889-46ad-a7b2-42c2619cc918",
+      "row_index": 220085,
+      "img_name": "000240.png",
+      "frame": 240,
+      "merged_observation_index": 48,
+      "trajectory_observation_count": 60,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.3751149874916564e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/fe86eaaa-81fd-4af6-936e-a10cc01071dc",
+      "row_index": 351456,
+      "img_name": "000230.png",
+      "frame": 230,
+      "merged_observation_index": 46,
+      "trajectory_observation_count": 59,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.515629366455329e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/83e4bc84-6874-4fd9-9605-04f1208434e5",
+      "row_index": 327151,
+      "img_name": "000245.png",
+      "frame": 245,
+      "merged_observation_index": 49,
+      "trajectory_observation_count": 52,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.5595899561258193e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/10465aea-73f6-4cca-919a-80f88ae11d72",
+      "row_index": 202194,
+      "img_name": "000070.png",
+      "frame": 70,
+      "merged_observation_index": 14,
+      "trajectory_observation_count": 77,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.954027461006149e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/cff0a8d1-b7f6-479a-b8a9-884ecf779cb8",
+      "row_index": 282262,
+      "img_name": "000255.png",
+      "frame": 255,
+      "merged_observation_index": 51,
+      "trajectory_observation_count": 58,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.417772069333694e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/bc97ae60-57a8-4cc9-8272-9277aa3e9665",
+      "row_index": 27526,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 21,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.775598833577476e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town06/8f6f1789-48cc-4d87-af3e-017e2f29d334",
+      "row_index": 92275,
+      "img_name": "000105.png",
+      "frame": 105,
+      "merged_observation_index": 21,
+      "trajectory_observation_count": 77,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.777670424895632e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/4f1761db-1dba-4f4f-9a30-4b51c8170394",
+      "row_index": 154958,
+      "img_name": "000000.png",
+      "frame": 0,
+      "merged_observation_index": 0,
+      "trajectory_observation_count": 30,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 4.292850519505009e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/8b24f849-a90f-47fc-a179-afff1e0fae54",
+      "row_index": 20108,
+      "img_name": "000040.png",
+      "frame": 40,
+      "merged_observation_index": 8,
+      "trajectory_observation_count": 81,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.902208655150787e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town05/51bc18d4-2bdb-4dd2-b4e9-3f7adbf52fd2",
+      "row_index": 70323,
+      "img_name": "000015.png",
+      "frame": 15,
+      "merged_observation_index": 3,
+      "trajectory_observation_count": 15,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.924182550603007e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town06/bfb79948-bca9-4d5b-bb53-927c2ccd78f7",
+      "row_index": 95467,
+      "img_name": "000260.png",
+      "frame": 260,
+      "merged_observation_index": 52,
+      "trajectory_observation_count": 79,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.028405070106601e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/39e8b0a4-9853-4b18-91c2-9d381a6815eb",
+      "row_index": 216863,
+      "img_name": "000115.png",
+      "frame": 115,
+      "merged_observation_index": 23,
+      "trajectory_observation_count": 99,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.0757237323133495e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/9cd27c0c-7a3d-4c2c-9926-1e602ed5eb62",
+      "row_index": 389067,
+      "img_name": "000315.png",
+      "frame": 315,
+      "merged_observation_index": 63,
+      "trajectory_observation_count": 78,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.798856310221481e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/8e2a910d-953d-4ff5-b1bf-9c09ff84d151",
+      "row_index": 384988,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 76,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.2998106469506183e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/3dc205dd-25fa-442a-83b5-9afef7c0f149",
+      "row_index": 218774,
+      "img_name": "000125.png",
+      "frame": 125,
+      "merged_observation_index": 25,
+      "trajectory_observation_count": 76,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.1431000286660264e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town06/d0b382df-fe01-4286-898c-02d3d86333d3",
+      "row_index": 96817,
+      "img_name": "000195.png",
+      "frame": 195,
+      "merged_observation_index": 39,
+      "trajectory_observation_count": 45,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.0129453031915148e-07,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/c7ea9de4-b61c-4997-8872-0acbbadf9814",
+      "row_index": 29929,
+      "img_name": "000175.png",
+      "frame": 175,
+      "merged_observation_index": 35,
+      "trajectory_observation_count": 50,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.859080505679401e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/7d5ea64d-a719-425e-976d-8b54b74d5c09",
+      "row_index": 246710,
+      "img_name": "000380.png",
+      "frame": 380,
+      "merged_observation_index": 76,
+      "trajectory_observation_count": 101,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.5413006648756777e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/287c0253-bd2b-446c-89ca-cfe1ffd617f3",
+      "row_index": 211217,
+      "img_name": "000095.png",
+      "frame": 95,
+      "merged_observation_index": 19,
+      "trajectory_observation_count": 61,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.025297566962905e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/c2ccfc2a-7b48-4b6b-8cbc-053a6e5caff5",
+      "row_index": 397779,
+      "img_name": "000025.png",
+      "frame": 25,
+      "merged_observation_index": 5,
+      "trajectory_observation_count": 31,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 7.358498987919404e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/bf58a537-eeb1-41fe-8079-46dca123ab01",
+      "row_index": 274538,
+      "img_name": "000145.png",
+      "frame": 145,
+      "merged_observation_index": 29,
+      "trajectory_observation_count": 77,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.163668444410405e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/58171939-3923-4dff-841a-031faaa7524e",
+      "row_index": 125962,
+      "img_name": "000190.png",
+      "frame": 190,
+      "merged_observation_index": 38,
+      "trajectory_observation_count": 55,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.6439323619342758e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/ea7f06be-e2e2-4b4f-af28-465c557faad7",
+      "row_index": 176754,
+      "img_name": "000335.png",
+      "frame": 335,
+      "merged_observation_index": 67,
+      "trajectory_observation_count": 76,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 2.1934719818261783e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town04/55fb6ddb-82e8-470f-9602-30df677a3c67",
+      "row_index": 46214,
+      "img_name": "000065.png",
+      "frame": 65,
+      "merged_observation_index": 13,
+      "trajectory_observation_count": 21,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.207207350224394e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/49588adc-48d2-4038-b597-6b6a8aca3d9f",
+      "row_index": 316518,
+      "img_name": "000080.png",
+      "frame": 80,
+      "merged_observation_index": 16,
+      "trajectory_observation_count": 39,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.991414802648421e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/1c8d927e-fb37-4eb6-a1fe-2d486dfae555",
+      "row_index": 207184,
+      "img_name": "000235.png",
+      "frame": 235,
+      "merged_observation_index": 47,
+      "trajectory_observation_count": 85,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.747477243607136e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town04/834d01e8-3565-44bd-8f3f-386c7aab0c7c",
+      "row_index": 51788,
+      "img_name": "000285.png",
+      "frame": 285,
+      "merged_observation_index": 57,
+      "trajectory_observation_count": 89,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.7703186250273006e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/db2818d7-29f0-404d-b2aa-f1de185ccbaf",
+      "row_index": 33478,
+      "img_name": "000090.png",
+      "frame": 90,
+      "merged_observation_index": 18,
+      "trajectory_observation_count": 84,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.8565187931993705e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/8266628d-0cba-4a9d-80fd-dcc96f3d0044",
+      "row_index": 382987,
+      "img_name": "000175.png",
+      "frame": 175,
+      "merged_observation_index": 35,
+      "trajectory_observation_count": 54,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.203184267304039e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/ad5eeec7-a13e-43a9-9184-2a132885c6dc",
+      "row_index": 134616,
+      "img_name": "000105.png",
+      "frame": 105,
+      "merged_observation_index": 21,
+      "trajectory_observation_count": 57,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 7.466526374955151e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/47b24ece-2122-4ba1-b668-2464d8bcf428",
+      "row_index": 369370,
+      "img_name": "000000.png",
+      "frame": 0,
+      "merged_observation_index": 0,
+      "trajectory_observation_count": 26,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.3394641840136501e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town07/cdbf9872-b3b3-4b3e-a974-ecad6ce3db77",
+      "row_index": 112410,
+      "img_name": "000030.png",
+      "frame": 30,
+      "merged_observation_index": 6,
+      "trajectory_observation_count": 59,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.754281112186789e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/69ed739a-fe2e-40fd-b2ac-b1f7fd6b12f1",
+      "row_index": 239120,
+      "img_name": "000060.png",
+      "frame": 60,
+      "merged_observation_index": 12,
+      "trajectory_observation_count": 54,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.960042503971863e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/4fe9b587-ecd7-413b-9514-66dd7cb23f75",
+      "row_index": 227582,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 47,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.613124805428413e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/05c094d1-1b06-41d9-b88e-cd3da2f4ef02",
+      "row_index": 305088,
+      "img_name": "000185.png",
+      "frame": 185,
+      "merged_observation_index": 37,
+      "trajectory_observation_count": 43,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.721718888627379e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/bb953a9d-e925-4ef8-a69a-b78cd88732c7",
+      "row_index": 272673,
+      "img_name": "000130.png",
+      "frame": 130,
+      "merged_observation_index": 26,
+      "trajectory_observation_count": 77,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.031327334644061e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/13239e2f-1dd2-4a78-95f7-e702375a34cb",
+      "row_index": 181580,
+      "img_name": "000135.png",
+      "frame": 135,
+      "merged_observation_index": 27,
+      "trajectory_observation_count": 41,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.739205637984469e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/8f5c59e6-5716-4b82-b355-40e3d100e353",
+      "row_index": 253691,
+      "img_name": "000345.png",
+      "frame": 345,
+      "merged_observation_index": 69,
+      "trajectory_observation_count": 84,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.461432924150131e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/ae6db62f-d1c4-42a5-9619-d1d7fb4286e9",
+      "row_index": 24980,
+      "img_name": "000245.png",
+      "frame": 245,
+      "merged_observation_index": 49,
+      "trajectory_observation_count": 59,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 9.267837386417455e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/0a697f89-7750-4e1f-91e8-7aa05802faa9",
+      "row_index": 117250,
+      "img_name": "000070.png",
+      "frame": 70,
+      "merged_observation_index": 14,
+      "trajectory_observation_count": 24,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.966361495853164e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/fdc509b7-5d73-41f7-921b-1d4ce1dcddab",
+      "row_index": 302086,
+      "img_name": "000520.png",
+      "frame": 520,
+      "merged_observation_index": 104,
+      "trajectory_observation_count": 124,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.621588776236422e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/41839334-62fc-4510-8f4e-df3e696fa84d",
+      "row_index": 315234,
+      "img_name": "000100.png",
+      "frame": 100,
+      "merged_observation_index": 20,
+      "trajectory_observation_count": 81,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.6265751462695164e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/fb341cde-da5b-4acf-9e9d-134c4eba0039",
+      "row_index": 38108,
+      "img_name": "000205.png",
+      "frame": 205,
+      "merged_observation_index": 41,
+      "trajectory_observation_count": 68,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.147459281040767e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/e8676ccd-01f4-4783-a14a-7cb12c117845",
+      "row_index": 35623,
+      "img_name": "000260.png",
+      "frame": 260,
+      "merged_observation_index": 52,
+      "trajectory_observation_count": 72,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.569958827500443e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/4695d862-0e20-4067-b2d1-d017c0b3dd0d",
+      "row_index": 153363,
+      "img_name": "000290.png",
+      "frame": 290,
+      "merged_observation_index": 58,
+      "trajectory_observation_count": 74,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 1.7425443865626278e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/1c9244e6-e831-43a6-bfb2-fac5f4329fe8",
+      "row_index": 358526,
+      "img_name": "000285.png",
+      "frame": 285,
+      "merged_observation_index": 57,
+      "trajectory_observation_count": 68,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.266255126950114e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/2a932344-f5d2-4f99-ad59-6294c59c50df",
+      "row_index": 182865,
+      "img_name": "000105.png",
+      "frame": 105,
+      "merged_observation_index": 21,
+      "trajectory_observation_count": 28,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.261096340334007e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/2bf2a35e-0012-4027-862e-1b75f708d8c7",
+      "row_index": 212568,
+      "img_name": "000370.png",
+      "frame": 370,
+      "merged_observation_index": 74,
+      "trajectory_observation_count": 75,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 7.304227067628233e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/6be6f695-cd47-4ec1-80b1-ba4594e8e361",
+      "row_index": 378220,
+      "img_name": "000100.png",
+      "frame": 100,
+      "merged_observation_index": 20,
+      "trajectory_observation_count": 35,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.6230710109255142e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/9c26c0dc-3f42-473b-b025-7bfc5d8c7f0f",
+      "row_index": 132759,
+      "img_name": "000125.png",
+      "frame": 125,
+      "merged_observation_index": 25,
+      "trajectory_observation_count": 48,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.469803511180203e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/c27e7258-d225-4a49-be20-d53d7fd6fdfd",
+      "row_index": 28785,
+      "img_name": "000010.png",
+      "frame": 10,
+      "merged_observation_index": 2,
+      "trajectory_observation_count": 42,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 7.42517984875235e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/0c5f02e0-ae18-4692-8960-154416fe48d1",
+      "row_index": 117738,
+      "img_name": "000050.png",
+      "frame": 50,
+      "merged_observation_index": 10,
+      "trajectory_observation_count": 22,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.23712527076026e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/84c689f5-e4d9-4f26-829d-baf7212a94b5",
+      "row_index": 249702,
+      "img_name": "000080.png",
+      "frame": 80,
+      "merged_observation_index": 16,
+      "trajectory_observation_count": 88,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.378608786659299e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/5c4172f7-fee9-4d06-9c13-3d699df1848a",
+      "row_index": 13443,
+      "img_name": "000060.png",
+      "frame": 60,
+      "merged_observation_index": 12,
+      "trajectory_observation_count": 76,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 9.540533030261145e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/12ebfc9f-da06-4898-8d13-c5a757537b4e",
+      "row_index": 2188,
+      "img_name": "000285.png",
+      "frame": 285,
+      "merged_observation_index": 57,
+      "trajectory_observation_count": 59,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.86297370044997e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/4f05fbf3-255b-4405-bea0-e317f578a405",
+      "row_index": 317641,
+      "img_name": "000065.png",
+      "frame": 65,
+      "merged_observation_index": 13,
+      "trajectory_observation_count": 29,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.212076560288324e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town04/7ffc760c-1e44-40eb-bd48-ad94bac50f0b",
+      "row_index": 51143,
+      "img_name": "000050.png",
+      "frame": 50,
+      "merged_observation_index": 10,
+      "trajectory_observation_count": 41,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.481319382243498e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/77b9ca1e-ceca-40dd-8647-49a51c460a80",
+      "row_index": 160132,
+      "img_name": "000070.png",
+      "frame": 70,
+      "merged_observation_index": 14,
+      "trajectory_observation_count": 42,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 1.7621783698906768e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/67470de4-fef5-4384-91b8-fcdca5129b42",
+      "row_index": 127903,
+      "img_name": "000145.png",
+      "frame": 145,
+      "merged_observation_index": 29,
+      "trajectory_observation_count": 43,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.4777866819137842e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/497c719a-f170-4ec0-a165-d84cbf5bd8dd",
+      "row_index": 224377,
+      "img_name": "000010.png",
+      "frame": 10,
+      "merged_observation_index": 2,
+      "trajectory_observation_count": 88,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.415739634528904e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/0e43a624-c6c6-4784-a9ed-97b898625940",
+      "row_index": 200592,
+      "img_name": "000070.png",
+      "frame": 70,
+      "merged_observation_index": 14,
+      "trajectory_observation_count": 77,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.009798238944427e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town04/fbb89dd6-dce5-4def-a739-8c29dd27f9c2",
+      "row_index": 63070,
+      "img_name": "000160.png",
+      "frame": 160,
+      "merged_observation_index": 32,
+      "trajectory_observation_count": 41,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.5013368326322052e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/8d3a57b4-1914-4a76-87c1-50b574a8d991",
+      "row_index": 163020,
+      "img_name": "000255.png",
+      "frame": 255,
+      "merged_observation_index": 51,
+      "trajectory_observation_count": 88,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 2.817940436550259e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/4a1001ea-b355-45ba-b969-f9f6c77aac79",
+      "row_index": 184692,
+      "img_name": "000010.png",
+      "frame": 10,
+      "merged_observation_index": 2,
+      "trajectory_observation_count": 17,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.388225804952128e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/047e8437-983c-41c0-befb-96b98a6cda2e",
+      "row_index": 304795,
+      "img_name": "000255.png",
+      "frame": 255,
+      "merged_observation_index": 51,
+      "trajectory_observation_count": 79,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.9612876857073616e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/b9c96b37-1fce-425e-869c-c81e5f321564",
+      "row_index": 395829,
+      "img_name": "000120.png",
+      "frame": 120,
+      "merged_observation_index": 24,
+      "trajectory_observation_count": 67,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.700033451321417e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/c791e186-ba97-4815-8ba0-de483df23e99",
+      "row_index": 29741,
+      "img_name": "000060.png",
+      "frame": 60,
+      "merged_observation_index": 12,
+      "trajectory_observation_count": 91,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.926369895879134e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/116ba59f-ba99-4ab7-8622-9d30bc43b3bd",
+      "row_index": 118267,
+      "img_name": "000010.png",
+      "frame": 10,
+      "merged_observation_index": 2,
+      "trajectory_observation_count": 28,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.1553576418374973e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/1e7300f4-d8f6-4d07-a431-901f2620c285",
+      "row_index": 358983,
+      "img_name": "000155.png",
+      "frame": 155,
+      "merged_observation_index": 31,
+      "trajectory_observation_count": 81,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.746430815050218e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/cb647a83-e881-4610-8444-8d12aac36eb4",
+      "row_index": 191047,
+      "img_name": "000000.png",
+      "frame": 0,
+      "merged_observation_index": 0,
+      "trajectory_observation_count": 16,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.8609714880213346e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/70c53c84-e022-4994-a33d-93a3e5aa8cd8",
+      "row_index": 16003,
+      "img_name": "000025.png",
+      "frame": 25,
+      "merged_observation_index": 5,
+      "trajectory_observation_count": 19,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.5982882007346007e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/9391a561-90d4-4320-b147-7edab77bf698",
+      "row_index": 386338,
+      "img_name": "000291.png",
+      "frame": 291,
+      "merged_observation_index": 59,
+      "trajectory_observation_count": 60,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.2499917423933766e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/66dfcd81-b1b1-49e8-b89d-652931557b0b",
+      "row_index": 158057,
+      "img_name": "000010.png",
+      "frame": 10,
+      "merged_observation_index": 2,
+      "trajectory_observation_count": 25,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 5.077863240998681e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/0504f0c9-3d45-4616-ad8b-4e5ffad3532a",
+      "row_index": 196087,
+      "img_name": "000090.png",
+      "frame": 90,
+      "merged_observation_index": 18,
+      "trajectory_observation_count": 28,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.293687825400298e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town07/5449b779-c3b7-41d1-ab28-bb1394980393",
+      "row_index": 104964,
+      "img_name": "000010.png",
+      "frame": 10,
+      "merged_observation_index": 2,
+      "trajectory_observation_count": 12,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.62221583020073e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/f47d7712-dff5-4d35-802e-f5cbca611e65",
+      "row_index": 297657,
+      "img_name": "000385.png",
+      "frame": 385,
+      "merged_observation_index": 77,
+      "trajectory_observation_count": 105,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.097749301517183e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/d0409e1f-ba53-4a5f-b70e-6c1f9a4cc468",
+      "row_index": 31456,
+      "img_name": "000290.png",
+      "frame": 290,
+      "merged_observation_index": 58,
+      "trajectory_observation_count": 78,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.453321765853559e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town06/a69c48fd-e72a-4037-9151-0d85e92c16b4",
+      "row_index": 93417,
+      "img_name": "000220.png",
+      "frame": 220,
+      "merged_observation_index": 44,
+      "trajectory_observation_count": 66,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.250480789558253e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/5b0cbd61-0ab7-4765-a873-1d12e63f6b2d",
+      "row_index": 126311,
+      "img_name": "000191.png",
+      "frame": 191,
+      "merged_observation_index": 39,
+      "trajectory_observation_count": 40,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.795895846067879e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town05/cddcf2ac-258a-474f-9b31-9e484c3e3f10",
+      "row_index": 79531,
+      "img_name": "000075.png",
+      "frame": 75,
+      "merged_observation_index": 15,
+      "trajectory_observation_count": 19,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.5634649553937265e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/0eec0d30-3270-4977-abe0-21bc0f7cfd42",
+      "row_index": 355225,
+      "img_name": "000020.png",
+      "frame": 20,
+      "merged_observation_index": 4,
+      "trajectory_observation_count": 90,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.1637691921251303e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/c3860dae-b469-4c12-a017-1c14c7179d4d",
+      "row_index": 340184,
+      "img_name": "000160.png",
+      "frame": 160,
+      "merged_observation_index": 32,
+      "trajectory_observation_count": 51,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.236382131876496e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/a96133cb-79a5-4fd8-ba86-6eb9baf4a5c2",
+      "row_index": 24313,
+      "img_name": "000090.png",
+      "frame": 90,
+      "merged_observation_index": 18,
+      "trajectory_observation_count": 27,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.532205133411793e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town04/2f6dfd20-8072-4296-a501-c6efee93ffed",
+      "row_index": 42713,
+      "img_name": "000115.png",
+      "frame": 115,
+      "merged_observation_index": 23,
+      "trajectory_observation_count": 37,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.6296628369569817e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/ee8dbfa3-18b6-4ef8-8def-979ba1c3d5ed",
+      "row_index": 140952,
+      "img_name": "000100.png",
+      "frame": 100,
+      "merged_observation_index": 20,
+      "trajectory_observation_count": 31,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.935150032028048e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/d0cec7bb-0d87-405a-acad-a5097522c37a",
+      "row_index": 173228,
+      "img_name": "000135.png",
+      "frame": 135,
+      "merged_observation_index": 27,
+      "trajectory_observation_count": 80,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 1.167579710692479e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/0f2a72d2-72e1-430b-8fe8-902e0f4d1818",
+      "row_index": 201211,
+      "img_name": "000371.png",
+      "frame": 371,
+      "merged_observation_index": 75,
+      "trajectory_observation_count": 76,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.764052530248364e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/71fa5198-d116-4ef0-b87a-914881cad432",
+      "row_index": 16236,
+      "img_name": "000220.png",
+      "frame": 220,
+      "merged_observation_index": 44,
+      "trajectory_observation_count": 47,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.5110125796176135e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/fe83c6a6-2265-4de1-8341-8dc6463983dd",
+      "row_index": 302943,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 86,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.33364111263046e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/759d2a07-fbec-4e86-83de-f157a22cc9b2",
+      "row_index": 186632,
+      "img_name": "000055.png",
+      "frame": 55,
+      "merged_observation_index": 11,
+      "trajectory_observation_count": 21,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.5882424203871324e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town05/a0135958-9e5d-44ec-8024-88b8c3b4a2b7",
+      "row_index": 76088,
+      "img_name": "000130.png",
+      "frame": 130,
+      "merged_observation_index": 26,
+      "trajectory_observation_count": 47,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.1870417477032333e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/af1b40dd-234a-4808-98de-6f858170fadc",
+      "row_index": 134848,
+      "img_name": "000085.png",
+      "frame": 85,
+      "merged_observation_index": 17,
+      "trajectory_observation_count": 21,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.5134039910158492e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/6d4d4adf-77ed-4351-8178-986e3f95b9b1",
+      "row_index": 378463,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 58,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.927554713736072e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/af7fd9a9-ef68-40e1-843a-5c4e52db112a",
+      "row_index": 393609,
+      "img_name": "000175.png",
+      "frame": 175,
+      "merged_observation_index": 35,
+      "trajectory_observation_count": 78,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.801128401979213e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/9092a3d4-5f68-40fc-94bc-7a7f990bf0d0",
+      "row_index": 163873,
+      "img_name": "000325.png",
+      "frame": 325,
+      "merged_observation_index": 65,
+      "trajectory_observation_count": 76,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 5.819430093367828e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town05/4757ee22-14c2-4df4-8965-5e5aab422ad6",
+      "row_index": 69355,
+      "img_name": "000280.png",
+      "frame": 280,
+      "merged_observation_index": 56,
+      "trajectory_observation_count": 69,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.477250464291927e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/2cd1daf6-004a-4383-8d48-f5acf63c3ffe",
+      "row_index": 311617,
+      "img_name": "000110.png",
+      "frame": 110,
+      "merged_observation_index": 22,
+      "trajectory_observation_count": 25,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.638868198573846e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/886dac77-f49c-4928-8980-ebc8ee08ac51",
+      "row_index": 187788,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 26,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 8.285264296858941e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/86305c21-1426-41c5-a988-ace8b3174f6f",
+      "row_index": 187553,
+      "img_name": "000050.png",
+      "frame": 50,
+      "merged_observation_index": 10,
+      "trajectory_observation_count": 16,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.174308360609501e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/1d965e11-6145-435d-b807-4e086c19e4f5",
+      "row_index": 358785,
+      "img_name": "000050.png",
+      "frame": 50,
+      "merged_observation_index": 10,
+      "trajectory_observation_count": 33,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 7.617663344561265e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town05/c2f62be3-7657-4b46-af96-4068b47661ad",
+      "row_index": 78321,
+      "img_name": "000240.png",
+      "frame": 240,
+      "merged_observation_index": 48,
+      "trajectory_observation_count": 54,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.039790934053713e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/794f1565-ed8c-42ab-a0fc-0b54c2346afb",
+      "row_index": 244754,
+      "img_name": "000225.png",
+      "frame": 225,
+      "merged_observation_index": 45,
+      "trajectory_observation_count": 86,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.085484255928918e-09,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/d85d1343-77d2-4953-b0ac-9ef594cc19b4",
+      "row_index": 32575,
+      "img_name": "000090.png",
+      "frame": 90,
+      "merged_observation_index": 18,
+      "trajectory_observation_count": 28,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.308310143028791e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town15/32c7e3c8-0511-47e2-9904-5b8dd5be2302",
+      "row_index": 150312,
+      "img_name": "000040.png",
+      "frame": 40,
+      "merged_observation_index": 8,
+      "trajectory_observation_count": 47,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": true,
+        "linear_velocity": true,
+        "angular_velocity": true,
+        "linear_acceleration": true,
+        "angular_acceleration": true
+      },
+      "quaternion_norm_error": 5.090690069486925e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/e4411c7a-1e6e-42a6-9434-561e4b704d34",
+      "row_index": 35084,
+      "img_name": "000175.png",
+      "frame": 175,
+      "merged_observation_index": 35,
+      "trajectory_observation_count": 46,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.922821782495703e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NYCEnvironmentMegapa/54a6c798-5f29-4fe1-b719-319b46734fc7",
+      "row_index": 230041,
+      "img_name": "000530.png",
+      "frame": 530,
+      "merged_observation_index": 106,
+      "trajectory_observation_count": 112,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.461111153235663e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/e86f71b5-60bb-4248-a3a4-b1a36973abad",
+      "row_index": 192612,
+      "img_name": "000080.png",
+      "frame": 80,
+      "merged_observation_index": 16,
+      "trajectory_observation_count": 27,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.809646299477663e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/ef92a3bf-e377-43cc-bf62-534feba8f69f",
+      "row_index": 36704,
+      "img_name": "000035.png",
+      "frame": 35,
+      "merged_observation_index": 7,
+      "trajectory_observation_count": 61,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.0546781004094896e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/4c74e150-87f3-4661-bc1f-4307fb5b2653",
+      "row_index": 10827,
+      "img_name": "000150.png",
+      "frame": 150,
+      "merged_observation_index": 30,
+      "trajectory_observation_count": 70,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.028861545433358e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town10HD/66c9b926-358e-4b7c-981f-9ceb27707934",
+      "row_index": 127843,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 32,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.17528036589232e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "TropicalIsland/55bf7ed0-977b-419d-a2ea-06556e8d5f51",
+      "row_index": 372915,
+      "img_name": "000230.png",
+      "frame": 230,
+      "merged_observation_index": 46,
+      "trajectory_observation_count": 69,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 7.683198410823877e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town05/31ca9004-7418-4f5b-9698-d11b6b5f292a",
+      "row_index": 67683,
+      "img_name": "000050.png",
+      "frame": 50,
+      "merged_observation_index": 10,
+      "trajectory_observation_count": 62,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 5.3279272993478344e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town06/c4162522-4654-4691-aa99-c519e89e774e",
+      "row_index": 95823,
+      "img_name": "000180.png",
+      "frame": 180,
+      "merged_observation_index": 36,
+      "trajectory_observation_count": 76,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 6.358596382760595e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town04/c1605a04-421a-4f28-82fd-df72b3391dcd",
+      "row_index": 57615,
+      "img_name": "000135.png",
+      "frame": 135,
+      "merged_observation_index": 27,
+      "trajectory_observation_count": 36,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 7.676374602638703e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town07/83bc1315-3022-4390-bf87-0de2df1f0987",
+      "row_index": 108425,
+      "img_name": "000065.png",
+      "frame": 65,
+      "merged_observation_index": 13,
+      "trajectory_observation_count": 60,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 4.968588140918939e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/5c36acf3-f5a5-451d-8add-ede800c5f92e",
+      "row_index": 185374,
+      "img_name": "000035.png",
+      "frame": 35,
+      "merged_observation_index": 7,
+      "trajectory_observation_count": 24,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.9833063635843473e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "ModernCityMap/1cb11d6e-3ce3-4fa5-892b-3c0c382d4a36",
+      "row_index": 182073,
+      "img_name": "000005.png",
+      "frame": 5,
+      "merged_observation_index": 1,
+      "trajectory_observation_count": 14,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.3970281981533503e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town07/580ac4be-c90a-42c2-a61c-7815831cb507",
+      "row_index": 105200,
+      "img_name": "000080.png",
+      "frame": 80,
+      "merged_observation_index": 16,
+      "trajectory_observation_count": 26,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 3.275748716724536e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town01/42943a1b-4305-4aed-aaa8-b7f824663ae9",
+      "row_index": 9310,
+      "img_name": "000095.png",
+      "frame": 95,
+      "merged_observation_index": 19,
+      "trajectory_observation_count": 22,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.5550227267245873e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "NewYorkCity/62bcb0bd-aaed-44cd-b270-e2afbbc5f314",
+      "row_index": 321011,
+      "img_name": "000190.png",
+      "frame": 190,
+      "merged_observation_index": 38,
+      "trajectory_observation_count": 40,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.855276015623076e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town04/f42775df-6514-45df-bf8a-d96b71e0cd2b",
+      "row_index": 62692,
+      "img_name": "000095.png",
+      "frame": 95,
+      "merged_observation_index": 19,
+      "trajectory_observation_count": 34,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 2.9781031196662866e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    },
+    {
+      "trajectory": "Carla_Town06/8f256ede-e839-4f85-bf12-fe9beac7d482",
+      "row_index": 92169,
+      "img_name": "000200.png",
+      "frame": 200,
+      "merged_observation_index": 40,
+      "trajectory_observation_count": 48,
+      "checks": {
+        "front_image_exists": true,
+        "down_image_exists": true,
+        "log_frame_matches_image": true,
+        "sample_frame_in_merged_index": true,
+        "merged_index_strictly_increasing": true,
+        "merged_index_raw_lengths_match": true,
+        "quaternion_finite_xyzw_length4": true,
+        "position_finite_length3": true,
+        "log_pose_matches_merged_raw_1e_6": true,
+        "quaternion_unit_within_1e_4": true,
+        "merged_raw_matches_detailed_at_frame": true
+      },
+      "available_fields": {
+        "timestamp": false,
+        "linear_velocity": false,
+        "angular_velocity": false,
+        "linear_acceleration": false,
+        "angular_acceleration": false
+      },
+      "quaternion_norm_error": 1.7605740199044817e-08,
+      "log_merged_pose_max_abs_error": 0.0
+    }
+  ],
+  "timestamp_sequence_followup": {
+    "scope": "All image-indexed observations in the 10 sampled trajectories whose selected frame provided a timestamp; not a complete dataset audit.",
+    "trajectory_count": 10,
+    "timestamp_observation_count": 589,
+    "duplicate_timestamp_count": 0,
+    "timestamp_regression_count": 0,
+    "details": [
+      {
+        "trajectory": "Carla_Town15/7e2f410b-cdb8-4191-b906-a4d52338dad4",
+        "frames": 51,
+        "timestamps": 51,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/4f1761db-1dba-4f4f-9a30-4b51c8170394",
+        "frames": 30,
+        "timestamps": 30,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/ea7f06be-e2e2-4b4f-af28-465c557faad7",
+        "frames": 76,
+        "timestamps": 76,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/4695d862-0e20-4067-b2d1-d017c0b3dd0d",
+        "frames": 74,
+        "timestamps": 74,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/77b9ca1e-ceca-40dd-8647-49a51c460a80",
+        "frames": 42,
+        "timestamps": 42,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/8d3a57b4-1914-4a76-87c1-50b574a8d991",
+        "frames": 88,
+        "timestamps": 88,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/66dfcd81-b1b1-49e8-b89d-652931557b0b",
+        "frames": 25,
+        "timestamps": 25,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/d0cec7bb-0d87-405a-acad-a5097522c37a",
+        "frames": 80,
+        "timestamps": 80,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/9092a3d4-5f68-40fc-94bc-7a7f990bf0d0",
+        "frames": 76,
+        "timestamps": 76,
+        "duplicates": 0,
+        "regressions": 0
+      },
+      {
+        "trajectory": "Carla_Town15/32c7e3c8-0511-47e2-9904-5b8dd5be2302",
+        "frames": 47,
+        "timestamps": 47,
+        "duplicates": 0,
+        "regressions": 0
+      }
+    ]
+  }
+}

@@ -1,200 +1,158 @@
-# 扩散头训练与评估运行指南
+# 安装、训练与评估指南
 
-[返回文档首页](../README.md)
+[项目首页](../../README.md) · [实验协议](../experiments/protocol.md)
 
-> **运行入口。** 命令从 AeroVLA 项目根目录执行；文末测试数和两步流程结果是开发时的记录。已整理的第三轮验证见[训练记录](../experiments/full_training_20261010.md#epoch3)，已完成的 NYC 闭环与对比见[实验报告](../experiments/nyc10_evaluation_20261011.md)。本次目录整理没有重新查询后台训练状态。
+所有命令从仓库根目录执行。以下命令运行已有单步基线 A0；新回归/MLP/序列实验还需 A/B 完成实现。GPU 编号按实际机器修改，输出目录必须不存在或为空。
 
-日期：2026-10-10。本次承接[架构报告](../design/diffusion_action_head.md)与[数据就绪检查](../design/diffusion_action_head.md#data-readiness)，补齐轨迹划分、训练中验证、离线动作评估及闭环启动配置。当前代码的运行说明以本文为准。
+## 1. 安装环境
 
-正式训练的第三轮全量验证及更新曲线见[训练记录](../experiments/full_training_20261010.md#epoch3)；较早的两轮验证、监督数据分析见[项目周报](../experiments/weekly_report_20261011.md)。下文两步流程检查是历史开发验证，不是正式训练效果。
-
-## 当前数据与训练行为
-
-默认读取 `data/aerovla_train_dataset.json` 和 `data/continuous_split_seed42.json`：
-
-| 集合 | 帧数 | 轨迹数 | 用途 |
-| --- | --- | --- | --- |
-| train | 369,274 | 6,850 | 仅扩散头参数训练 |
-| val | 41,176 | 761 | 验证、best 检查点选择、离线动作指标 |
-
-加载数据时校验划分版本、轨迹 SHA256、train/val 不相交、重复轨迹/帧及完整覆盖。错误或缺失 split 会报错，不会回退到全量训练。`--max-samples` 等限量参数在完成全量划分校验之后，用固定种子随机选帧，并保留原顺序；不会只取数据开头的同一张地图。
-
-模型仍然是冻结的视觉骨干、projector、Llama 和已合并的 AeroVLA LoRA，仅训练动作扩散头；LMHead 已移除。输入、动作范围、LAND 标签和单步动作定义保持前序实现。
-
-## 先检查数据接口
+现有工作环境使用 Linux、Python 3.10、PyTorch 2.1.2+cu121。依赖固定在 [requirements.txt](../../requirements.txt)。新机器仍需匹配 GPU 驱动、CUDA 编译工具链与 AirSim 渲染环境。
 
 ```bash
-cd /data/xiyang/project_orig/AeroVLA
-PYTHON=/data/xiyang/.conda/envs/aero_vla/bin/python \
-  bash scripts/train_diffusion_head.sh --check-data
+conda create -n aero_vla python=3.10 -y
+conda activate aero_vla
+export PYTHON=python
+python -m pip install torch==2.1.2 torchvision==0.16.2   --index-url https://download.pytorch.org/whl/cu121
+python -m pip install packaging ninja wheel numpy==1.26.3
+python -m pip install --no-build-isolation -r requirements.txt
+# numba 用于闭环工具；pytest 用于测试，matplotlib 用于监控图表
+python -m pip install numba pytest matplotlib
+python -m pip check
+python -c 'import sys, torch; print(sys.executable); print(torch.__version__, torch.version.cuda); print(torch.cuda.is_available())'
 ```
 
-此命令校验完整 split，并实际处理 train/val 的首个批次，打印划分摘要和张量形状；不会加载 7B 模型、更新权重或创建训练目录。它不是所有图片的解码完整性检查。前序已全量检查 820,900 个图片路径无缺失。
+flash-attn 构建可能需要 nvcc 和 C++ 编译器，PyTorch wheel 的 CUDA 运行时不等于完整 Toolkit。旧 AirSim/RPC 依赖发生通信问题时参考[专项排障](troubleshooting.md)。完整新环境安装不由现有工作区测试结果代替。
 
-## 两步真实数据流程检查
+## 2. 准备外部资源
 
-```bash
-PYTHON=/data/xiyang/.conda/envs/aero_vla/bin/python \
-CUDA_VISIBLE_DEVICES=1 bash scripts/smoke_diffusion_pipeline.sh
-```
+| 资源 | 默认目录 | 内容 |
+| --- | --- | --- |
+| 基座 | `openvla-7b/` | 权重分片、索引、config、tokenizer、processor、自定义模型代码 |
+| 原 adapter | `checkpoints/aero_vla/` | adapter_config 与 adapter_model.safetensors |
+| 原始数据 | `dataset_raw/` | TravelUAV 图像、轨迹与元信息 |
+| 帧级监督 | `data/aerovla_train_dataset.json` | 逐帧图文和动作标签，需另行准备 |
+| 轨迹划分 | `data/continuous_split_seed42.json` | Git 已保留，与监督清单匹配 |
+| 闭环资源 | `envs/`、`data/uav_dataset/`、`data/meta/` | 外部场景、已提供的任务清单和元数据 |
 
-该脚本执行 train 中随机 4 帧的两次更新，在 val 中固定 8 帧上计算指标，再通过独立评估进程重载最终检查点。最后核对重载前后的噪声 loss、归一化动作 MSE 和 LAND 混淆统计一致。
-
-默认输出 `checkpoints/diffusion_smoke_real/`。已有输出时会拒绝覆盖；复跑可指定 `SMOKE_OUTPUT_DIR=./checkpoints/diffusion_smoke_real_2`。脚本默认离线读取本地基座和 adapter，默认选择物理 GPU 1，可通过环境变量覆盖。
-
-这个检查点仅证明程序流程可用，并非训练收敛的导航策略。
-
-## 正式训练
-
-```bash
-PYTHON=/data/xiyang/.conda/envs/aero_vla/bin/python \
-CUDA_VISIBLE_DEVICES=1 bash scripts/train_diffusion_head.sh \
-  --model-path ./openvla-7b \
-  --adapter-path ./checkpoints/aero_vla \
-  --data-root ./dataset_raw \
-  --train-json ./data/aerovla_train_dataset.json \
-  --split-json ./data/continuous_split_seed42.json \
-  --output-dir ./checkpoints/aero_vla_diffusion_train \
-  --epochs 5 --batch-size 2 --gradient-accumulation-steps 8 \
-  --eval-batch-size 2 --learning-rate 1e-4
-```
-
-默认单进程单 GPU，骨干 bfloat16、头 float32；实际默认有效 batch 为 16。验证默认覆盖全部 41,176 帧，每个 epoch 结束及最后一次更新后运行。`--eval-steps N` 可额外每 N 次 optimizer 更新验证；重合的触发点只验证一次。
-
-验证使用独立固定种子，恢复模型训练模式和随机状态，不参与反向传播。按验证集 `noise_mse` 的最小值保存 `best/`。随机动作采样的指标在相同模型、数据顺序、batch 大小、精度、设备和种子下可复现；改变这些条件时不承诺数值逐位一致。
-
-| 参数 | 作用 |
-| --- | --- |
-| `--max-samples N` | 仅训练固定随机 N 帧；省略即全部 train |
-| `--max-val-samples N` | 使用固定随机 N 帧验证；省略即全部 val |
-| `--max-steps N` | 达到 N 次更新后提前结束，并执行最终验证 |
-| `--eval-seed 42` | 验证子集和噪声/采样随机种子 |
-| `--save-steps 1000` | 定期保存头检查点 |
-| `--adapter-path none` | 不加载原 AeroVLA adapter，仅冻结 OpenVLA 基座 |
-| `--device cpu --backbone-dtype float32` | CPU 执行，需足够内存且速度较慢 |
-
-数据与划分文件在运行期间应保持不变。输出目录必须为空；本版检查点不包含 optimizer/scheduler 状态，不支持精确断点续训。
-
-## 训练产物
+数据布局：
 
 ```text
-aero_vla_diffusion_train/
-├── run_config.json              # 参数、数据/划分/抽样摘要及可训练参数数量
-├── metrics.jsonl                # 每次更新的训练 loss、梯度范数、学习率
-├── validation_metrics.jsonl     # 每次验证的完整离线指标
-├── best_metrics.json            # best 对应的验证结果
-├── diffusion_head.pt            # 最终头权重
-├── diffusion_config.json        # 基座/adapter 引用、动作 schema、训练/划分元信息
-├── data_split.json              # 使用的轨迹划分副本
-├── ...                         # tokenizer 和 processor 文件
-├── best/                       # 最小验证 noise_mse 对应的完整头检查点目录
-└── checkpoint-N/                # 定期头检查点
+dataset_raw/<map>/<trajectory>/
+├── frontcamera/000000.png
+├── downcamera/000000.png
+├── log/000000.json          可选历史输入需要
+└── merged_data.json         参考轨迹和闭环指标需要
 ```
 
-冻结的 7B 基座和 adapter 不复制到输出目录，重载时仍需保留原权重。检查点记录原文件绝对路径；模型 API 可覆盖迁移后的基座/adapter 路径。
-
-## 训练监控和监督标签检查
-
-GPU 1 全量训练启动时已配置独立 CPU 监控。监控入口和启动记录见[全量训练记录](../experiments/full_training_20261010.md#launch)，包含 Markdown、CSV、曲线图、检查点清单及监督标签样例；是否仍在刷新需以实际运行状态为准。
-
-对其他运行，可用下列命令持续整理现有训练日志：
+若 `dataset_raw` 尚不存在，可以链接到数据位置：
 
 ```bash
-/data/xiyang/.conda/envs/aero_vla/bin/python src/monitor_diffusion_training.py \
-  --run-dir ./checkpoints/aero_vla_diffusion_train \
-  --log-dir ./logs/aero_vla_diffusion_train --interval 60
+ln -s /absolute/path/to/TravelUAV dataset_raw
 ```
 
-`--once` 只导出一次。该脚本不加载模型，输出位于 `run-dir/monitoring/`；CSV 保留全部记录，图中 loss 同时展示原始值与最近 100 次更新均值。安装 matplotlib 时可生成 PNG，无绘图依赖时仍保留 CSV/JSON/Markdown 并记录告警。`log-dir/status.json` 使用 `{"status":"running"}`、`{"status":"completed"}` 或 `{"status":"failed"}`；若自行启动训练时没有这个状态文件，监控会持续等待，不会自动认定训练已经结束。
+普通训练/离线入口也支持 `--data-root`；闭环使用 `DATASET_PATH`。smoke 脚本使用默认布局。已有链接先核对，不直接覆盖。
 
-对当前完整 train/val 划分进行静态监督审计：
+训练标注示例：
+
+```json
+[{"traj_rel_dir":"NYCEnvironmentMegapa/trajectory-id","img_name":"000000.png","instruction":"<image>\nFly forward and find the target.","label":{"fwd":2.5,"down":0.0,"yaw":0.0},"is_last_step":false,"is_penultimate":false}]
+```
+
+训练清单、轨迹 split 和闭环 episode 是不同格式，不能互换。当前全量是 train 369,274 帧/6,850 轨迹，val 41,176 帧/761 轨迹；程序校验覆盖、轨迹交叉与重复记录。资源齐全后可设置 `HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1`。
+
+## 3. 数据与两步检查
 
 ```bash
-OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
-/data/xiyang/.conda/envs/aero_vla/bin/python scripts/audit_diffusion_supervision.py \
-  --data-json ./data/aerovla_train_dataset.json \
-  --split-json ./data/continuous_split_seed42.json \
-  --run-config ./checkpoints/aero_vla_diffusion_train/run_config.json \
-  --output-dir ./checkpoints/aero_vla_diffusion_train/supervision
+PYTHON=python bash scripts/train_diffusion_head.sh   --check-data --history-length 0 --num-workers 0
+
+PYTHON=python CUDA_VISIBLE_DEVICES=0 HISTORY_LENGTH=0 SMOKE_OUTPUT_DIR=./checkpoints/course_smoke bash scripts/smoke_diffusion_pipeline.sh
 ```
 
-审计核对全量来源与 run_config 的 train/val 计数、选中索引和哈希，因此若训练使用了 `--max-samples` 等子集限制，会拒绝将完整清单冒充该次训练使用的数据。输出全量标签统计及固定抽查样本；固定样本不是训练实际批次记录，也不含预测。
+`--check-data` 不加载 7B 权重，但仍需要本地 tokenizer/processor，实际仅预处理首批图像，不是所有图片的完整解码校验。smoke 使用 4 个训练帧、8 个验证帧、2 次更新，检查保存和独立重载指标一致；它不证明导航效果。该脚本默认离线，要求可用 CUDA。
 
-## 独立离线评估
+## 4. A0 正式训练
 
 ```bash
-PYTHON=/data/xiyang/.conda/envs/aero_vla/bin/python \
-CUDA_VISIBLE_DEVICES=1 bash scripts/eval_diffusion_head.sh \
-  --checkpoint ./checkpoints/aero_vla_diffusion_train/best \
-  --data-json ./data/aerovla_train_dataset.json \
-  --split-json ./data/continuous_split_seed42.json \
-  --batch-size 2 --seed 42 \
-  --output ./eval_results/diffusion/offline_val.json
+PYTHON=python CUDA_VISIBLE_DEVICES=0 bash scripts/train_diffusion_head.sh   --model-path ./openvla-7b --adapter-path ./checkpoints/aero_vla   --data-root ./dataset_raw --train-json ./data/aerovla_train_dataset.json   --split-json ./data/continuous_split_seed42.json   --output-dir ./checkpoints/course_A0_seed42   --history-length 0 --hidden-dim 256 --num-layers 4 --num-heads 8   --num-train-timesteps 100 --num-inference-steps 10   --epochs 5 --batch-size 2 --gradient-accumulation-steps 8   --eval-batch-size 2 --learning-rate 1e-4 --seed 42 --eval-seed 42
 ```
 
-默认评估全部 val。可用 `--max-samples 256` 做快速检查，或 `--num-inference-steps N` 改变去噪步数。不使用 AirSim。输出 JSON 包含：
+单进程单 GPU，不用 torchrun；骨干默认 bfloat16，动作头 float32，有效 batch 16。默认完整 train/val，每轮及最后更新后验证，定期保存；`--eval-steps N` 可增加验证频率。
 
-- `noise_mse`：固定随机噪声和时间步的 epsilon 预测均方误差。
-- `normalized_continuous_mse`：归一化后 fwd/down/yaw 三维动作均方误差，不包含 LAND。
-- `physical`：分别报告 fwd、down、yaw 的 MAE/RMSE，不将不同量纲合成一个物理误差。
-- `land`：TP/TN/FP/FN、precision/recall/F1、accuracy、正负样本数量。分母为零的 precision/recall/F1 定义为 0，正样本数为零时不能据此判断降落能力。
-- `split_provenance`：用检查点记录的数据和划分文件 SHA256 校验扩散头 train/val 隔离；旧检查点无这些信息时标记 `unknown`，已知不一致直接报错。
+`--max-samples N`、`--max-val-samples N`、`--max-steps N` 用于开发限量，必须正数；省略表示全量。样本抽取在完整 split 校验后完成。所有对照若缩减预算，应同步变更并记录，不能把小样本实验与全量基准作为严格对照。
 
-动作指标对照与训练一致的裁剪后标签，不是未裁剪的原始极值。此次 split 是同地图内的轨迹留出，不能当作未见地图测试；冻结的旧 LoRA 是否见过验证轨迹仍未知。离线动作指标也不等于闭环飞行 SR/SPL。
+输出含 `run_config.json`、`metrics.jsonl`、`validation_metrics.jsonl`、`best_metrics.json`、最终 `diffusion_head.pt` / `diffusion_config.json`、processor/tokenizer、split 副本、`best/` 与 `checkpoint-N/`。根目录是最终权重，best 按 noise MSE 选择；课程主对照使用同预算最终权重。
 
-## AirSim 闭环入口
-
-模型显卡与模拟器显卡、服务端口现在独立配置。先检查最终命令：
+## 5. 离线评估和监控
 
 ```bash
-PYTHON=/data/xiyang/.conda/envs/aero_vla/bin/python \
-MODEL_DIR=./checkpoints/aero_vla_diffusion_train/best \
-GPU_ID=1 SIMULATOR_GPU_ID=0 SIMULATOR_PORT=30000 \
-TASK_ID=seen_valset/NYCEnvironmentMegapa \
-bash scripts/eval_aerovla.sh --dry-run
+PYTHON=python CUDA_VISIBLE_DEVICES=0 bash scripts/eval_diffusion_head.sh   --checkpoint ./checkpoints/course_A0_seed42   --data-root ./dataset_raw   --data-json ./data/aerovla_train_dataset.json   --split-json ./data/continuous_split_seed42.json   --batch-size 2 --seed 42 --num-inference-steps 10   --output ./eval_results/course_A0_seed42/offline.json
+
+python src/monitor_diffusion_training.py   --run-dir ./checkpoints/course_A0_seed42   --log-dir ./logs/course_A0_seed42 --once
 ```
 
-确认对应服务可用且可供本次评估使用后，去掉 `--dry-run` 执行。此例由物理 GPU 1 运行模型，向 30000 端口的模拟器服务请求在物理 GPU 0 上运行场景。`DDP_MASTER_PORT` 默认已修正为合法端口 20001，可环境覆盖。脚本也支持 `MODEL_BASE`、`TEST_JSON`、`SAVE_DIR` 等覆盖项，使用 `--help` 查看。
+离线默认全 val，`--max-samples` 可做小检查。输出含 noise MSE、前三维归一化 MSE、逐轴物理误差、LAND 混淆统计和来源核验。没有 LAND 正例时不能用 F1 判断停止能力。此入口目前针对扩散，A1 的通用评估由 C 接入。
 
-闭环仍使用原项目 episode 清单，不能把 `continuous_split_seed42.json` 传作 `TEST_JSON`。本次没有调用、重启已有模拟器，也没有取得闭环导航指标。
+监控不加载模型；去掉 `--once` 可持续输出。没有 `log-dir/status.json` 的 completed/failed 标记时不会自动判定训练结束。
 
-## 验证与变更记录
+监督审计：
 
-**本次已跑通真实标注的训练→验证→保存→独立进程重载→离线评估，退出码 0；全套 66 项测试通过。**
+```bash
+python scripts/audit_diffusion_supervision.py   --data-json ./data/aerovla_train_dataset.json   --split-json ./data/continuous_split_seed42.json   --run-config ./checkpoints/course_A0_seed42/run_config.json   --output-dir ./checkpoints/course_A0_seed42/supervision
+```
 
-| 验证项 | 结果 |
+审计需与真实训练样本范围一致，不能将全量审计冒充子集训练来源。
+
+## 6. AirSim 闭环
+
+场景需符合服务端 `env_exec_path_dict`，例如 `envs/closeloop_envs/NYCEnvironmentMegapa.sh`。在独立终端启动场景管理服务：
+
+```bash
+python -u airsim_plugin/AirVLNSimulatorServerTool.py   --gpus 0 --port 30000 --root_path "$PWD/envs"
+```
+
+另一个终端先打印最终命令：
+
+```bash
+PYTHON=python MODEL_DIR=./checkpoints/course_A0_seed42 GPU_ID=1 SIMULATOR_GPU_ID=0 SIMULATOR_PORT=30000 TASK_ID=seen_valset/NYCEnvironmentMegapa SAVE_DIR=./eval_results/course_A0_seed42/seen_valset/NYCEnvironmentMegapa bash scripts/eval_aerovla.sh --dry-run
+```
+
+去掉 `--dry-run` 才执行。管理服务端口区别于场景 RPC；`GPU_ID` 控制模型，`SIMULATOR_GPU_ID` 控制场景。单 GPU 可均设 0，但显存与渲染共享。不要同时向同一管理服务提交多组任务。
+
+`TEST_JSON` 可指定 C 冻结的任务清单，`DATASET_PATH` 可覆盖原始数据目录，`DDP_MASTER_PORT` 默认 20001；并发运行需独立端口和服务。显式指定 `SAVE_DIR` 避免多个 best 目录同名覆盖。原 AeroVLA 参考基线用 `MODEL_DIR=./checkpoints/aero_vla` 和独立结果目录。
+
+`diffusion_config.json` 决定是否加载扩散头；当前单步 wrapper 不等于已支持 B 的动作块，新模型先通过接口检查再做正式评估。
+
+```bash
+python utils/metric.py   --root_dir ./eval_results/course_A0_seed42   --analysis_list seen_valset/NYCEnvironmentMegapa   --path_type_list full easy hard --map_filter NYCEnvironmentMegapa
+```
+
+root 是包含 seen_valset 的结果根。指标通过 ori_info 引用原始参考轨迹；迁移时保留路径。原协议 NE 是参考终点距离，SPL 的参考长度减 20，不能直接与其他定义混用。`scripts/metric.sh` 的模型路径是脚本内常量，不自动读取 MODEL_DIR。
+
+## 7. 检查点迁移与常见问题
+
+复制整个检查点，而不是单个 `.pt`；另行保留基座和原 adapter。配置可能记录旧绝对路径。离线 CLI 没有 model-path/adapter-path 覆盖参数，可在复制后的配置中仅修正资源路径并保留备份，或使用模型 API 路径覆盖；不修改数据哈希。在线 MODEL_BASE 只覆盖基座。权重不包含精确 resume 状态。
+
+| 现象 | 处理 |
 | --- | --- |
-| 真实数据全量划分与 `--check-data` | train 369,274 / val 41,176，处理器批次通过 |
-| 实际模型 | 本地 OpenVLA 7B + 原 AeroVLA adapter，GPU 1 |
-| 冻结 / 可训练参数 | 7,409,644,992 / 5,265,668 |
-| 短程使用数据 | train 随机 4 帧、val 随机 8 帧，真实标注，seed=42 |
-| optimizer 更新 | 2 次，仅扩散头 |
-| train loss | 第 1 步 1.2125136852264404；第 2 步 1.2360974550247192 |
-| val noise_mse | 1.50709730386734 |
-| val normalized_continuous_mse | 0.7305838082736672 |
-| 独立重载一致性 | noise_mse、动作 MSE、LAND 统计与训练末尾验证一致 |
-| 划分来源检查 | `verified_diffusion_head_holdout`，数据和 split SHA256 匹配 |
-| 输出完整性 | 最终、best、checkpoint-1、checkpoint-2 及 split 副本均已核对 |
-| 静态检查 | Python compileall、四个 shell 的 bash -n、git diff --check 通过 |
+| 图像缺失 | 核对 data-root、符号链接和小写相机目录 |
+| split/hash 不匹配 | 核对标注、划分、checkpoint 来自同一版本，不绕过校验 |
+| 输出非空 | 选择新目录，不是自动续训 |
+| 显存不足 | 降低 train/eval batch，记录累积与有效 batch；先跑 smoke |
+| CPU dtype 错误 | `--device cpu --backbone-dtype float32`，7B 仍需大量内存 |
+| 离线加载缺资源 | 核对权重、处理器和模型 Python 文件 |
+| 空图或 RPC 取图慢 | 核对场景和渲染；当前客户端对无效图像重试，见专项排障 |
+| 历史模型或联合模型 | 使用[扩展指南](extensions.md)，不混入主实验 |
 
-全套测试覆盖：前序 36 项、新增 split 10 项、训练验证触发 2 项、离线指标/状态恢复/CLI 8 项、闭环启动参数 10 项。测试只有依赖的弃用提示，没有失败。
-
-本次真实输出可直接查看：
-
-- [流程核验结果](../../checkpoints/diffusion_smoke_real/pipeline_check.json)
-- [离线评估完整报告](../../checkpoints/diffusion_smoke_real/offline_eval.json)
-- [训练配置与数据摘要](../../checkpoints/diffusion_smoke_real/run_config.json)
-- [训练记录](../../checkpoints/diffusion_smoke_real/metrics.jsonl)
-- [验证记录](../../checkpoints/diffusion_smoke_real/validation_metrics.jsonl)
-
-这 8 帧验证样本没有 LAND 正例，且仅训练两步，不能用它们判断降落能力或导航性能。随后已按用户要求在 GPU 1 启动 369,274 帧、计划 5 轮的正式训练，启动配置见[全量训练记录](../experiments/full_training_20261010.md#launch)。已整理结果包括[第三轮全量验证](../experiments/full_training_20261010.md#epoch3)和[checkpoint-70000 的 NYC 闭环及基线对比](../experiments/nyc10_evaluation_20261011.md)。上述表格仍仅属于短程流程检查。
-
-完整测试命令（测试环境需要 pytest）：
+## 8. 回归检查
 
 ```bash
-HF_HOME="$PWD/.cache/huggingface" \
-HF_MODULES_CACHE="$PWD/.cache/huggingface/modules" OMP_NUM_THREADS=2 \
-/data/xiyang/.conda/envs/aero_vla/bin/python -m pytest tests -q
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 CUDA_VISIBLE_DEVICES="" HF_HOME="$PWD/.cache/huggingface" HF_MODULES_CACHE="$PWD/.cache/huggingface/modules" OMP_NUM_THREADS=2 python -m pytest tests -q
+python scripts/check_course_repository.py
 ```
 
-每批修改记录分别见：[训练集成](../development/changelog.md#train-eval)、[数据划分](../development/changelog.md#split)、[离线评估](../development/changelog.md#eval)、[闭环启动](../development/changelog.md#closed-loop)。
+单元测试不代表真实 7B 或 AirSim 评测通过；保存/梯度/processor 修改应另跑真实 smoke。仓库检查脚本核对当前文档链接、实验规格和示例语法，归档中的本地历史产物链接另行标记。
+
+<a id="joint-lora"></a>
+<a id="uav-history"></a>
+
+历史链接兼容入口：联合 LoRA 和 UAV 数值历史的命令已集中到[可选扩展](extensions.md)。

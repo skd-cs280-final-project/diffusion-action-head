@@ -1,0 +1,53 @@
+{
+  "protocol_version": 1,
+  "scope": "diffusion_action_head_and_sequence_policy",
+  "diffusion": {
+    "sampler": "DDPM",
+    "num_train_timesteps": 100,
+    "num_inference_steps": 10,
+    "sweep_allowed": false
+  },
+  "inputs": {
+    "views": [
+      "front",
+      "down"
+    ],
+    "history_length": 0,
+    "future_observations": false
+  },
+  "backbone": {
+    "frozen": true,
+    "joint_lora": false
+  },
+  "action_order": [
+    "fwd",
+    "down",
+    "yaw",
+    "land"
+  ],
+  "training": {
+    "epochs": 5,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.03,
+    "max_grad_norm": 1.0,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "checkpoint_selection": "fixed_budget_final",
+    "train_json": "data/aerovla_train_dataset.json",
+    "split_json": "data/continuous_split_seed42.json"
+  },
+  "evaluation": {
+    "offline_seed": 42,
+    "offline_batch_size": 2,
+    "closed_loop_seed": 100,
+    "development_manifest": null,
+    "final_manifest": null,
+    "manifest_status": "must_freeze_before_experiments"
+  }
+}

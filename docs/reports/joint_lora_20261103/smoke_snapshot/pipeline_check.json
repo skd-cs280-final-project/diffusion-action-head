@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "optimizer_steps": 2,
+  "world_size": 2,
+  "train_samples": 8,
+  "validation_samples": 4,
+  "four_parameter_groups_updated": {
+    "vision_lora": true,
+    "llm_lora": true,
+    "projector": true,
+    "diffusion_head": true
+  },
+  "reload_metrics_match": true,
+  "scope": "Pipeline and gradient validation, not convergence or navigation improvement"
+}

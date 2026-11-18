@@ -27,6 +27,8 @@ class AerialVLAWrapper(BaseModelWrapper):
 
             # Training saves the exact tokenizer and image processor beside the head.
             self.tokenizer = AutoTokenizer.from_pretrained(adapter_path, trust_remote_code=True)
+            self.tokenizer.padding_side = "right"
+            self.tokenizer.add_eos_token = False
             self.image_processor = AutoImageProcessor.from_pretrained(adapter_path, trust_remote_code=True)
             self.model = AeroVLADiffusionModel.from_pretrained(
                 adapter_path, base_model_path=getattr(model_args, "model_base", None),
@@ -34,6 +36,13 @@ class AerialVLAWrapper(BaseModelWrapper):
                 device=self.device, tokenizer_length=len(self.tokenizer),
             )
             self.model.eval()
+            if self.model.head_config.history_length:
+                from src.uav_history import STATE_DIM, HISTORY_SCHEMA
+
+                config = self.model.read_checkpoint_config(adapter_path)
+                if (self.model.head_config.state_dim != STATE_DIM
+                        or config.get("training_metadata", {}).get("history_schema") != HISTORY_SCHEMA):
+                    raise ValueError("Checkpoint history schema does not match the online UAV encoder")
             print(f"[AerialVLA] Loaded diffusion action head from: {adapter_path}")
             return
         print(f"[AerialVLA] Loading BASE from: {base_model_path}")
@@ -173,6 +182,13 @@ class AerialVLAWrapper(BaseModelWrapper):
             pixel_values = pixel_values.to(self.model.dtype)
             
         inputs['pixel_values'] = pixel_values
+        if self.diffusion_mode and self.model.head_config.history_length:
+            from src.uav_history import encode_state_history
+
+            histories = [encode_state_history(ep, self.model.head_config.history_length)
+                         for ep in episodes]
+            inputs["state_history"] = torch.stack([history[0] for history in histories])
+            inputs["state_history_mask"] = torch.stack([history[1] for history in histories])
         inputs = {k: v.to(self.device) for k, v in inputs.items()}
         
         return inputs, None

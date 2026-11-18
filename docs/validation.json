@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "date": "2026-11-18",
+  "scope": "repository_reorganization",
+  "pytest": {
+    "passed": 184,
+    "warnings": 4,
+    "seconds": 15.17,
+    "environment": "existing aero_vla Python 3.10 / torch 2.1.2+cu121",
+    "cuda_visible_devices": ""
+  },
+  "repository_check": {
+    "experiments": 10,
+    "markdown_documents": 33,
+    "shell_examples_checked": 15,
+    "missing_historical_local_links": 32,
+    "errors": []
+  },
+  "original_production_code_preserved": true,
+  "new_training_run": false,
+  "new_simulation_run": false,
+  "fresh_environment_installation_tested": false,
+  "historical_artifact_links": "Local checkpoint/result links in the archive are not included in the published repository.",
+  "publication_checkout": {
+    "pytest_passed": 184,
+    "pytest_warnings": 4,
+    "seconds": 6.68,
+    "external_model_and_dataset_directories_present": false,
+    "repository_check": {
+      "experiments": 10,
+      "markdown_documents": 33,
+      "shell_examples_checked": 15,
+      "missing_historical_local_links": 90,
+      "errors": []
+    }
+  },
+  "test_file_cleanup": "Removed excess trailing blank lines in two previously untracked test files; AST unchanged."
+}

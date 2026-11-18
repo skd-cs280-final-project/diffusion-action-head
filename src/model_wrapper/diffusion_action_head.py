@@ -25,6 +25,9 @@ class DiffusionActionHeadConfig:
     num_train_timesteps: int = 100
     num_inference_steps: int = 10
     dropout: float = 0.0
+    state_dim: int = 0
+    history_length: int = 0
+    state_schema_version: int = 1
 
     def __post_init__(self) -> None:
         for name in (
@@ -40,6 +43,14 @@ class DiffusionActionHeadConfig:
             raise ValueError("num_inference_steps cannot exceed num_train_timesteps")
         if not 0.0 <= self.dropout < 1.0:
             raise ValueError("dropout must be in [0, 1)")
+        for name in ("state_dim", "history_length"):
+            value = getattr(self, name)
+            if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+                raise ValueError(f"{name} must be a nonnegative integer, got {value!r}")
+        if bool(self.state_dim) != bool(self.history_length):
+            raise ValueError("state_dim and history_length must both be zero or both positive")
+        if type(self.state_schema_version) is not int or self.state_schema_version != 1:
+            raise ValueError("Unsupported state_schema_version; expected 1")
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -73,7 +84,9 @@ class DiffusionActionHead(nn.Module):
     ``condition_mask`` always uses True for real (unmasked) VLM tokens. The
     timestep is prepended as an always-valid memory token. Learned action
     positions and a causal target mask follow NavDP's action decoder; the VLM
-    condition already contains positional information.
+    condition already contains positional information. Optional UAV state
+    history is projected directly into this trainable head's memory, with
+    learned temporal positions; it never passes through the frozen VLM.
     """
 
     def __init__(self, config: DiffusionActionHeadConfig) -> None:
@@ -83,6 +96,14 @@ class DiffusionActionHead(nn.Module):
         self.action_projection = nn.Linear(config.action_dim, config.hidden_dim)
         self.action_positions = nn.Embedding(config.action_horizon, config.hidden_dim)
         self.time_embedding = SinusoidalTimestepEmbedding(config.hidden_dim)
+        if config.state_dim:
+            self.state_encoder = nn.Sequential(
+                nn.Linear(config.state_dim, config.hidden_dim),
+                nn.GELU(),
+                nn.Linear(config.hidden_dim, config.hidden_dim),
+            )
+            self.state_positions = nn.Embedding(config.history_length, config.hidden_dim)
+            self.state_type_embedding = nn.Parameter(torch.zeros(1, 1, config.hidden_dim))
         layer = nn.TransformerDecoderLayer(
             d_model=config.hidden_dim,
             nhead=config.num_heads,
@@ -134,6 +155,33 @@ class DiffusionActionHead(nn.Module):
         condition = condition.masked_fill(~valid[..., None], 0)
         return condition, valid
 
+    def _prepare_state_history(
+        self,
+        state_history: Optional[Tensor],
+        state_history_mask: Optional[Tensor],
+        batch: int,
+    ) -> tuple[Optional[Tensor], Optional[Tensor]]:
+        if not self.config.state_dim:
+            if state_history is not None or state_history_mask is not None:
+                raise ValueError("state_history inputs require a history-enabled head configuration")
+            return None, None
+        if state_history is None or state_history_mask is None:
+            raise ValueError("history-enabled head requires state_history and state_history_mask")
+        expected = (batch, self.config.history_length, self.config.state_dim)
+        if not isinstance(state_history, Tensor) or tuple(state_history.shape) != expected:
+            raise ValueError(f"state_history must have shape {expected}")
+        if not isinstance(state_history_mask, Tensor) or tuple(state_history_mask.shape) != expected[:2]:
+            raise ValueError(f"state_history_mask must have shape {expected[:2]}")
+        if not torch.all((state_history_mask == 0) | (state_history_mask == 1)):
+            raise ValueError("state_history_mask must contain only zero and one")
+        valid = state_history_mask.to(device=self.device, dtype=torch.bool)
+        state_history = state_history.to(device=self.device, dtype=self.dtype)
+        # Mask before the MLP: a padding NaN must not poison activations or gradients.
+        state_history = state_history.masked_fill(~valid[..., None], 0)
+        if not torch.isfinite(state_history).all():
+            raise ValueError("valid state_history values must be finite")
+        return state_history, valid
+
     def _prepare_timesteps(self, timesteps: Union[int, Tensor], batch: int) -> Tensor:
         timesteps = torch.as_tensor(timesteps, device=self.device)
         if timesteps.is_floating_point() and not torch.equal(timesteps, timesteps.round()):
@@ -158,6 +206,8 @@ class DiffusionActionHead(nn.Module):
         timesteps: Union[int, Tensor],
         condition: Tensor,
         condition_mask: Optional[Tensor] = None,
+        state_history: Optional[Tensor] = None,
+        state_history_mask: Optional[Tensor] = None,
     ) -> Tensor:
         """Predict epsilon for normalized noisy actions; output uses float32."""
         condition, valid = self._prepare_condition(condition, condition_mask)
@@ -169,6 +219,13 @@ class DiffusionActionHead(nn.Module):
         memory_padding_mask = torch.cat(
             (torch.zeros(batch, 1, dtype=torch.bool, device=self.device), ~valid), dim=1
         )
+        state_history, state_valid = self._prepare_state_history(state_history, state_history_mask, batch)
+        if state_history is not None:
+            state_positions = torch.arange(self.config.history_length, device=self.device)
+            state_tokens = self.state_encoder(state_history)
+            state_tokens = state_tokens + self.state_positions(state_positions)[None] + self.state_type_embedding
+            memory = torch.cat((memory, state_tokens), dim=1)
+            memory_padding_mask = torch.cat((memory_padding_mask, ~state_valid), dim=1)
         positions = torch.arange(self.config.action_horizon, device=self.device)
         targets = self.action_projection(noisy_actions.to(device=self.device, dtype=self.dtype))
         targets = targets + self.action_positions(positions)[None]
@@ -188,6 +245,8 @@ class DiffusionActionHead(nn.Module):
         action_mask: Optional[Tensor] = None,
         noise: Optional[Tensor] = None,
         timesteps: Optional[Tensor] = None,
+        state_history: Optional[Tensor] = None,
+        state_history_mask: Optional[Tensor] = None,
     ) -> Tensor:
         """DDPM epsilon MSE, averaged over valid scalar action coordinates.
 
@@ -226,7 +285,10 @@ class DiffusionActionHead(nn.Module):
             timesteps = torch.randint(self.config.num_train_timesteps, (batch,), device=self.device)
         timesteps = self._prepare_timesteps(timesteps, batch)
         noisy_actions = self.noise_scheduler.add_noise(actions, noise, timesteps)
-        prediction = self(noisy_actions, timesteps, condition, condition_mask)
+        prediction = self(
+            noisy_actions, timesteps, condition, condition_mask,
+            state_history=state_history, state_history_mask=state_history_mask,
+        )
         squared_error = (prediction.float() - noise).square()
         return squared_error.masked_select(valid).mean()
 
@@ -237,9 +299,14 @@ class DiffusionActionHead(nn.Module):
         condition_mask: Optional[Tensor] = None,
         num_inference_steps: Optional[int] = None,
         generator: Optional[torch.Generator] = None,
+        state_history: Optional[Tensor] = None,
+        state_history_mask: Optional[Tensor] = None,
     ) -> Tensor:
         """Generate normalized actions with DDPM; pass a device-matched RNG."""
         condition, valid = self._prepare_condition(condition, condition_mask)
+        state_history, state_history_mask = self._prepare_state_history(
+            state_history, state_history_mask, condition.shape[0]
+        )
         steps = self.config.num_inference_steps if num_inference_steps is None else num_inference_steps
         if not isinstance(steps, int) or isinstance(steps, bool) or not 1 <= steps <= self.config.num_train_timesteps:
             raise ValueError("num_inference_steps must be between 1 and num_train_timesteps")
@@ -258,7 +325,10 @@ class DiffusionActionHead(nn.Module):
         self.eval()
         try:
             for timestep in scheduler.timesteps:
-                predicted_noise = self(actions, timestep, condition, valid)
+                predicted_noise = self(
+                    actions, timestep, condition, valid,
+                    state_history=state_history, state_history_mask=state_history_mask,
+                )
                 actions = scheduler.step(
                     model_output=predicted_noise,
                     timestep=timestep,

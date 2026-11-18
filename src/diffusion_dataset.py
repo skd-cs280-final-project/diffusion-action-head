@@ -7,6 +7,10 @@ rule. All four coordinates are scaled to [-1, 1], without quantization.
 """
 
 from collections.abc import Mapping
+from bisect import bisect_right
+from functools import lru_cache
+import json
+from pathlib import Path
 from typing import Optional
 
 import torch
@@ -14,15 +18,41 @@ import torch
 try:
     from .aerovla_dataset import ACTION_STATS, AeroVLADataset
     from .diffusion_split import select_trajectory_split
+    from .uav_history import STATE_DIM, encode_state_history, observation_identity
 except ImportError:  # Support ``python src/train_diffusion.py`` as well.
     from aerovla_dataset import ACTION_STATS, AeroVLADataset
     from diffusion_split import select_trajectory_split
+    from uav_history import STATE_DIM, encode_state_history, observation_identity
 
 
 ACTION_ORDER = ("fwd", "down", "yaw", "land")
 ACTION_DIM = len(ACTION_ORDER)
 ACTION_MIN = tuple(ACTION_STATS[axis]["min"] for axis in ("forward", "down", "yaw")) + (0.0,)
 ACTION_MAX = tuple(ACTION_STATS[axis]["max"] for axis in ("forward", "down", "yaw")) + (1.0,)
+
+
+@lru_cache(maxsize=4096)
+def _read_history_log(path):
+    """Read immutable observation logs with a bounded per-worker cache."""
+    with open(path, encoding="utf-8") as handle:
+        record = json.load(handle)
+    if not isinstance(record, Mapping):
+        raise ValueError(f"History log must contain an observation object: {path}")
+    return record
+
+
+def _history_frame(sample):
+    if not isinstance(sample, Mapping):
+        raise ValueError("State history samples must be mappings.")
+    trajectory, filename = sample.get("traj_rel_dir"), sample.get("img_name")
+    if (
+        not isinstance(trajectory, str) or not trajectory or trajectory.startswith("/")
+        or "\\" in trajectory or any(part in ("", ".", "..") for part in trajectory.split("/"))
+    ):
+        raise ValueError("State history requires a canonical relative traj_rel_dir.")
+    if not isinstance(filename, str) or "/" in filename or "\\" in filename or not Path(filename).stem.isdecimal():
+        raise ValueError("State history requires img_name with a numeric frame stem.")
+    return trajectory, int(Path(filename).stem)
 
 
 def _action_tensor(actions) -> torch.Tensor:
@@ -74,7 +104,10 @@ class AeroVLADiffusionDataset(AeroVLADataset):
     def __init__(
         self, data_root, clean_json_path, tokenizer, processor,
         action_horizon=1, split_json=None, split=None,
+        history_length=0,
     ):
+        if type(history_length) is not int or history_length < 0:
+            raise ValueError("history_length must be a nonnegative integer.")
         if action_horizon != 1:
             raise ValueError(
                 "The AeroVLA frame-label JSON supports action_horizon=1 only; "
@@ -96,6 +129,48 @@ class AeroVLADiffusionDataset(AeroVLADataset):
                 f"{self.split_info['num_trajectories']} trajectories."
             )
         self.action_horizon = action_horizon
+        self.history_length = history_length
+        self._history_frames = {}
+        if history_length:
+            # Build after trajectory splitting and before callers wrap this
+            # dataset in a frame Subset; subsampling must not erase its past.
+            for sample in self.samples:
+                trajectory, frame = _history_frame(sample)
+                frames = self._history_frames.setdefault(trajectory, set())
+                if frame in frames:
+                    raise ValueError(f"Duplicate history frame: {trajectory}/{frame:06d}.")
+                frames.add(frame)
+            self._history_frames = {key: tuple(sorted(frames)) for key, frames in self._history_frames.items()}
+
+    def _get_state_history(self, sample):
+        trajectory, frame = _history_frame(sample)
+        frames = self._history_frames[trajectory]
+        end = bisect_right(frames, frame)
+        records, seen = [], set()
+        for past_frame in reversed(frames[:end]):
+            path = str(Path(self.data_root) / trajectory / "log" / f"{past_frame:06d}.json")
+            # Only the matching observation log is consulted. Expert labels and
+            # merged trajectories may contain future states and are never read.
+            record = dict(_read_history_log(path))
+            sensors = record.get("sensors", {})
+            state = sensors.get("state", {}) if isinstance(sensors, Mapping) else {}
+            for source in (record, state):
+                if not isinstance(source, Mapping):
+                    continue
+                for field in ("frame", "frame_id", "frame_index"):
+                    if field in source:
+                        recorded = source[field]
+                        if isinstance(recorded, bool) or str(recorded) != str(past_frame):
+                            raise ValueError(f"History log {path} has mismatched {field}={recorded!r}; expected {past_frame}.")
+            record.setdefault("frame_id", past_frame)
+            identity = observation_identity(record)
+            if identity not in seen:
+                records.append(record)
+                seen.add(identity)
+            if len(records) == self.history_length:
+                break
+        records.reverse()
+        return encode_state_history(records, self.history_length)
 
     def __getitem__(self, idx):
         sample = self.samples[idx]
@@ -114,11 +189,14 @@ class AeroVLADiffusionDataset(AeroVLADataset):
         except (KeyError, TypeError, ValueError) as exc:
             raise ValueError(f"Invalid AeroVLA training sample at index {idx}: {exc}") from exc
         pixel_values = self.processor.image_processor(images=image, return_tensors="pt")["pixel_values"]
-        return {
+        feature = {
             "image": _remove_image_batch(pixel_values),
             "prompt_only": f"{instruction.strip()}\nAction: ",
             "actions": actions,
         }
+        if self.history_length:
+            feature["state_history"], feature["state_history_mask"] = self._get_state_history(sample)
+        return feature
 
 
 def _stack_images(images, dtype):
@@ -176,9 +254,29 @@ class DiffusionDataCollator:
             raise ValueError(f"Expected actions with shape [batch, 1, {ACTION_DIM}].")
         if (actions.abs() > 1.0).any():
             raise ValueError("Diffusion targets must already be normalized to [-1, 1].")
-        return {
+        result = {
             "pixel_values": _stack_images([feature["image"] for feature in features], self.pixel_dtype),
             "input_ids": input_ids,
             "attention_mask": attention_mask,
             "actions": actions,
         }
+        history_present = ["state_history" in feature or "state_history_mask" in feature for feature in features]
+        if any(history_present):
+            if not all("state_history" in feature and "state_history_mask" in feature for feature in features):
+                raise ValueError("Every example must supply both state_history and state_history_mask.")
+            histories = [feature["state_history"] for feature in features]
+            masks = [feature["state_history_mask"] for feature in features]
+            shape = histories[0].shape if isinstance(histories[0], torch.Tensor) else None
+            if shape is None or len(shape) != 2 or shape[0] < 1 or shape[1] != STATE_DIM:
+                raise ValueError(f"Each state_history must have shape [K, {STATE_DIM}] with K >= 1.")
+            if not all(isinstance(history, torch.Tensor) and history.shape == shape for history in histories):
+                raise ValueError("State history shapes must match within a batch.")
+            if not all(isinstance(mask, torch.Tensor) and mask.dtype == torch.bool and mask.shape == shape[:1] for mask in masks):
+                raise ValueError("Each state_history_mask must be bool with shape [K].")
+            if not all(bool(mask[-1]) for mask in masks):
+                raise ValueError("State histories must include a valid current observation in the last slot.")
+            history = torch.stack(histories).to(dtype=torch.float32)
+            if not torch.isfinite(history).all() or (history.abs() > 1).any():
+                raise ValueError("State history values must be finite and normalized to [-1, 1].")
+            result.update(state_history=history, state_history_mask=torch.stack(masks))
+        return result

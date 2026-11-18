@@ -208,7 +208,7 @@ def test_cli_restores_saved_processors_and_writes_verified_json_before_rejecting
     output = tmp_path / "report.json"
     split_info = {"split": "val", "data_sha256": "data", "split_sha256": "split",
                   "trajectory_sha256": "traj", "num_samples": 3}
-    config = {"training_metadata": {"train_split": {**split_info, "split": "train"},
+    config = {"head_config": {}, "training_metadata": {"train_split": {**split_info, "split": "train"},
                                     "train_json": str(manifest)}}
     tokenizer = SimpleNamespace(pad_token_id=0, padding_side="left", add_eos_token=True)
     # Give the fake tokenizer a real length, as required by saved embedding checks.

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "example_only": true,
+  "run_id": null,
+  "experiment_id": null,
+  "status": "planned",
+  "code_commit": null,
+  "protocol_version": 1,
+  "training": {
+    "seed": null,
+    "budget": null,
+    "actual_optimizer_steps": null,
+    "sample_exposures": null
+  },
+  "data": {
+    "train_json_sha256": null,
+    "split_json_sha256": null,
+    "episode_manifest_sha256": null
+  },
+  "checkpoint": {
+    "path": null,
+    "sha256_manifest": null,
+    "base_model": null,
+    "original_adapter": null
+  },
+  "model": {
+    "model_type": null,
+    "action_horizon": null,
+    "execution_horizon": null,
+    "diffusion_sampler": null,
+    "num_train_timesteps": null,
+    "num_inference_steps": null
+  },
+  "evaluation": {
+    "seed": null,
+    "hardware": null,
+    "requested_episodes": null,
+    "completed_episodes": null,
+    "resumed": false,
+    "rng_restored": false
+  },
+  "metrics": null,
+  "artifacts": {},
+  "limitations": []
+}

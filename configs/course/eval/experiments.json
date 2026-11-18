@@ -1,0 +1,18 @@
+{
+  "protocol": "../protocol.json",
+  "specification_only": true,
+  "experiments": [
+    {
+      "id": "C0",
+      "owner": "C",
+      "model": "aerovla_token_baseline",
+      "conditioning": "original",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "action_attention": "original",
+      "implementation_status": "available",
+      "run_status": "not_run",
+      "checkpoint_reference": null
+    }
+  ]
+}

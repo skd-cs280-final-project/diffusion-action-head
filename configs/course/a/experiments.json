@@ -1,0 +1,54 @@
+{
+  "protocol": "../protocol.json",
+  "specification_only": true,
+  "experiments": [
+    {
+      "id": "A0",
+      "owner": "A",
+      "model": "transformer_diffusion",
+      "conditioning": "token_cross_attention",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "action_attention": "causal",
+      "implementation_status": "available",
+      "run_status": "not_run",
+      "checkpoint_reference": null
+    },
+    {
+      "id": "A1",
+      "owner": "A",
+      "model": "transformer_regression",
+      "conditioning": "token_cross_attention",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "action_attention": "single_step",
+      "implementation_status": "planned",
+      "run_status": "not_run",
+      "checkpoint_reference": null
+    },
+    {
+      "id": "A2",
+      "owner": "A",
+      "model": "mlp_diffusion",
+      "conditioning": "pooled_modulation",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "action_attention": "not_applicable",
+      "implementation_status": "planned",
+      "run_status": "not_run",
+      "checkpoint_reference": null
+    },
+    {
+      "id": "A3",
+      "owner": "A",
+      "model": "transformer_diffusion",
+      "conditioning": "pooled_modulation",
+      "action_horizon": 1,
+      "execution_horizon": 1,
+      "action_attention": "causal",
+      "implementation_status": "planned",
+      "run_status": "not_run",
+      "checkpoint_reference": null
+    }
+  ]
+}

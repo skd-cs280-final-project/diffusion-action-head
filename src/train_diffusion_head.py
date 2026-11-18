@@ -18,12 +18,14 @@ if __package__:
     from .eval_diffusion_head import evaluate_diffusion
     from .model_wrapper.aerovla_diffusion import AeroVLADiffusionModel
     from .model_wrapper.diffusion_action_head import DiffusionActionHeadConfig
+    from .uav_history import STATE_DIM, HISTORY_SCHEMA
 else:
     from diffusion_dataset import AeroVLADiffusionDataset, DiffusionDataCollator
     from diffusion_split import deterministic_subset
     from eval_diffusion_head import evaluate_diffusion
     from model_wrapper.aerovla_diffusion import AeroVLADiffusionModel
     from model_wrapper.diffusion_action_head import DiffusionActionHeadConfig
+    from uav_history import STATE_DIM, HISTORY_SCHEMA
 
 
 def seed_everything(seed):
@@ -177,6 +179,8 @@ def build_parser():
                         help="Validate split and preprocess a train/val batch, without loading the 7B model")
     parser.add_argument("--num-workers", type=int, default=4)
     parser.add_argument("--max-length", type=int, default=2048)
+    parser.add_argument("--history-length", type=int, default=0,
+                        help="Causal UAV state observations including current frame; 0 disables, 4 is the initial history experiment")
     parser.add_argument("--hidden-dim", type=int, default=256)
     parser.add_argument("--num-layers", type=int, default=4)
     parser.add_argument("--num-heads", type=int, default=8)
@@ -202,6 +206,8 @@ def main(argv=None):
         raise ValueError("Invalid epoch, accumulation, saving or evaluation interval")
     if args.max_steps is not None and args.max_steps < 1:
         raise ValueError("max-steps must be positive")
+    if args.history_length < 0:
+        raise ValueError("history-length must be nonnegative")
     if args.learning_rate <= 0 or args.weight_decay < 0 or args.max_grad_norm <= 0 or not 0 <= args.warmup_ratio < 1:
         raise ValueError("Invalid optimizer hyperparameters")
     train_json = Path(args.train_json)
@@ -222,11 +228,12 @@ def main(argv=None):
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
+    tokenizer.add_eos_token = False
     processor = AutoProcessor.from_pretrained(args.model_path, trust_remote_code=True)
     dataset = AeroVLADiffusionDataset(args.data_root, args.train_json, tokenizer, processor,
-                                     split_json=args.split_json, split="train")
+                                     split_json=args.split_json, split="train", history_length=args.history_length)
     val_dataset = AeroVLADiffusionDataset(args.data_root, args.train_json, tokenizer, processor,
-                                         split_json=args.split_json, split="val")
+                                         split_json=args.split_json, split="val", history_length=args.history_length)
     dataset = deterministic_subset(dataset, args.max_samples, args.seed)
     val_dataset = deterministic_subset(val_dataset, args.max_val_samples, args.eval_seed)
     collator = DiffusionDataCollator(tokenizer, max_length=args.max_length)
@@ -256,6 +263,7 @@ def main(argv=None):
         hidden_dim=args.hidden_dim, num_layers=args.num_layers, num_heads=args.num_heads,
         num_train_timesteps=args.num_train_timesteps, num_inference_steps=args.num_inference_steps,
         dropout=args.dropout,
+        state_dim=STATE_DIM if args.history_length else 0, history_length=args.history_length,
     )
     adapter_path = None if args.adapter_path.lower() == "none" else args.adapter_path
     model = AeroVLADiffusionModel.from_pretrained_backbone(
@@ -273,6 +281,8 @@ def main(argv=None):
                   "head_config": head_config.to_dict(), "checkpoint_type": "head_only",
                   "train_json": str(train_json.resolve()), "split_json": str(split_json.resolve()),
                   "train_split": dataset.split_info, "val_split": val_dataset.split_info}
+    if args.history_length:
+        run_config["history_schema"] = HISTORY_SCHEMA
     (output_dir / "run_config.json").write_text(json.dumps(run_config, indent=2) + "\n")
     validation_state = {"best_noise_mse": float("inf"), "last_validation": None}
 

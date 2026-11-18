@@ -1,0 +1,227 @@
+{
+  "verified_at": "2026-11-04",
+  "status": "completed",
+  "optimizer_steps": 23080,
+  "train_samples": 369274,
+  "validation_samples": 512,
+  "validation_checkpoints": 25,
+  "history_length": 0,
+  "started_at": "2026-11-03T12:21:11.422270+00:00",
+  "finished_at": "2026-11-04T07:15:43.090775+00:00",
+  "elapsed_seconds": 68071.668505,
+  "initial": {
+    "num_samples": 512,
+    "num_valid_samples": 512,
+    "num_valid_coordinates": 2048,
+    "noise_mse": 0.024051475690924917,
+    "seed": 42,
+    "sample_actions": true,
+    "num_inference_steps": 10,
+    "normalized_continuous_mse": 0.015307700955026959,
+    "num_valid_continuous_coordinates": 1536,
+    "physical": {
+      "fwd": {
+        "mae": 0.12216266506584361,
+        "rmse": 0.22241495048503554,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "down": {
+        "mae": 0.20844558672979474,
+        "rmse": 0.6056385136607914,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "yaw": {
+        "mae": 0.05817964521702379,
+        "rmse": 0.1680382327002949,
+        "count": 512,
+        "unit": "radians"
+      }
+    },
+    "land": {
+      "tp": 13,
+      "tn": 498,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.9285714285714286,
+      "recall": 1.0,
+      "f1": 0.962962962962963,
+      "accuracy": 0.998046875,
+      "support_positive": 13,
+      "support_negative": 499,
+      "predicted_positive": 14,
+      "threshold_normalized": 0.0,
+      "zero_division": 0.0
+    },
+    "step": 0,
+    "epoch": 0,
+    "split": "val"
+  },
+  "final": {
+    "num_samples": 512,
+    "num_valid_samples": 512,
+    "num_valid_coordinates": 2048,
+    "noise_mse": 0.025156208811083047,
+    "seed": 42,
+    "sample_actions": true,
+    "num_inference_steps": 10,
+    "normalized_continuous_mse": 0.016882156365095758,
+    "num_valid_continuous_coordinates": 1536,
+    "physical": {
+      "fwd": {
+        "mae": 0.1357875899411738,
+        "rmse": 0.254993230572858,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "down": {
+        "mae": 0.22445970447733998,
+        "rmse": 0.6462471966159464,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "yaw": {
+        "mae": 0.05683123134076595,
+        "rmse": 0.16876167889111607,
+        "count": 512,
+        "unit": "radians"
+      }
+    },
+    "land": {
+      "tp": 13,
+      "tn": 498,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.9285714285714286,
+      "recall": 1.0,
+      "f1": 0.962962962962963,
+      "accuracy": 0.998046875,
+      "support_positive": 13,
+      "support_negative": 499,
+      "predicted_positive": 14,
+      "threshold_normalized": 0.0,
+      "zero_division": 0.0
+    },
+    "step": 23080,
+    "epoch": 1,
+    "split": "val"
+  },
+  "best_by_noise_mse": {
+    "num_samples": 512,
+    "num_valid_samples": 512,
+    "num_valid_coordinates": 2048,
+    "noise_mse": 0.024051475690924917,
+    "seed": 42,
+    "sample_actions": true,
+    "num_inference_steps": 10,
+    "normalized_continuous_mse": 0.015307700955026959,
+    "num_valid_continuous_coordinates": 1536,
+    "physical": {
+      "fwd": {
+        "mae": 0.12216266506584361,
+        "rmse": 0.22241495048503554,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "down": {
+        "mae": 0.20844558672979474,
+        "rmse": 0.6056385136607914,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "yaw": {
+        "mae": 0.05817964521702379,
+        "rmse": 0.1680382327002949,
+        "count": 512,
+        "unit": "radians"
+      }
+    },
+    "land": {
+      "tp": 13,
+      "tn": 498,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.9285714285714286,
+      "recall": 1.0,
+      "f1": 0.962962962962963,
+      "accuracy": 0.998046875,
+      "support_positive": 13,
+      "support_negative": 499,
+      "predicted_positive": 14,
+      "threshold_normalized": 0.0,
+      "zero_division": 0.0
+    },
+    "step": 0,
+    "epoch": 0,
+    "split": "val"
+  },
+  "best_by_continuous_mse": {
+    "num_samples": 512,
+    "num_valid_samples": 512,
+    "num_valid_coordinates": 2048,
+    "noise_mse": 0.02586497965126,
+    "seed": 42,
+    "sample_actions": true,
+    "num_inference_steps": 10,
+    "normalized_continuous_mse": 0.014816771449011399,
+    "num_valid_continuous_coordinates": 1536,
+    "physical": {
+      "fwd": {
+        "mae": 0.1258742693462409,
+        "rmse": 0.2273818587136568,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "down": {
+        "mae": 0.21771661192178726,
+        "rmse": 0.6196711947417609,
+        "count": 512,
+        "unit": "original_distance_unit"
+      },
+      "yaw": {
+        "mae": 0.057154335314407945,
+        "rmse": 0.1587137193224071,
+        "count": 512,
+        "unit": "radians"
+      }
+    },
+    "land": {
+      "tp": 13,
+      "tn": 499,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "support_positive": 13,
+      "support_negative": 499,
+      "predicted_positive": 13,
+      "threshold_normalized": 0.0,
+      "zero_division": 0.0
+    },
+    "step": 1000,
+    "epoch": 1,
+    "split": "val"
+  },
+  "final_relative_change_percent": {
+    "noise_mse": 4.593203071423035,
+    "normalized_continuous_mse": 10.285381290727113
+  },
+  "scope": "Fixed 512-frame validation subset, one seed; no full validation or closed-loop navigation evaluation performed in this review.",
+  "artifact_audit": {
+    "contiguous_optimizer_steps": 23080,
+    "summed_training_samples": 369274,
+    "all_logged_losses_and_gradient_norms_finite": true,
+    "final_best_tensor_keys_shapes_match": true,
+    "all_saved_trainable_tensors_finite_float32": true,
+    "changed_tensors_final_vs_best": {
+      "vision_lora": 392,
+      "llm_lora": 448,
+      "projector": 6,
+      "diffusion_head": 81
+    },
+    "independent_final_model_inference_rerun": false
+  }
+}

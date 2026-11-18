@@ -101,12 +101,14 @@ def evaluate_diffusion(model, dataloader, *, device, seed=42,
                 observations = {key: batch[key] for key in ("input_ids", "attention_mask", "pixel_values")
                                 if key in batch}
                 condition, condition_mask = model.encode_condition(**observations)
+                history = {key: batch[key] for key in ("state_history", "state_history_mask")
+                           if key in batch}
                 noise = torch.randn(actions.shape, device=device, dtype=torch.float32,
                                     generator=noise_generator)
                 timesteps = torch.randint(head.config.num_train_timesteps, (actions.shape[0],),
                                           device=device, generator=time_generator)
                 loss = head.compute_loss(condition, actions, condition_mask=condition_mask,
-                                         action_mask=valid, noise=noise, timesteps=timesteps)
+                                         action_mask=valid, noise=noise, timesteps=timesteps, **history)
                 if loss.ndim != 0 or not torch.isfinite(loss):
                     raise FloatingPointError("Evaluation noise loss must be a finite scalar")
                 noise_sum += loss.double().item() * count
@@ -115,7 +117,7 @@ def evaluate_diffusion(model, dataloader, *, device, seed=42,
                     continue
                 predictions = head.sample(condition, condition_mask=condition_mask,
                                           num_inference_steps=num_inference_steps,
-                                          generator=sample_generator)
+                                          generator=sample_generator, **history)
                 if predictions.shape != actions.shape:
                     raise ValueError("Sampled actions must have the same shape as targets")
                 if not torch.isfinite(predictions.masked_select(valid)).all():
@@ -238,6 +240,16 @@ def main(argv=None):
         raise ValueError("Use --backbone-dtype float32 for CPU execution")
     checkpoint = Path(args.checkpoint).expanduser().resolve()
     config = AeroVLADiffusionModel.read_checkpoint_config(checkpoint)
+    if __package__:
+        from .uav_history import STATE_DIM, HISTORY_SCHEMA
+    else:
+        from uav_history import STATE_DIM, HISTORY_SCHEMA
+    history_length = config["head_config"].get("history_length", 0)
+    if history_length and config["head_config"].get("state_dim") != STATE_DIM:
+        raise ValueError("Checkpoint UAV state dimension does not match the data schema")
+    saved_schema = config.get("training_metadata", {}).get("history_schema")
+    if history_length and saved_schema != HISTORY_SCHEMA:
+        raise ValueError("Checkpoint history_schema is missing or differs from the data encoder")
     from transformers import AutoProcessor, AutoTokenizer
     if __package__:
         from .diffusion_split import deterministic_subset
@@ -250,7 +262,7 @@ def main(argv=None):
     tokenizer.add_eos_token = False
     processor = AutoProcessor.from_pretrained(checkpoint, trust_remote_code=True)
     dataset = AeroVLADiffusionDataset(args.data_root, args.data_json, tokenizer, processor,
-                                     split_json=args.split_json, split=args.split)
+                                     split_json=args.split_json, split=args.split, history_length=history_length)
     provenance = validate_checkpoint_split(config, dataset.split_info, args.data_json)
     dataset = deterministic_subset(dataset, args.max_samples, args.seed)
     if len(dataset) == 0:
@@ -275,6 +287,9 @@ def main(argv=None):
                                                  "batch_size": args.batch_size, "seed": args.seed},
               "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate",
               "scope": "Offline action metrics do not measure closed-loop AirSim navigation success"}
+    if history_length:
+        report["history_schema"] = HISTORY_SCHEMA
+        report["history_length"] = history_length
     output = Path(args.output) if args.output else checkpoint / "eval_val.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_name(output.name + ".tmp")

@@ -63,9 +63,10 @@ def inputs():
     }
 
 
-def test_frozen_real_llama_and_head_only_optimizer_step():
+@pytest.mark.parametrize("use_history", [False, True])
+def test_frozen_real_llama_and_head_only_optimizer_step(use_history):
     torch.manual_seed(20)
-    model = make_model()
+    model = make_model(**({"state_dim": 6, "history_length": 4} if use_history else {}))
     model.train()
     assert model.training and model.diffusion_head.training
     assert all(not module.training for module in model.backbone.modules())
@@ -81,11 +82,16 @@ def test_frozen_real_llama_and_head_only_optimizer_step():
     torch.testing.assert_close(first, second, rtol=0, atol=0)
     assert not first.requires_grad
     optimizer = torch.optim.AdamW(model.trainable_parameters(), lr=1e-2)
-    loss = model(**batch, actions=torch.zeros(2, 2, 4), timesteps=torch.tensor([1, 6]))
+    state_inputs = {}
+    if use_history:
+        state_inputs = {"state_history": torch.randn(2, 4, 6), "state_history_mask": torch.ones(2, 4, dtype=torch.bool)}
+    loss = model(**batch, **state_inputs, actions=torch.zeros(2, 2, 4), timesteps=torch.tensor([1, 6]))
     assert loss.ndim == 0 and torch.isfinite(loss)
     loss.backward()
     assert all(value.grad is None for value in model.backbone.parameters())
     assert any(value.grad is not None and value.grad.abs().sum() > 0 for value in model.diffusion_head.parameters())
+    if use_history:
+        assert all(value.grad is not None and value.grad.abs().sum() > 0 for value in model.diffusion_head.state_encoder.parameters())
     optimizer.step()
     for name, value in model.backbone.state_dict().items():
         torch.testing.assert_close(value, before_backbone[name], rtol=0, atol=0)
@@ -126,12 +132,14 @@ def test_mask_inferred_from_pad_tokens_and_left_padding_rejected():
         model.encode_condition(**batch)
 
 
-def test_head_only_checkpoint_round_trip_and_metadata(tmp_path):
+@pytest.mark.parametrize("use_history", [False, True])
+def test_head_only_checkpoint_round_trip_and_metadata(tmp_path, use_history):
     torch.manual_seed(7)
-    source = make_model().eval()
+    options = {"state_dim": 6, "history_length": 4} if use_history else {}
+    source = make_model(**options).eval()
     source.base_model_path = "/example/base"
     source.adapter_path = "/example/adapter"
-    target = make_model(copy.deepcopy(source.backbone)).eval()
+    target = make_model(copy.deepcopy(source.backbone), **options).eval()
     source.save_pretrained(tmp_path, training_metadata={"global_step": 3})
     config = json.loads((tmp_path / source.CONFIG_NAME).read_text())
     assert config["action_schema"] == DEFAULT_ACTION_SCHEMA
@@ -140,6 +148,8 @@ def test_head_only_checkpoint_round_trip_and_metadata(tmp_path):
     assert set(state) == set(source.diffusion_head.state_dict())
     target.load_head_checkpoint(tmp_path)
     batch = inputs()
+    if use_history:
+        batch.update(state_history=torch.randn(2, 4, 6), state_history_mask=torch.ones(2, 4, dtype=torch.bool))
     prediction = source.predict_action(**batch, generator=torch.Generator().manual_seed(8))
     restored = target.predict_action(**batch, generator=torch.Generator().manual_seed(8))
     torch.testing.assert_close(prediction, restored, rtol=0, atol=0)
@@ -149,6 +159,39 @@ def test_head_only_checkpoint_round_trip_and_metadata(tmp_path):
     assert loader.call_args.args == ("/example/base",)
     assert loader.call_args.kwargs["adapter_path"] == "/example/adapter"
     assert loader.call_args.kwargs["tokenizer_length"] == 32
+
+
+def test_legacy_checkpoint_without_history_config_fields_still_loads(tmp_path):
+    source = make_model().eval()
+    source.save_pretrained(tmp_path)
+    config_path = tmp_path / source.CONFIG_NAME
+    config = json.loads(config_path.read_text())
+    for key in ("state_dim", "history_length", "state_schema_version"):
+        config["head_config"].pop(key)
+    config_path.write_text(json.dumps(config))
+    restored = make_model(copy.deepcopy(source.backbone)).eval()
+    restored.load_head_checkpoint(tmp_path)
+    for key, value in source.diffusion_head.state_dict().items():
+        torch.testing.assert_close(value, restored.diffusion_head.state_dict()[key], rtol=0, atol=0)
+
+
+def test_wrapper_history_contract_and_masked_prediction():
+    batch = inputs()
+    enabled = make_model(state_dim=6, history_length=4).eval()
+    with pytest.raises(ValueError, match="requires state_history"):
+        enabled.predict_action(**batch)
+    with pytest.raises(ValueError, match="requires state_history"):
+        enabled(**batch, actions=torch.zeros(2, 2, 4))
+    state = torch.randn(2, 4, 6)
+    mask = torch.tensor([[0, 0, 1, 1], [0, 1, 1, 1]], dtype=torch.bool)
+    prediction = enabled.predict_action(**batch, state_history=state, state_history_mask=mask,
+                                        generator=torch.Generator().manual_seed(35))
+    state[~mask] = float("nan")
+    padded = enabled.predict_action(**batch, state_history=state, state_history_mask=mask,
+                                    generator=torch.Generator().manual_seed(35))
+    torch.testing.assert_close(prediction, padded, rtol=0, atol=0)
+    with pytest.raises(ValueError, match="history-enabled"):
+        make_model().predict_action(**batch, state_history=state, state_history_mask=mask)
 
 
 def test_checkpoint_rejects_schema_config_and_incomplete_weights(tmp_path):
