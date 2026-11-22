@@ -87,6 +87,8 @@ mkdir -p logs/course_inference/a
 
 ## 你的交付与报告
 
+[三个联合检查点的离线评估报告](member-a/offline-three-checkpoints/report.md)
+
 1. 将每个正式包的 requested/completed/missing、SR/OSR/SPL/NE 和 full/easy/hard 统计填入个人结果表；预检单独记录。
 2. 核对归属于自己的全部 1002 个正式 UUID，在五个模型中均有完整结果；任务失败与程序中断要区分。
 3. 整理每个场景至少一个成功和一个失败案例；没有某类时写明实际情况。对同一任务比较五模型，不能只挑好的模型。
