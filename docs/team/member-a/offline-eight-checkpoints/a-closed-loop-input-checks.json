@@ -1,0 +1,56 @@
+{
+  "formal_manifests": [
+    {
+      "task_id": "seen_valset/NYCEnvironmentMegapa",
+      "manifest": "data/uav_dataset/seen_valset_splits/NYCEnvironmentMegapa.json",
+      "sha256": "1151901ea89fb3a1cb2d041171b0b9631314156a856920346dc38ed37a9c1905",
+      "episodes": 281,
+      "easy": 81,
+      "hard": 200
+    },
+    {
+      "task_id": "unseen_object_valset/NYCEnvironmentMegapa",
+      "manifest": "data/uav_dataset/unseen_object_valset_splits/NYCEnvironmentMegapa.json",
+      "sha256": "a3dc6fcc95c3396d89a510a1db985df710102e30e860f4f4796df799d02a8a0e",
+      "episodes": 189,
+      "easy": 38,
+      "hard": 151
+    },
+    {
+      "task_id": "seen_valset/Carla_Town07",
+      "manifest": "data/uav_dataset/seen_valset_splits/Carla_Town07.json",
+      "sha256": "7036b34bbf9266d4979595c6183399b2c00bcb558e744f2b7af8285c43b6266b",
+      "episodes": 60,
+      "easy": 50,
+      "hard": 10
+    },
+    {
+      "task_id": "unseen_object_valset/Carla_Town07",
+      "manifest": "data/uav_dataset/unseen_object_valset_splits/Carla_Town07.json",
+      "sha256": "699435c562afe52f0664420dbfa17d9026395913f6536f9d0ddac74b4f19f0ed",
+      "episodes": 11,
+      "easy": 7,
+      "hard": 4
+    },
+    {
+      "task_id": "seen_valset/ModernCityMap",
+      "manifest": "data/uav_dataset/seen_valset_splits/ModernCityMap.json",
+      "sha256": "1bfdb76e2374c9e748996cdb57320b9233b9ca457f4a809f543456e6cf8df6cf",
+      "episodes": 124,
+      "easy": 124,
+      "hard": 0
+    },
+    {
+      "task_id": "unseen_map_valset/ModularPark",
+      "manifest": "configs/course/manifests/a/unseen_map_valset/ModularPark.json",
+      "sha256": "a7760fa8c4075037574e2e737f8e3bdbf64826ee01377a87fd104dfb993729e2",
+      "episodes": 337,
+      "easy": 220,
+      "hard": 117
+    }
+  ],
+  "preflight_manifest": "configs/course/manifests/a/preflight/NYCEnvironmentMegapa.json",
+  "preflight_entries": 3,
+  "preflight_sha256": "b731277950816b4a0c392218b9a86ca269bf3e7c334d0bbf7b007aa202e5dd78",
+  "closed_loop_results_verified": null
+}

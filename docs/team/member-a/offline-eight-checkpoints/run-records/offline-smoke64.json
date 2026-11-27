@@ -1,0 +1,7 @@
+{
+  "job_id": "4352757",
+  "phase": "offline_preflight",
+  "frames": 64,
+  "elapsed_seconds": 127.88,
+  "source_output": "../raw/joint_step_001000_smoke64_seed42.json"
+}

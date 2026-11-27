@@ -87,6 +87,8 @@ mkdir -p logs/course_inference/a
 
 ## 你的交付与报告
 
+[八个联合检查点的离线验收报告](member-a/offline-eight-checkpoints/report.md)
+
 [三个联合检查点的离线评估报告](member-a/offline-three-checkpoints/report.md)
 
 1. 将每个正式包的 requested/completed/missing、SR/OSR/SPL/NE 和 full/easy/hard 统计填入个人结果表；预检单独记录。

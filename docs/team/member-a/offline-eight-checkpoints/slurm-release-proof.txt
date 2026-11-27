@@ -1,0 +1,13 @@
+2026-11-27 09:19:38 +0800
+ACTIVE=0
+4364399|COMPLETED|0:0
+4364399.batch|COMPLETED|0:0
+4364399.extern|COMPLETED|0:0
+4364410|COMPLETED|0:0
+4364410.batch|COMPLETED|0:0
+4364410.extern|COMPLETED|0:0
+2cd98c9b1c6275f2392c144c1f17f96a04b121ffc03c9d721479efbb4bfeaf88  eval_results/course_inference/a/offline/4364399/joint_step_016000_full_val_seed42.json
+1840ce514cbf0e1843b038a0dd801f0e1798894f9152a2444d454d06f8cafbc6  eval_results/course_inference/a/offline/4364399/joint_step_007000_full_val_seed42.json
+74a709437011c4e1ae9285bbac16a41386ac5d3db41b6723d554247338290cc5  eval_results/course_inference/a/offline/4364399/joint_step_013000_full_val_seed42.json
+3aed5da8d239cc536d029d31fe8421783f3a8d2cff4d822e9033438ad57c528c  eval_results/course_inference/a/offline/4364399/joint_step_004000_full_val_seed42.json
+25ff1f8739a1a03978dbd74e722acb3924d10d9251b6a8d9f896a09b183c59c5  eval_results/course_inference/a/offline/4364410/joint_step_019000_full_val_seed42.json

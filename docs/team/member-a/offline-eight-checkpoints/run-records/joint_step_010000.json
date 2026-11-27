@@ -1,0 +1,138 @@
+{
+  "schema_version": 2,
+  "example_only": false,
+  "protocol_version": 2,
+  "run_id": "4353667-joint_step_010000",
+  "experiment_id": "joint_step_010000",
+  "owner": "A",
+  "status": "complete",
+  "training_performed": false,
+  "code_commit": "85d0e44df2d775256778d9454ea5c11d04d25d1b",
+  "model": {
+    "registry_id": "joint_step_010000",
+    "checkpoint_path": "eval_results/course_inference/resources/models/joint_step_010000",
+    "checkpoint_sha256_manifest": null,
+    "base_model": null,
+    "original_adapter": null,
+    "checkpoint_training_stage": null,
+    "checkpoint_step": 10000
+  },
+  "data": {
+    "data_json_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67",
+    "split_json_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+    "observation_manifest_sha256": null,
+    "episode_manifest_sha256": null,
+    "shard_id": null
+  },
+  "inference": {
+    "action_horizon": 1,
+    "execution_horizon": 1,
+    "sampler": "DDPM",
+    "num_train_timesteps": 100,
+    "num_inference_steps": 10,
+    "candidate_count": 1,
+    "selection_rule": "single",
+    "input_variant": "identity",
+    "run_seed": 42,
+    "episode_seed_derivation": "existing global RNG; no episode-level derivation",
+    "sampling_rng": null,
+    "transform_rng": null
+  },
+  "evaluation": {
+    "hardware": "1 × NVIDIA A100 PCIe 40 GB",
+    "requested_episodes": null,
+    "completed_episodes": null,
+    "resumed": false,
+    "rng_restored": false,
+    "gpu_hours": null,
+    "simulator_hours": null,
+    "observed_gpu_memory_mib": null,
+    "gpu_memory_measurement_method": null
+  },
+  "metrics": {
+    "num_samples": 41176,
+    "num_valid_samples": 41176,
+    "num_valid_coordinates": 164704,
+    "noise_mse": 0.03189722646793755,
+    "seed": 42,
+    "sample_actions": true,
+    "num_inference_steps": 10,
+    "normalized_continuous_mse": 0.02095847704534995,
+    "num_valid_continuous_coordinates": 123528,
+    "physical": {
+      "fwd": {
+        "mae": 0.14654837222308448,
+        "rmse": 0.3056343634404317,
+        "count": 41176,
+        "unit": "original_distance_unit"
+      },
+      "down": {
+        "mae": 0.21997581365295166,
+        "rmse": 0.6395946307568114,
+        "count": 41176,
+        "unit": "original_distance_unit"
+      },
+      "yaw": {
+        "mae": 0.06330234240230273,
+        "rmse": 0.19543568037929487,
+        "count": 41176,
+        "unit": "radians"
+      }
+    },
+    "land": {
+      "tp": 834,
+      "tn": 40205,
+      "fp": 61,
+      "fn": 76,
+      "precision": 0.9318435754189944,
+      "recall": 0.9164835164835164,
+      "f1": 0.9240997229916897,
+      "accuracy": 0.9966728191179328,
+      "support_positive": 910,
+      "support_negative": 40266,
+      "predicted_positive": 895,
+      "threshold_normalized": 0.0,
+      "zero_division": 0.0
+    }
+  },
+  "artifacts": {
+    "copied_json": "../raw/joint_step_010000_full_val_seed42.json"
+  },
+  "limitations": [],
+  "revision": "existing_entrypoints_only",
+  "command": "bash scripts/eval_diffusion_head.sh --checkpoint \"$PWD/eval_results/course_inference/resources/models/joint_step_010000\" --data-root \"$PWD/.setup/offline-val-data\" --data-json \"$PWD/.setup/offline-annotations-inspect/data/aerovla_train_dataset.json\" --split-json \"$PWD/data/continuous_split_seed42.json\" --split val --device cuda --batch-size 2 --num-workers 4 --max-length 2048 --seed 42 --num-inference-steps 10 --backbone-dtype bfloat16 --output \"$PWD/eval_results/course_inference/a/offline/4353667/joint_step_010000_full_val_seed42.json\"",
+  "code_modified": false,
+  "note": "Manual record only; existing CLI output is unchanged. Token diffusion-only fields must be null. Wall time is not per-action latency; sampled GPU memory is not an exact peak. Complete includes normal navigation failures.",
+  "timing": {
+    "started_at": "2026-11-19T20:49:39",
+    "ended_at": "2026-11-19T22:06:55",
+    "timezone": "Asia/Shanghai",
+    "wall_seconds": 4636,
+    "measurement_source": "Slurm allocation"
+  },
+  "execution_record": {
+    "attempt_id": "4353667",
+    "exit_code": 0,
+    "console_log": "logs/course_inference/a/slurm-offline-4353667.out",
+    "simulator_log": null,
+    "environment_record": null,
+    "worktree_clean": null,
+    "local_diff_record": null
+  },
+  "integrity": {
+    "expected_episodes": null,
+    "accepted_complete_episodes": null,
+    "missing_or_invalid_episodes": null,
+    "duplicate_episodes": null,
+    "unexpected_episodes": null,
+    "accepted_episode_index": null,
+    "checked_by": null,
+    "checked_at": null
+  },
+  "metric_source": {
+    "metrics_log": null,
+    "offline_json": "eval_results/course_inference/a/offline/4353667/joint_step_010000_full_val_seed42.json",
+    "aggregation_method": null,
+    "rounded_group_means_used": null
+  }
+}

@@ -1,0 +1,823 @@
+{
+  "owner": "A",
+  "verified_checkpoints": 8,
+  "expected_checkpoints": 8,
+  "rows": [
+    {
+      "owner": "A",
+      "model_id": "joint_step_001000",
+      "stage": "joint_lora",
+      "checkpoint_step": 1000,
+      "source_output": "raw/joint_step_001000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.03042477992706284,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.01876062826010274,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.13513882062737168,
+            "rmse": 0.2712384592225946,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.20162205232771618,
+            "rmse": 0.6081122979878616,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.06103299405011062,
+            "rmse": 0.18962996725623738,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 826,
+          "tn": 40211,
+          "fp": 55,
+          "fn": 84,
+          "precision": 0.9375709421112373,
+          "recall": 0.9076923076923077,
+          "f1": 0.9223897264098269,
+          "accuracy": 0.996624247134253,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 881,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_001000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    },
+    {
+      "owner": "A",
+      "model_id": "joint_step_004000",
+      "stage": "joint_lora",
+      "checkpoint_step": 4000,
+      "source_output": "raw/joint_step_004000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.031588470106025446,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.02031242206334634,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.15089006571861663,
+            "rmse": 0.2963205116375342,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.21331410845066706,
+            "rmse": 0.6304589431658366,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.06281013662881797,
+            "rmse": 0.19364122438528525,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 826,
+          "tn": 40224,
+          "fp": 42,
+          "fn": 84,
+          "precision": 0.9516129032258065,
+          "recall": 0.9076923076923077,
+          "f1": 0.9291338582677167,
+          "accuracy": 0.9969399650281717,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 868,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_004000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    },
+    {
+      "owner": "A",
+      "model_id": "joint_step_007000",
+      "stage": "joint_lora",
+      "checkpoint_step": 7000,
+      "source_output": "raw/joint_step_007000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.03217519219538733,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.02011780072039448,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.15191437277095352,
+            "rmse": 0.30676667780781786,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.21552543026256357,
+            "rmse": 0.6164695339256296,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.06339815060953874,
+            "rmse": 0.19082729762911188,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 818,
+          "tn": 40235,
+          "fp": 31,
+          "fn": 92,
+          "precision": 0.9634864546525324,
+          "recall": 0.8989010989010989,
+          "f1": 0.9300739056281978,
+          "accuracy": 0.9970128230036914,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 849,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_007000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    },
+    {
+      "owner": "A",
+      "model_id": "joint_step_010000",
+      "stage": "joint_lora",
+      "checkpoint_step": 10000,
+      "source_output": "raw/joint_step_010000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.03189722646793755,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.02095847704534995,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.14654837222308448,
+            "rmse": 0.3056343634404317,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.21997581365295166,
+            "rmse": 0.6395946307568114,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.06330234240230273,
+            "rmse": 0.19543568037929487,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 834,
+          "tn": 40205,
+          "fp": 61,
+          "fn": 76,
+          "precision": 0.9318435754189944,
+          "recall": 0.9164835164835164,
+          "f1": 0.9240997229916897,
+          "accuracy": 0.9966728191179328,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 895,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_010000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    },
+    {
+      "owner": "A",
+      "model_id": "joint_step_013000",
+      "stage": "joint_lora",
+      "checkpoint_step": 13000,
+      "source_output": "raw/joint_step_013000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.0315862932698955,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.019895287708370495,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.14446295670077874,
+            "rmse": 0.29632526611614984,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.20978794221579738,
+            "rmse": 0.6341069760434832,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.06128126351705263,
+            "rmse": 0.1891002453099205,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 813,
+          "tn": 40230,
+          "fp": 36,
+          "fn": 97,
+          "precision": 0.9575971731448764,
+          "recall": 0.8934065934065935,
+          "f1": 0.9243888573052872,
+          "accuracy": 0.9967699630852924,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 849,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_013000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    },
+    {
+      "owner": "A",
+      "model_id": "joint_step_016000",
+      "stage": "joint_lora",
+      "checkpoint_step": 16000,
+      "source_output": "raw/joint_step_016000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.031034919323605244,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.019865072184873954,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.13904805121064326,
+            "rmse": 0.29212052211692613,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.20638354663735853,
+            "rmse": 0.62915066972282,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.060425583058210025,
+            "rmse": 0.19086978445915787,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 819,
+          "tn": 40224,
+          "fp": 42,
+          "fn": 91,
+          "precision": 0.9512195121951219,
+          "recall": 0.9,
+          "f1": 0.9249011857707511,
+          "accuracy": 0.9967699630852924,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 861,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_016000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    },
+    {
+      "owner": "A",
+      "model_id": "joint_step_019000",
+      "stage": "joint_lora",
+      "checkpoint_step": 19000,
+      "source_output": "raw/joint_step_019000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.030628199321635727,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.01955960458194163,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.14159771809450325,
+            "rmse": 0.29033786067315714,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.20253942323490695,
+            "rmse": 0.6249926261513239,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.05954657909747163,
+            "rmse": 0.18914503082198675,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 813,
+          "tn": 40230,
+          "fp": 36,
+          "fn": 97,
+          "precision": 0.9575971731448764,
+          "recall": 0.8934065934065935,
+          "f1": 0.9243888573052872,
+          "accuracy": 0.9967699630852924,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 849,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_019000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    },
+    {
+      "owner": "A",
+      "model_id": "joint_step_022000",
+      "stage": "joint_lora",
+      "checkpoint_step": 22000,
+      "source_output": "raw/joint_step_022000_full_val_seed42.json",
+      "status": "complete",
+      "metrics": {
+        "num_samples": 41176,
+        "num_valid_samples": 41176,
+        "num_valid_coordinates": 164704,
+        "noise_mse": 0.0305194531735708,
+        "seed": 42,
+        "sample_actions": true,
+        "num_inference_steps": 10,
+        "normalized_continuous_mse": 0.01946672832818202,
+        "num_valid_continuous_coordinates": 123528,
+        "physical": {
+          "fwd": {
+            "mae": 0.13998201189659304,
+            "rmse": 0.2887854196085807,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "down": {
+            "mae": 0.20124704286684822,
+            "rmse": 0.6240560479897731,
+            "count": 41176,
+            "unit": "original_distance_unit"
+          },
+          "yaw": {
+            "mae": 0.059457416829841445,
+            "rmse": 0.18886338602955005,
+            "count": 41176,
+            "unit": "radians"
+          }
+        },
+        "land": {
+          "tp": 814,
+          "tn": 40228,
+          "fp": 38,
+          "fn": 96,
+          "precision": 0.9553990610328639,
+          "recall": 0.8945054945054945,
+          "f1": 0.923950056753689,
+          "accuracy": 0.9967456770934525,
+          "support_positive": 910,
+          "support_negative": 40266,
+          "predicted_positive": 852,
+          "threshold_normalized": 0.0,
+          "zero_division": 0.0
+        }
+      },
+      "split_provenance_checked": true,
+      "run_record": "run-records/joint_step_022000.json",
+      "remarks": null,
+      "split": {
+        "split": "val",
+        "split_json": "data/continuous_split_seed42.json",
+        "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+        "version": 1,
+        "split_by": "trajectory",
+        "seed": 42,
+        "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+        "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+        "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+        "total_samples": 410450,
+        "total_trajectories": 7611,
+        "num_samples": 41176,
+        "num_trajectories": 761,
+        "train_samples": 369274,
+        "val_samples": 41176,
+        "train_trajectories": 6850,
+        "val_trajectories": 761,
+        "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+        "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+        "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+      },
+      "runtime": {
+        "device": "cuda",
+        "backbone_dtype": "bfloat16",
+        "batch_size": 2,
+        "seed": 42
+      },
+      "split_provenance": {
+        "status": "verified_diffusion_head_holdout",
+        "checked_hashes": [
+          "data_sha256",
+          "split_sha256",
+          "trajectory_sha256"
+        ],
+        "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+      },
+      "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate"
+    }
+  ],
+  "aerovla_original_offline": "not_applicable",
+  "allocations": {
+    "4352757": {
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 4931,
+      "start": "2026-11-19T14:49:15",
+      "end": "2026-11-19T16:11:26",
+      "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=48G,node=1"
+    },
+    "4353667": {
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 4636,
+      "start": "2026-11-19T20:49:39",
+      "end": "2026-11-19T22:06:55",
+      "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=48G,node=1"
+    },
+    "4357506": {
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 4804,
+      "start": "2026-11-20T23:39:21",
+      "end": "2026-11-21T00:59:25",
+      "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=48G,node=1"
+    },
+    "4364399": {
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 18963,
+      "start": "2026-11-26T20:45:56",
+      "end": "2026-11-27T02:01:59",
+      "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=48G,node=1"
+    },
+    "4364410": {
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 4737,
+      "start": "2026-11-27T02:02:16",
+      "end": "2026-11-27T03:21:13",
+      "alloc_tres": "billing=4,cpu=4,gres/gpu=1,mem=48G,node=1"
+    }
+  },
+  "current_gpu_hard_limit_seconds": 28800,
+  "current_gpu_elapsed_seconds": 23700,
+  "gpu_release_verified": true,
+  "queue_checks": [
+    "2026-11-27 09:19:38 +0800",
+    "ACTIVE=0",
+    "4364399|COMPLETED|0:0",
+    "4364399.batch|COMPLETED|0:0",
+    "4364399.extern|COMPLETED|0:0",
+    "4364410|COMPLETED|0:0",
+    "4364410.batch|COMPLETED|0:0",
+    "4364410.extern|COMPLETED|0:0"
+  ]
+}

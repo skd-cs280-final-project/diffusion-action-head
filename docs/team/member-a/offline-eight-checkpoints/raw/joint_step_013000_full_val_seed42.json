@@ -1,0 +1,114 @@
+{
+  "evaluation_type": "offline_diffusion_action_validation",
+  "checkpoint": "eval_results/course_inference/resources/models/joint_step_013000",
+  "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+  "split_json": "data/continuous_split_seed42.json",
+  "data_root": ".setup/offline-val-data",
+  "split": {
+    "split": "val",
+    "split_json": "data/continuous_split_seed42.json",
+    "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+    "version": 1,
+    "split_by": "trajectory",
+    "seed": 42,
+    "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+    "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+    "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+    "total_samples": 410450,
+    "total_trajectories": 7611,
+    "num_samples": 41176,
+    "num_trajectories": 761,
+    "train_samples": 369274,
+    "val_samples": 41176,
+    "train_trajectories": 6850,
+    "val_trajectories": 761,
+    "selected_indices_sha256": "5cc7f08be2a70860567c91ad0815314c848fd0e788759f4ae808efe680b4c04f",
+    "data_json": ".setup/offline-annotations-inspect/data/aerovla_train_dataset.json",
+    "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+  },
+  "split_provenance": {
+    "status": "verified_diffusion_head_holdout",
+    "checked_hashes": [
+      "data_sha256",
+      "split_sha256",
+      "trajectory_sha256"
+    ],
+    "scope": "Only diffusion-head train/val separation is verified; frozen adapter pretraining overlap is unknown"
+  },
+  "checkpoint_training_split": {
+    "split": "train",
+    "split_json": "data/continuous_split_seed42.json",
+    "split_sha256": "50c4c84f90058bca2cc14ab19bbbccd41c0605e05bd924f530e743ad99236c4b",
+    "version": 1,
+    "split_by": "trajectory",
+    "seed": 42,
+    "trajectory_sha256": "831856ffb9a8d626f242c9d64a8177a0c16302912b44fbbdef5fd6c91975ce75",
+    "train_trajectory_sha256": "15553d787c33db62d9a44c45d9c297a0a0d996cd7cdbff352659bb03e5ccb3cf",
+    "val_trajectory_sha256": "5dea7f17713cd4cf81558bbd3ba001129e62d212f4e0d071be30d4b91b43a664",
+    "total_samples": 410450,
+    "total_trajectories": 7611,
+    "num_samples": 369274,
+    "num_trajectories": 6850,
+    "train_samples": 369274,
+    "val_samples": 41176,
+    "train_trajectories": 6850,
+    "val_trajectories": 761,
+    "selected_indices_sha256": "c78df9cc50c80074212939a5a4be3c999bc6bafb200bfd5b83329bc3de19342c",
+    "data_json": "data/aerovla_train_dataset.json",
+    "data_sha256": "1c1e32787cedb096fe5df2511e5bf3cc81901b8a30d261df73ebcb800c868a67"
+  },
+  "metrics": {
+    "num_samples": 41176,
+    "num_valid_samples": 41176,
+    "num_valid_coordinates": 164704,
+    "noise_mse": 0.0315862932698955,
+    "seed": 42,
+    "sample_actions": true,
+    "num_inference_steps": 10,
+    "normalized_continuous_mse": 0.019895287708370495,
+    "num_valid_continuous_coordinates": 123528,
+    "physical": {
+      "fwd": {
+        "mae": 0.14446295670077874,
+        "rmse": 0.29632526611614984,
+        "count": 41176,
+        "unit": "original_distance_unit"
+      },
+      "down": {
+        "mae": 0.20978794221579738,
+        "rmse": 0.6341069760434832,
+        "count": 41176,
+        "unit": "original_distance_unit"
+      },
+      "yaw": {
+        "mae": 0.06128126351705263,
+        "rmse": 0.1891002453099205,
+        "count": 41176,
+        "unit": "radians"
+      }
+    },
+    "land": {
+      "tp": 813,
+      "tn": 40230,
+      "fp": 36,
+      "fn": 97,
+      "precision": 0.9575971731448764,
+      "recall": 0.8934065934065935,
+      "f1": 0.9243888573052872,
+      "accuracy": 0.9967699630852924,
+      "support_positive": 910,
+      "support_negative": 40266,
+      "predicted_positive": 849,
+      "threshold_normalized": 0.0,
+      "zero_division": 0.0
+    }
+  },
+  "runtime": {
+    "device": "cuda",
+    "backbone_dtype": "bfloat16",
+    "batch_size": 2,
+    "seed": 42
+  },
+  "target_semantics": "Clipped fwd [0,5], down [-5,5], yaw [-1.1,1.1]; LAND=is_last_step OR is_penultimate",
+  "scope": "Offline action metrics do not measure closed-loop AirSim navigation success"
+}
